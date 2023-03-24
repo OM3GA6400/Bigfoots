@@ -2785,7 +2785,7 @@ const spawn = {
         me.memory = 240
         me.seePlayerFreq = 60
         me.blinkRange = 235
-        if (0.5 < Math.random()) {
+        if (Math.random() > 0.5) {
             me.grenadeDelay = 260
             me.blinkRange *= 1.5
         } else {

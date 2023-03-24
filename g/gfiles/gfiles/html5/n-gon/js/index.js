@@ -24,7 +24,7 @@ function shuffle(array) {
         temporaryValue,
         randomIndex;
     // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
+    while (currentIndex !== 0) {
         // Pick a remaining element...
         // randomIndex = Math.floor(Math.random() * currentIndex);
         randomIndex = Math.floor(Math.seededRandom(0, currentIndex)) //Math.floor(Math.random() * currentIndex);
