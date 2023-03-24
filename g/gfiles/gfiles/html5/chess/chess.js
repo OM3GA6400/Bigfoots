@@ -257,7 +257,7 @@ var chess = (function() {
 		aHistory.splice(0);
 		etc.aThreats.splice(0);
 		for (var iPosition = 1; iPosition < 121; iPosition++) { etc.aBoard[iPosition - 1] = iPosition % 10 ? iPosition / 10 % 10 < 2 | iPosition % 10 < 2 ? 7 : iPosition / 10 & 4 ? 0 : getPcByParams(iParamId++, iPosition - 1) | 16 : 7; }
-		sMovesList = new String();
+		sMovesList =  String();
 		oMovesSelect.innerHTML = "<option>Game start<\/option>";
 		oMovesSelect.selectedIndex = 0;
 	}
@@ -275,7 +275,7 @@ var chess = (function() {
 	*		[bits 25 to 29]		[bits 20 to 24]		[bits 15 to 19]		[bits 8 to 14]		[bits 1 to 7]
 	*/
 	function writeHistory(bGraphRendrng, nStartPt, nEndPt, nPieceId, nTarget, nPromo) {
-		var nMoves = aHistory.length >> 1, sPromoAlg = new String(), nEndPosX = nEndPt % 10 - 1, nEndPosY = (nEndPt - nEndPt % 10) / 10 - 2, nStartPosX = nStartPt % 10 - 1, nStartPosY = (nStartPt - nStartPt % 10) / 10 - 2, iVerifyX, iVerifyY, disambiguateX = false, disambiguateY = false, signedNumber = nStartPt | nEndPt << 7 | nPieceId << 14 | nTarget << 19, vPromo = false, bWriteCapture = ((nPieceId & 7) === 1 && (nStartPt + nEndPt & 1) && nTarget === 0 /* en passant */) || nTarget > 0, colorFlag = nPieceId & 8;
+		var nMoves = aHistory.length >> 1, sPromoAlg =  String(), nEndPosX = nEndPt % 10 - 1, nEndPosY = (nEndPt - nEndPt % 10) / 10 - 2, nStartPosX = nStartPt % 10 - 1, nStartPosY = (nStartPt - nStartPt % 10) / 10 - 2, iVerifyX, iVerifyY, disambiguateX = false, disambiguateY = false, signedNumber = nStartPt | nEndPt << 7 | nPieceId << 14 | nTarget << 19, vPromo = false, bWriteCapture = ((nPieceId & 7) === 1 && (nStartPt + nEndPt & 1) && nTarget === 0 /* en passant */) || nTarget > 0, colorFlag = nPieceId & 8;
 		lastStart = nStartPt;
 		lastEnd = nEndPt;
 		if ((nEndPosY + 1 | 9) === 9 /* true in case of nEndPosY === -1! */ && (nPieceId & 7) === 1) {
@@ -548,7 +548,7 @@ var chess = (function() {
 	}
 
 	function updatePGNHeader() {
-		sPGNHeader = new String();
+		sPGNHeader =  String();
 		for (var iHeadKey in oGameInfo) { sPGNHeader += "[" + iHeadKey + " \"" + oGameInfo[iHeadKey] + "\"]\n"; }
 	}
 
@@ -1070,7 +1070,7 @@ var chess = (function() {
 		useAI: function(bMachine) { bAI = bMachine; },
 		placeById: function(sNodeId) { this.place(document.getElementById(sNodeId)); },
 		setPlyDepth: function(nLevel) {
-			var nDepth = new Number(nLevel);
+			var nDepth =  Number(nLevel);
 			if (isNaN(nDepth) || nDepth < 0) { return(false); }
 			nPlyDepth = nDepth + 2;
 			return(true);
