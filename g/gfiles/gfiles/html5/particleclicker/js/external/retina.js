@@ -50,7 +50,7 @@
             var images = document.getElementsByTagName('img'), retinaImages = [], i, image;
             for (i = 0; i < images.length; i += 1) {
                 image = images[i];
-                if (!!!image.getAttributeNode('data-no-retina')) {
+                if (!image.getAttributeNode('data-no-retina')) {
                     image.setAttribute('data-at2x-loaded', true);
                     retinaImages.push(new RetinaImage(image));
                 }
@@ -63,8 +63,8 @@
         var images = document.getElementsByTagName('img'), retinaImages = [], i, image;
         for (i = 0; i < images.length; i += 1) {
             image = images[i];
-            if (!!!image.getAttributeNode('data-no-retina')) {
-                if (!!!image.getAttributeNode('data-at2x-loaded')) {
+            if (!image.getAttributeNode('data-no-retina')) {
+                if (!image.getAttributeNode('data-at2x-loaded')) {
                     image.setAttribute('data-at2x-loaded', true);
                     retinaImages.push(new RetinaImage(image));
                 }
