@@ -17947,17 +17947,17 @@ p.nominalBounds = new cjs.Rectangle(-87.3,-81.7,204.2,166.5);
 				toolupdated = 1;
 			}
 			if ((nbrtools >= toolupdated) && (pauzetel == (toolupdated * 6))) {
-				if (toolupdated==1) {sceneScherm.toolbal1.x=1026;sceneScherm.toolbal1.y=-240;}
-				else if (toolupdated==2) {sceneScherm.toolbal2.x=1026;sceneScherm.toolbal2.y=-240;}
-				else if (toolupdated==3) {sceneScherm.toolbal3.x=1026;sceneScherm.toolbal3.y=-240;}
-				else if (toolupdated==4) {sceneScherm.toolbal4.x=1026;sceneScherm.toolbal4.y=-240;}
-				else if (toolupdated==5) {sceneScherm.toolbal5.x=1026;sceneScherm.toolbal5.y=-240;}
-				else if (toolupdated==6) {sceneScherm.toolbal6.x=1026;sceneScherm.toolbal6.y=-240;}
-				else if (toolupdated==7) {sceneScherm.toolbal7.x=1026;sceneScherm.toolbal7.y=-240;}
-				else if (toolupdated==8) {sceneScherm.toolbal8.x=1026;sceneScherm.toolbal8.y=-240;}
-				else if (toolupdated==9) {sceneScherm.toolbal9.x=1026;sceneScherm.toolbal9.y=-240;}
-				else if (toolupdated==10) {sceneScherm.toolbal10.x=1026;sceneScherm.toolbal10.y=-240;}
-				else if (toolupdated==11) {sceneScherm.toolbal11.x=1026;sceneScherm.toolbal11.y=-240;}
+				if (toolupdated==1) {sceneScherm.toolbal1.x=1026;sceneScherm.toolbal1.y= -240;}
+				else if (toolupdated==2) {sceneScherm.toolbal2.x=1026;sceneScherm.toolbal2.y= -240;}
+				else if (toolupdated==3) {sceneScherm.toolbal3.x=1026;sceneScherm.toolbal3.y= -240;}
+				else if (toolupdated==4) {sceneScherm.toolbal4.x=1026;sceneScherm.toolbal4.y= -240;}
+				else if (toolupdated==5) {sceneScherm.toolbal5.x=1026;sceneScherm.toolbal5.y= -240;}
+				else if (toolupdated==6) {sceneScherm.toolbal6.x=1026;sceneScherm.toolbal6.y= -240;}
+				else if (toolupdated==7) {sceneScherm.toolbal7.x=1026;sceneScherm.toolbal7.y= -240;}
+				else if (toolupdated==8) {sceneScherm.toolbal8.x=1026;sceneScherm.toolbal8.y= -240;}
+				else if (toolupdated==9) {sceneScherm.toolbal9.x=1026;sceneScherm.toolbal9.y= -240;}
+				else if (toolupdated==10) {sceneScherm.toolbal10.x=1026;sceneScherm.toolbal10.y= -240;}
+				else if (toolupdated==11) {sceneScherm.toolbal11.x=1026;sceneScherm.toolbal11.y= -240;}
 			}
 			if ((nbrtools > toolupdated) && (pauzetel == (toolupdated * 6))) {
 				if (toolupdated==1) {sceneScherm.toolbal2.toolsmovie.gotoAndStop("leeg");sceneScherm.toolbal2.toolbalmovie.gotoAndPlay(1);}
@@ -18007,17 +18007,17 @@ p.nominalBounds = new cjs.Rectangle(-87.3,-81.7,204.2,166.5);
 				toolupdated = 1;
 			}
 			if ((nbrtools >= toolupdated) && (pauzetel == (toolupdated * 6))) {
-				if (toolupdated==1) {sceneScherm.toolbal1.x=1026;sceneScherm.toolbal1.y=-240;}
-				else if (toolupdated==2) {sceneScherm.toolbal2.x=1026;sceneScherm.toolbal2.y=-240;}
-				else if (toolupdated==3) {sceneScherm.toolbal3.x=1026;sceneScherm.toolbal3.y=-240;}
-				else if (toolupdated==4) {sceneScherm.toolbal4.x=1026;sceneScherm.toolbal4.y=-240;}
-				else if (toolupdated==5) {sceneScherm.toolbal5.x=1026;sceneScherm.toolbal5.y=-240;}
-				else if (toolupdated==6) {sceneScherm.toolbal6.x=1026;sceneScherm.toolbal6.y=-240;}
-				else if (toolupdated==7) {sceneScherm.toolbal7.x=1026;sceneScherm.toolbal7.y=-240;}
-				else if (toolupdated==8) {sceneScherm.toolbal8.x=1026;sceneScherm.toolbal8.y=-240;}
-				else if (toolupdated==9) {sceneScherm.toolbal9.x=1026;sceneScherm.toolbal9.y=-240;}
-				else if (toolupdated==10) {sceneScherm.toolbal10.x=1026;sceneScherm.toolbal10.y=-240;}
-				else if (toolupdated==11) {sceneScherm.toolbal11.x=1026;sceneScherm.toolbal11.y=-240;}
+				if (toolupdated==1) {sceneScherm.toolbal1.x=1026;sceneScherm.toolbal1.y= -240;}
+				else if (toolupdated==2) {sceneScherm.toolbal2.x=1026;sceneScherm.toolbal2.y= -240;}
+				else if (toolupdated==3) {sceneScherm.toolbal3.x=1026;sceneScherm.toolbal3.y= -240;}
+				else if (toolupdated==4) {sceneScherm.toolbal4.x=1026;sceneScherm.toolbal4.y= -240;}
+				else if (toolupdated==5) {sceneScherm.toolbal5.x=1026;sceneScherm.toolbal5.y= -240;}
+				else if (toolupdated==6) {sceneScherm.toolbal6.x=1026;sceneScherm.toolbal6.y= -240;}
+				else if (toolupdated==7) {sceneScherm.toolbal7.x=1026;sceneScherm.toolbal7.y= -240;}
+				else if (toolupdated==8) {sceneScherm.toolbal8.x=1026;sceneScherm.toolbal8.y= -240;}
+				else if (toolupdated==9) {sceneScherm.toolbal9.x=1026;sceneScherm.toolbal9.y= -240;}
+				else if (toolupdated==10) {sceneScherm.toolbal10.x=1026;sceneScherm.toolbal10.y= -240;}
+				else if (toolupdated==11) {sceneScherm.toolbal11.x=1026;sceneScherm.toolbal11.y= -240;}
 			}
 			if ((nbrtools > toolupdated) && (pauzetel == (toolupdated * 6))) {
 				if (toolupdated==1) {sceneScherm.toolbal2.toolsmovie.gotoAndStop("leeg");sceneScherm.toolbal2.toolbalmovie.gotoAndPlay(1);}
@@ -18052,7 +18052,7 @@ p.nominalBounds = new cjs.Rectangle(-87.3,-81.7,204.2,166.5);
 				sceneScherm.spr_doosvoor.visible = false;
 				sceneScherm.spr_bal.visible = false;
 				createjs.Ticker.removeEventListener("tick",levelEndLoop);
-				pauzetel=-2;
+				pauzetel= -2;
 				createjs.Ticker.addEventListener("tick",gameLoop);
 			}
 			pauzetel++;
@@ -18087,17 +18087,17 @@ p.nominalBounds = new cjs.Rectangle(-87.3,-81.7,204.2,166.5);
 			sceneScherm.spr_doos.y=536;
 			sceneScherm.balcentraal.x=480;
 			sceneScherm.balcentraal.y=1026;
-			sceneScherm.toolbal1.x=1026;sceneScherm.toolbal1.y=-240;
-			sceneScherm.toolbal2.x=1026;sceneScherm.toolbal2.y=-240;
-			sceneScherm.toolbal3.x=1026;sceneScherm.toolbal3.y=-240;
-			sceneScherm.toolbal4.x=1026;sceneScherm.toolbal4.y=-240;
-			sceneScherm.toolbal5.x=1026;sceneScherm.toolbal5.y=-240;
-			sceneScherm.toolbal6.x=1026;sceneScherm.toolbal6.y=-240;
-			sceneScherm.toolbal7.x=1026;sceneScherm.toolbal7.y=-240;
-			sceneScherm.toolbal8.x=1026;sceneScherm.toolbal8.y=-240;
-			sceneScherm.toolbal9.x=1026;sceneScherm.toolbal9.y=-240;
-			sceneScherm.toolbal10.x=1026;sceneScherm.toolbal10.y=-240;
-			sceneScherm.toolbal11.x=1026;sceneScherm.toolbal11.y=-240;
+			sceneScherm.toolbal1.x=1026;sceneScherm.toolbal1.y= -240;
+			sceneScherm.toolbal2.x=1026;sceneScherm.toolbal2.y= -240;
+			sceneScherm.toolbal3.x=1026;sceneScherm.toolbal3.y= -240;
+			sceneScherm.toolbal4.x=1026;sceneScherm.toolbal4.y= -240;
+			sceneScherm.toolbal5.x=1026;sceneScherm.toolbal5.y= -240;
+			sceneScherm.toolbal6.x=1026;sceneScherm.toolbal6.y= -240;
+			sceneScherm.toolbal7.x=1026;sceneScherm.toolbal7.y= -240;
+			sceneScherm.toolbal8.x=1026;sceneScherm.toolbal8.y= -240;
+			sceneScherm.toolbal9.x=1026;sceneScherm.toolbal9.y= -240;
+			sceneScherm.toolbal10.x=1026;sceneScherm.toolbal10.y= -240;
+			sceneScherm.toolbal11.x=1026;sceneScherm.toolbal11.y= -240;
 			sceneScherm.gotoAndStop("menu");
 		}
 	}

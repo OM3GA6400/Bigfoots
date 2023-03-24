@@ -1805,11 +1805,11 @@ function GenerateMaze(cellCount)
             let yd = 0;
             let r=RandInt(neighbors);
             if (CheckMove(x,y,-1,0) && !r--)
-                xd=-1,yd=0;
+                xd= -1,yd=0;
             else if (CheckMove(x,y,1,0) && !r--)
                 xd=1,yd=0;
             else if (CheckMove(x,y,0,-1) && !r--)
-                xd=0,yd=-1;
+                xd=0,yd= -1;
             else
                 xd=0,yd=1;
                 

@@ -21,8 +21,8 @@ export function draw(level) {
 	ctx.canvas.height = CELL.y * 2 * offset.y;
 
 	let xy = new XY();
-	for (xy.x=-offset.x; xy.x<=offset.x; xy.x++) {
-		for (xy.y=-offset.y; xy.y<=offset.y; xy.y++) {
+	for (xy.x= -offset.x; xy.x<=offset.x; xy.x++) {
+		for (xy.y= -offset.y; xy.y<=offset.y; xy.y++) {
 			let visual = level.getEntity(xy).getVisual();
 
 			let pxy = xy.plus(offset).scale(CELL.x, CELL.y);
