@@ -23,7 +23,7 @@ var holidayObj = {
     },
     checkAll: function(){
         var date = new Date();
-        if (this.lastCheck != null && ((date.getTime() - this.lastCheck.getTime()) < 120000)) return;
+        if (this.lastCheck !== null && ((date.getTime() - this.lastCheck.getTime()) < 120000)) return;
         this.lastCheck = date;
         var day = date.getUTCDate();
         var month = date.getUTCMonth();
@@ -47,14 +47,14 @@ var holidayObj = {
 var alchObj = {
     tab: document.getElementById('alchemyTab'),
     load: function(){
-        if (game.global.potionData != null) this.potionsOwned = game.global.potionData;
+        if (game.global.potionData !== null) this.potionsOwned = game.global.potionData;
         else {
             for (var x = 0; x < this.potionsOwned.length; x++){
                 this.potionsOwned[x] = 0;
                 this.potionAuto[x] = 0;
             }
         }
-        if (game.global.potionAuto != null) this.potionAuto = game.global.potionAuto;
+        if (game.global.potionAuto !== null) this.potionAuto = game.global.potionAuto;
         if (this.potionsOwned.length < this.potionNames.length){
             var need = this.potionNames.length - this.potionsOwned.length;
             for (var x = 0; x < need; x++){

@@ -40,7 +40,7 @@ function loadGameControls() {
 	autoRepeatConfig = parseInt(autoRepeat);
     }
     var threshold = readCookie('threshold');
-    if (threshold != null) {
+    if (threshold !== null) {
 	thresholdConfig = parseInt(threshold);
     }
 }

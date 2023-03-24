@@ -1,4 +1,4 @@
-var ipad = navigator.userAgent.match(/iPad/i) != null;
+var ipad = navigator.userAgent.match(/iPad/i) !== null;
 
 if (ipad) {
   $(function () {

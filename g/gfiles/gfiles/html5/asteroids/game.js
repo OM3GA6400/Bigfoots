@@ -333,7 +333,7 @@ Sprite = function () {
   this.isClear = function () {
     if (this.collidesWith.length == 0) return true;
     var cn = this.currentNode;
-    if (cn == null) {
+    if (cn === null) {
       var gridx = Math.floor(this.x / GRID_SIZE);
       var gridy = Math.floor(this.y / GRID_SIZE);
       gridx = (gridx >= this.grid.length) ? 0 : gridx;
@@ -505,7 +505,7 @@ BigAlien = function () {
 
   this.preMove = function (delta) {
     var cn = this.currentNode;
-    if (cn == null) return;
+    if (cn === null) return;
 
     var topCount = 0;
     if (cn.north.nextSprite) topCount++;
@@ -970,7 +970,7 @@ Game = {
       }
     },
     new_level: function () {
-      if (this.timer == null) {
+      if (this.timer === null) {
         this.timer = Date.now();
       }
       // wait a second before spawning more asteroids
@@ -986,7 +986,7 @@ Game = {
       if (Game.lives < 0) {
         this.state = 'end_game';
       } else {
-        if (this.timer == null) {
+        if (this.timer === null) {
           this.timer = Date.now();
         }
         // wait a second before spawning
@@ -998,7 +998,7 @@ Game = {
     },
     end_game: function () {
       Text.renderText('GAME OVER', 50, Game.canvasWidth/2 - 160, Game.canvasHeight/2 + 10);
-      if (this.timer == null) {
+      if (this.timer === null) {
         this.timer = Date.now();
       }
       // wait 5 seconds then go back to waiting state
