@@ -85,7 +85,7 @@ var StringFilr;
                 key = keyRaw;
             }
             // Quickly return a cached result if it exists
-            if (this.cache.hasOwnProperty(key)) {
+            if (Object.prototype.hasOwnProperty.call(this.cache, key)) {
                 return this.cache[key];
             }
             // Since a cache didn't exist, it must be found within the library
@@ -113,13 +113,13 @@ var StringFilr;
             for (i = 0; i < keys.length; i += 1) {
                 key = keys[i];
                 // ...if it matches, recurse on the other keys
-                if (current.hasOwnProperty(key)) {
+                if (Object.prototype.hasOwnProperty.call(current, key)) {
                     keys.splice(i, 1);
                     return this.followClass(keys, current[key]);
                 }
             }
             // If no key matched, try the normal (default)
-            if (this.normal && current.hasOwnProperty(this.normal)) {
+            if (this.normal && Object.prototype.hasOwnProperty.call(current, this.normal)) {
                 return this.followClass(keys, current[this.normal]);
             }
             // Nothing matches anything; we're done.
@@ -137,12 +137,12 @@ var StringFilr;
          */
         StringFilr.prototype.findLackingNormal = function (current, path, output) {
             var i;
-            if (!current.hasOwnProperty(this.normal)) {
+            if (!Object.prototype.hasOwnProperty.call(current, this.normal)) {
                 output.push(path);
             }
             if (typeof current[i] === "object") {
                 for (i in current) {
-                    if (current.hasOwnProperty(i)) {
+                    if (Object.prototype.hasOwnProperty.call(current, i)) {
                         this.findLackingNormal(current[i], path + " " + i, output);
                     }
                 }

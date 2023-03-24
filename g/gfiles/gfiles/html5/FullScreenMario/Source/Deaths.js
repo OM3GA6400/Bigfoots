@@ -31,7 +31,7 @@ var FullScreenMario;
             thing.alive = false;
             thing.numquads = 0;
             thing.movement = undefined;
-            if (thing.hasOwnProperty("resting")) {
+            if (Object.prototype.hasOwnProperty.call(thing, 'resting')) {
                 thing.resting = undefined;
             }
             if (thing.FSM) {

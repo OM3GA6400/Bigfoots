@@ -28,7 +28,7 @@
 /// <reference path="WorldSeedr-0.2.0.ts" />
 /// <reference path="js_beautify.ts" />
 var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
@@ -425,7 +425,7 @@ var GameStartr;
             var mods = settings.mods, i;
             if (mods) {
                 for (i in mods) {
-                    if (mods.hasOwnProperty(i) && mods[i]) {
+                    if (Object.prototype.hasOwnProperty.call(mods, i) && mods[i]) {
                         GameStarter.ModAttacher.enableMod(i);
                     }
                 }
@@ -1292,12 +1292,12 @@ var GameStartr;
                 "type": "text/css"
             }), compiled = "", i, j;
             for (i in styles) {
-                if (!styles.hasOwnProperty(i)) {
+                if (!Object.prototype.hasOwnProperty.call(styles, i)) {
                     continue;
                 }
                 compiled += i + " { \r\n";
                 for (j in styles[i]) {
-                    if (styles[i].hasOwnProperty(j)) {
+                    if (Object.prototype.hasOwnProperty.call(styles[i], j)) {
                         compiled += "  " + j + ": " + styles[i][j] + ";\r\n";
                     }
                 }

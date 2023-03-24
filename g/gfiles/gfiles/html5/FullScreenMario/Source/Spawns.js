@@ -249,7 +249,7 @@ var FullScreenMario;
                 }
                 for (j = 0; j < text.length; j += 1) {
                     letter = text[j];
-                    if (thing.FSM.customTextMappings.hasOwnProperty(letter)) {
+                    if (Object.prototype.hasOwnProperty.call(thing.FSM.customTextMappings, letter)) {
                         letter = thing.FSM.customTextMappings[letter];
                     }
                     letter = "Text" + thing.size + letter;

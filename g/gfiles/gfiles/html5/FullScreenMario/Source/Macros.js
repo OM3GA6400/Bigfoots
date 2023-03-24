@@ -445,7 +445,7 @@ var FullScreenMario;
          * @returns A Warp World group.
          */
         Macros.prototype.macroWarpWorld = function (reference, prethings, area, map, FSM) {
-            var output = [], x = reference.x || 0, y = reference.y || 0, textHeight = reference.hasOwnProperty("textHeight") ? reference.textHeight : 8, warps = reference.warps, collectionName = "WarpWorldCollection-" + warps.join("."), keys = [], i;
+            var output = [], x = reference.x || 0, y = reference.y || 0, textHeight = Object.prototype.hasOwnProperty.call(reference, 'textHeight') ? reference.textHeight : 8, warps = reference.warps, collectionName = "WarpWorldCollection-" + warps.join("."), keys = [], i;
             output.push({
                 "thing": "CustomText",
                 "x": x + 8,
@@ -797,7 +797,7 @@ var FullScreenMario;
                 });
             }
             // CastleWalls right
-            j = reference.hasOwnProperty("walls") ? reference.walls : 2;
+            j = Object.prototype.hasOwnProperty.call(reference, 'walls') ? reference.walls : 2;
             for (i = 0; i < j; i += 1) {
                 output.push({
                     "thing": "CastleWall",

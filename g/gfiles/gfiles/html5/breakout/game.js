@@ -47,7 +47,7 @@ if (!Object.construct) {
 if (!Object.extend) {
   Object.extend = function(destination, source) {
     for (var property in source) {
-      if (source.hasOwnProperty(property))
+      if (Object.prototype.hasOwnProperty.call(source, property))
         destination[property] = source[property];
     }
     return destination;

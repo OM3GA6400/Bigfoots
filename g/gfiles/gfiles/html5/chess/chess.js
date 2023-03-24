@@ -231,16 +231,16 @@ var chess = (function() {
 			if (bCheck) {
 				var sWinner = flagWhoMoved ? "Black" : "White";
 				oGameInfo.Result = flagWhoMoved ? "0-1" : "1-0";
-				sendMsg((oGameInfo.hasOwnProperty(sWinner) ? oGameInfo[sWinner] : sWinner) + " wins.", "The king is threatened and can not move (<em>checkmate<\/em>).", 10000);
+				sendMsg((Object.prototype.hasOwnProperty.call(oGameInfo, sWinner) ? oGameInfo[sWinner] : sWinner) + " wins.", "The king is threatened and can not move (<em>checkmate<\/em>).", 10000);
 				sMovesList = sMovesList.replace(/\+$/, "#");
 			} else {
 				oGameInfo.Result = "1/2-1/2";
 				sendMsg("Drawn game", "The opponent can not move (<em>draw<\/em>).", 10000);
 			}
 			bGameNotOver = false;
-		} else if (oGameInfo.hasOwnProperty("Result") && oGameInfo.Result.search(/^(\d+\-\d+)$/) > -1 && iHistPointr === aHistory.length - 1) {
+		} else if (Object.prototype.hasOwnProperty.call(oGameInfo, 'Result') && oGameInfo.Result.search(/^(\d+\-\d+)$/) > -1 && iHistPointr === aHistory.length - 1) {
 			var sWinner = oGameInfo.Result.valueOf() === "1-0" ? "White" : "Black";
-			sendMsg((oGameInfo.hasOwnProperty(sWinner) ? oGameInfo[sWinner] : sWinner) + " wins.", "The opponent has withdrawn.", 10000);
+			sendMsg((Object.prototype.hasOwnProperty.call(oGameInfo, sWinner) ? oGameInfo[sWinner] : sWinner) + " wins.", "The opponent has withdrawn.", 10000);
 			bGameNotOver = false;
 		} else { oGameInfo.Result = "*"; bGameNotOver = true; }
 	}
@@ -837,7 +837,7 @@ var chess = (function() {
 			var sNewName = prompt("Write the new name of the key.", sOldName);
 			if (!sNewName) { return; }
 			sNewName = sNewName.replace(/^[a-z]/, capitalize);
-			if (sNewName === sOldName || sNewName.search(rDeniedTagChrs) > -1 || oGameInfo.hasOwnProperty(sNewName)) { return; }
+			if (sNewName === sOldName || sNewName.search(rDeniedTagChrs) > -1 || Object.prototype.hasOwnProperty.call(oGameInfo, sNewName)) { return; }
 			var oCleanInfo;
 			for (var iInfoKey in oGameInfo) {
 				oNewInfo[iInfoKey === sOldName ? sNewName : iInfoKey] = oGameInfo[iInfoKey];

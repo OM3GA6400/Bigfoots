@@ -694,7 +694,7 @@ var WorldSeedr;
         WorldSeedr.prototype.ensureSizingOnChoice = function (output, choice, schema) {
             var name, i;
             for (i in sizingNames) {
-                if (!sizingNames.hasOwnProperty(i)) {
+                if (!Object.prototype.hasOwnProperty.call(sizingNames, i)) {
                     continue;
                 }
                 name = sizingNames[i];
@@ -715,7 +715,7 @@ var WorldSeedr;
         WorldSeedr.prototype.ensureDirectionBoundsOnChoice = function (output, position) {
             var i;
             for (i in directionNames) {
-                if (directionNames.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(directionNames, i)) {
                     output[directionNames[i]] = position[directionNames[i]];
                 }
             }
@@ -743,7 +743,7 @@ var WorldSeedr;
         WorldSeedr.prototype.objectCopy = function (original) {
             var output = {}, i;
             for (i in original) {
-                if (original.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(original, i)) {
                     output[i] = original[i];
                 }
             }
@@ -760,7 +760,7 @@ var WorldSeedr;
         WorldSeedr.prototype.objectMerge = function (primary, secondary) {
             var output = this.objectCopy(primary), i;
             for (i in secondary) {
-                if (secondary.hasOwnProperty(i) && !output.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(secondary, i) && !Object.prototype.hasOwnProperty.call(output, i)) {
                     output[i] = secondary[i];
                 }
             }

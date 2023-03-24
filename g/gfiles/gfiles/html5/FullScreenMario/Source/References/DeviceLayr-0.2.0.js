@@ -234,7 +234,7 @@ var DeviceLayr;
             for (i = 0; i < mapping.axes.length; i += 1) {
                 joystick = triggers[mapping.axes[i].name];
                 for (j in joystick) {
-                    if (!joystick.hasOwnProperty(j)) {
+                    if (!Object.prototype.hasOwnProperty.call(joystick, j)) {
                         continue;
                     }
                     if (joystick[j].status === undefined) {

@@ -21,7 +21,7 @@ var ItemsHoldr;
             ItemsHolder.proliferate(this, ItemsHolder.getDefaults());
             ItemsHolder.proliferate(this, settings);
             this.key = key;
-            if (!this.hasOwnProperty("value")) {
+            if (!Object.prototype.hasOwnProperty.call(this, 'value')) {
                 this.value = this.valueDefault;
             }
             if (this.hasElement) {
@@ -37,7 +37,7 @@ var ItemsHoldr;
             }
             if (this.storeLocally) {
                 // If there exists an old version of this property, get it 
-                if (ItemsHolder.getLocalStorage().hasOwnProperty(ItemsHolder.getPrefix() + key)) {
+                if (Object.prototype.hasOwnProperty.call(ItemsHolder.getLocalStorage(), ItemsHolder.getPrefix() + key)) {
                     this.value = this.retrieveLocalStorage();
                     this.update();
                 }
@@ -78,13 +78,13 @@ var ItemsHoldr;
          */
         ItemValue.prototype.update = function () {
             // Mins and maxes must be obeyed before any other considerations
-            if (this.hasOwnProperty("minimum") && Number(this.value) <= Number(this.minimum)) {
+            if (Object.prototype.hasOwnProperty.call(this, 'minimum') && Number(this.value) <= Number(this.minimum)) {
                 this.value = this.minimum;
                 if (this.onMinimum) {
                     this.onMinimum.apply(this, this.ItemsHolder.getCallbackArgs());
                 }
             }
-            else if (this.hasOwnProperty("maximum") && Number(this.value) <= Number(this.maximum)) {
+            else if (Object.prototype.hasOwnProperty.call(this, 'maximum') && Number(this.value) <= Number(this.maximum)) {
                 this.value = this.maximum;
                 if (this.onMaximum) {
                     this.onMaximum.apply(this, this.ItemsHolder.getCallbackArgs());
@@ -119,7 +119,7 @@ var ItemsHoldr;
          * Checks if the current value should trigger a callback, and if so calls it.
          */
         ItemValue.prototype.checkTriggers = function () {
-            if (this.triggers.hasOwnProperty(this.value)) {
+            if (Object.prototype.hasOwnProperty.call(this.triggers, this.value)) {
                 this.triggers[this.value].apply(this, this.ItemsHolder.getCallbackArgs());
             }
         };
@@ -202,7 +202,7 @@ var ItemsHoldr;
             if (settings.values) {
                 this.itemKeys = Object.keys(settings.values);
                 for (key in settings.values) {
-                    if (settings.values.hasOwnProperty(key)) {
+                    if (Object.prototype.hasOwnProperty.call(settings.values, key)) {
                         this.addItem(key, settings.values[key]);
                     }
                 }
@@ -309,7 +309,7 @@ var ItemsHoldr;
          * @returns Whether there is a value under that key.
          */
         ItemsHoldr.prototype.hasKey = function (key) {
-            return this.items.hasOwnProperty(key);
+            return Object.prototype.hasOwnProperty.call(this.items, key);
         };
         /**
          * @returns A mapping of key names to the actual values of all objects being stored.
@@ -317,7 +317,7 @@ var ItemsHoldr;
         ItemsHoldr.prototype.exportItems = function () {
             var output = {}, i;
             for (i in this.items) {
-                if (this.items.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(this.items, i)) {
                     output[i] = this.items[i].getValue();
                 }
             }
@@ -345,7 +345,7 @@ var ItemsHoldr;
          * @param key   The key of the element to remove.
          */
         ItemsHoldr.prototype.removeItem = function (key) {
-            if (!this.items.hasOwnProperty(key)) {
+            if (!Object.prototype.hasOwnProperty.call(this.items, key)) {
                 return;
             }
             if (this.container && this.items[key].hasElement) {
@@ -427,7 +427,7 @@ var ItemsHoldr;
          * @param key
          */
         ItemsHoldr.prototype.checkExistence = function (key) {
-            if (!this.items.hasOwnProperty(key)) {
+            if (!Object.prototype.hasOwnProperty.call(this.items, key)) {
                 if (this.allowNewItems) {
                     this.addItem(key);
                 }
@@ -442,7 +442,7 @@ var ItemsHoldr;
          * @param key   The key of the item to save.
          */
         ItemsHoldr.prototype.saveItem = function (key) {
-            if (!this.items.hasOwnProperty(key)) {
+            if (!Object.prototype.hasOwnProperty.call(this.items, key)) {
                 throw new Error("Unknown key given to ItemsHoldr: '" + key + "'.");
             }
             this.items[key].updateLocalStorage(true);
@@ -453,7 +453,7 @@ var ItemsHoldr;
         ItemsHoldr.prototype.saveAll = function () {
             var key;
             for (key in this.items) {
-                if (this.items.hasOwnProperty(key)) {
+                if (Object.prototype.hasOwnProperty.call(this.items, key)) {
                     this.items[key].updateLocalStorage(true);
                 }
             }
@@ -501,7 +501,7 @@ var ItemsHoldr;
          * @returns Whether displayChanges has an entry for a particular value.
          */
         ItemsHoldr.prototype.hasDisplayChange = function (value) {
-            return this.displayChanges.hasOwnProperty(value);
+            return Object.prototype.hasOwnProperty.call(this.displayChanges, value);
         };
         /**
          * @returns The displayChanges entry for a particular value.
@@ -547,15 +547,15 @@ var ItemsHoldr;
             var setting, i;
             // For each attribute of the donor:
             for (i in donor) {
-                if (donor.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(donor, i)) {
                     // If noOverride, don't override already existing properties
-                    if (noOverride && recipient.hasOwnProperty(i)) {
+                    if (noOverride && Object.prototype.hasOwnProperty.call(recipient, i)) {
                         continue;
                     }
                     // If it's an object, recurse on a new version of it
                     setting = donor[i];
                     if (typeof setting === "object") {
-                        if (!recipient.hasOwnProperty(i)) {
+                        if (!Object.prototype.hasOwnProperty.call(recipient, i)) {
                             recipient[i] = new setting.constructor();
                         }
                         this.proliferate(recipient[i], setting, noOverride);
@@ -583,9 +583,9 @@ var ItemsHoldr;
             var setting, i, j;
             // For each attribute of the donor:
             for (i in donor) {
-                if (donor.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(donor, i)) {
                     // If noOverride, don't override already existing properties
-                    if (noOverride && recipient.hasOwnProperty(i)) {
+                    if (noOverride && Object.prototype.hasOwnProperty.call(recipient, i)) {
                         continue;
                     }
                     setting = donor[i];
@@ -607,7 +607,7 @@ var ItemsHoldr;
                         default:
                             // If it's an object, recurse on a new version of it
                             if (typeof setting === "object") {
-                                if (!recipient.hasOwnProperty(i)) {
+                                if (!Object.prototype.hasOwnProperty.call(recipient, i)) {
                                     recipient[i] = new setting.constructor();
                                 }
                                 this.proliferate(recipient[i], setting, noOverride);
@@ -639,7 +639,7 @@ var ItemsHoldr;
                 },
                 "clear": function () {
                     for (i in this) {
-                        if (this.hasOwnProperty(i)) {
+                        if (Object.prototype.hasOwnProperty.call(this, i)) {
                             delete this[i];
                         }
                     }

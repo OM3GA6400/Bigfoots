@@ -19,7 +19,7 @@ var MathDecidr;
             this.equationsRaw = settings.equations || {};
             if (this.equationsRaw) {
                 for (i in this.equationsRaw) {
-                    if (this.equationsRaw.hasOwnProperty(i)) {
+                    if (Object.prototype.hasOwnProperty.call(this.equationsRaw, i)) {
                         this.addEquation(i, this.equationsRaw[i]);
                     }
                 }

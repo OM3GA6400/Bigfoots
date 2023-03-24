@@ -32,7 +32,7 @@ var ChangeLinr;
                 if (!this.pipeline[i]) {
                     throw new Error("Pipe[" + i + "] is invalid.");
                 }
-                if (!this.transforms.hasOwnProperty(this.pipeline[i])) {
+                if (!Object.prototype.hasOwnProperty.call(this.transforms, this.pipeline[i])) {
                     throw new Error("Pipe[" + i + "] ('" + this.pipeline[i] + "') not found in transforms.");
                 }
                 if (!(this.transforms[this.pipeline[i]] instanceof Function)) {
@@ -94,7 +94,7 @@ var ChangeLinr;
                 key = data;
             }
             // If this keyed input was already processed, get that
-            if (this.doUseCache && this.cache.hasOwnProperty(key)) {
+            if (this.doUseCache && Object.prototype.hasOwnProperty.call(this.cache, key)) {
                 return this.cache[key];
             }
             // Apply (and optionally cache) each transform in order

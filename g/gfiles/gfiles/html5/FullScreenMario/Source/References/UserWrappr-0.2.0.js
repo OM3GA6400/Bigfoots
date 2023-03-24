@@ -4,7 +4,7 @@
 /// <reference path="InputWritr-0.2.0.ts" />
 /// <reference path="LevelEditr-0.2.0.ts" />
 var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
@@ -903,7 +903,7 @@ var UserWrappr;
          */
         UserWrappr.prototype.setCurrentSize = function (size) {
             if (typeof size === "string" || size.constructor === String) {
-                if (!this.sizes.hasOwnProperty(size)) {
+                if (!Object.prototype.hasOwnProperty.call(this.sizes, size)) {
                     throw new Error("Size " + size + " does not exist on the UserWrappr.");
                 }
                 size = this.sizes[size];
@@ -953,7 +953,7 @@ var UserWrappr;
         UserWrappr.prototype.importSizes = function (sizesRaw) {
             var sizes = this.GameStartrConstructor.prototype.proliferate({}, sizesRaw), i;
             for (i in sizes) {
-                if (sizes.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(sizes, i)) {
                     sizes[i].name = sizes[i].name || i;
                 }
             }

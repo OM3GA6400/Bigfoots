@@ -84,7 +84,7 @@ FullScreenMario.FullScreenMario.settings.maps = {
         var pattern,
             i;
         for (i in patterns) {
-            if (patterns.hasOwnProperty(i)) {
+            if (Object.prototype.hasOwnProperty.call(patterns, i)) {
                 pattern = patterns[i];
                 if (!pattern.length) {
                     continue;
