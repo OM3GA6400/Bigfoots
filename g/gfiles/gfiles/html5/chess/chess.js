@@ -342,7 +342,7 @@ var chess = (function() {
 								while (iThnkPiece <= thnkPiece) {
 									thnkL = thnkTarget ? aParams[thnkTarget & 7 | 32] - thnkH - thnkQ : 0;
 									if (thnkDepth) { thnkL += (1 - thnkQ ? aParams[(thnkEndPt - thnkEndPt % 10) / 10 + 37] - aParams[(thnkStartPt - thnkStartPt % 10) / 10 + 37] + aParams[thnkEndPt % 10 + 38] * (thnkQ ? 1 : 2) - aParams[thnkStartPt % 10 + 38] + (thnkSigndPiece & 16) / 2 : Boolean(thnkM) * 9) + (!thnkQ ? !(etc.aBoard[thnkEndPt - 1] ^ iThnkPiece) + !(etc.aBoard[thnkEndPt + 1] ^ iThnkPiece) + aParams[iThnkPiece & 7 | 32] - 99 + Boolean(thnkG) * 99 + (thnkY < 2) : 0) + !(thnkE ^ flagWhoMoved ^ 9); }
-									if (thnkDepth > thnkH || 1 < thnkDepth & thnkDepth === thnkH && thnkL > 15 | thnkD) {
+									if (thnkDepth > thnkH || thnkDepth > 1 & thnkDepth === thnkH && thnkL > 15 | thnkD) {
 										etc.aBoard[thnkEndPt] = iThnkPiece, etc.aBoard[thnkStartPt] = thnkM ? (etc.aBoard[thnkG] = etc.aBoard[thnkM], etc.aBoard[thnkM] = 0) : thnkG ? etc.aBoard[thnkG] = 0 : 0;
 										thnkL -= consider(thnkDepth > thnkH | thnkD ? 0 : thnkEndPt, thnkL - thnkN, thnkH + 1, etc.aBoard[iSquare + 1], thnkJ = thnkQ | thnkY > 1 ? 0 : thnkEndPt, thnkDepth);
 										if (!(thnkH || thnkDepth - 1 | nFrstFocus - thnkStartPt | fourBtsLastPc - iThnkPiece | thnkEndPt - nScndFocus | thnkL < -1e4)) {

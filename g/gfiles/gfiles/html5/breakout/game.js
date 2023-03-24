@@ -160,7 +160,7 @@ StateMachine = {
         throw "event " + name + " innapropriate in current state " + this.current;
 
       var beforeEvent = this['onbefore' + name];
-      if (beforeEvent && (false === beforeEvent.apply(this, arguments)))
+      if (beforeEvent && (beforeEvent.apply(this, arguments) === false))
         return;
 
       if (this.current != to) {

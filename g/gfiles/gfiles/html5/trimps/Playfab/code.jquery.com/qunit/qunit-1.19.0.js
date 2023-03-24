@@ -3407,7 +3407,7 @@ function toolbarChanged() {
 	params[ field.name ] = value;
 	updatedUrl = setUrl( params );
 
-	if ( "hidepassed" === field.name && "replaceState" in window.history ) {
+	if ( field.name === "hidepassed" && "replaceState" in window.history ) {
 		config[ field.name ] = value || false;
 		if ( value ) {
 			addClass( id( "qunit-tests" ), "hidepass" );

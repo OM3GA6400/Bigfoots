@@ -7538,7 +7538,7 @@ const level = {
             door.openClose()
             exitDoor.openClose()
 
-            if (m.pos.y > 1600 && 700 < m.pos.x && m.pos.x < 3200) { // Saving player from slime pit
+            if (m.pos.y > 1600 && m.pos.x > 700 && m.pos.x < 3200) { // Saving player from slime pit
                 Matter.Body.setVelocity(player, {
                     x: 0,
                     y: 0
@@ -7576,7 +7576,7 @@ const level = {
             if (exitDoor.isClosing) {
                 exitDoor.isClosing = false;
                 for (i = 0; i < mob.length; i++) {
-                    if (mob[i].isBoss && 525 < mob[i].position.x < 3200 && -2500 < mob[i].position.y < 100) {
+                    if (mob[i].isBoss && mob[i].position.x > 525 < 3200 && mob[i].position.y > -2500 < 100) {
                         exitDoor.isClosing = true;
                     }
                 }

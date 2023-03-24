@@ -2676,7 +2676,7 @@ const b = {
                                         this.closestTarget = mob[i].position;
                                         closeDist = dist;
                                         this.lockedOn = mob[i]
-                                        if (0.3 > Math.random()) break //doesn't always target the closest mob
+                                        if (Math.random() < 0.3) break //doesn't always target the closest mob
                                     }
                                 }
                             }
@@ -2763,7 +2763,7 @@ const b = {
                                         this.closestTarget = mob[i].position;
                                         closeDist = dist;
                                         this.lockedOn = mob[i]
-                                        if (0.3 > Math.random()) break //doesn't always target the closest mob
+                                        if (Math.random() < 0.3) break //doesn't always target the closest mob
                                     }
                                 }
                             }
@@ -3830,7 +3830,7 @@ const b = {
                     }
                     if (tech.isNeedleIce) {
                         b.iceIX(5 + 5 * Math.random(), 2 * Math.PI * Math.random(), this.position) // iceIX(speed = 0, dir = m.angle + Math.PI * 2 * Math.random(), where = { x: m.pos.x + 30 * Math.cos(m.angle), y: m.pos.y + 30 * Math.sin(m.angle) }) {
-                        if (0.5 < Math.random()) b.iceIX(5 + 5 * Math.random(), 2 * Math.PI * Math.random(), this.position)
+                        if (Math.random() > 0.5) b.iceIX(5 + 5 * Math.random(), 2 * Math.PI * Math.random(), this.position)
                     }
                 } else if (this.speed < 30) {
                     this.force.y += this.mass * 0.001; //no gravity until it slows down to improve aiming

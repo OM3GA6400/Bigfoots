@@ -189,7 +189,7 @@ var World = {
 			for (var i = 0; i < Math.pow(World.getDistance(startPos, World.VILLAGE_POS) + 2, 2); i++) {
 				searchX = startPos[0] + x;
 				searchY = startPos[1] + y;
-				if (0 < searchX && searchX < World.RADIUS * 2 && 0 < searchY && searchY < World.RADIUS * 2) {
+				if (searchX > 0 && searchX < World.RADIUS * 2 && searchY > 0 && searchY < World.RADIUS * 2) {
 					// check for road
 					var tile = World.state.map[searchX][searchY];
 					if (
