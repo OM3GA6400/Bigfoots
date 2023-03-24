@@ -4148,9 +4148,7 @@ const level = {
         if (simulation.difficulty > 1) {
             if (Math.random() < 0.25) {
                 spawn.randomLevelBoss(2800, -1400);
-            } else if (Math.random() < 0.25) {
-                spawn.laserBoss(2900 + 300 * Math.random(), -2950 + 150 * Math.random());
-            } else if (Math.random() < 0.33) {
+            }  else if (Math.random() < 0.33) {
                 spawn.laserBoss(1800 + 250 * Math.random(), -2600 + 150 * Math.random());
             } else if (Math.random() < 0.5) {
                 spawn.laserBoss(3500 + 250 * Math.random(), -2600 + 1000 * Math.random());
