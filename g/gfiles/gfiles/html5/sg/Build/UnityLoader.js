@@ -2086,7 +2086,7 @@ var UnityLoader = UnityLoader || {
                                         if (!(16 & U)) {
                                             if (0 === (64 & U)) {
                                                 A = b[(65535 & A) + (w & ((1 << U) - 1))];
-                                                continue t;
+                                                continue;
                                             }
                                             if (32 & U) {
                                                 r.mode = o;
@@ -2104,7 +2104,7 @@ var UnityLoader = UnityLoader || {
                                             if (((U = A >>> 24), (w >>>= U), (m -= U), (U = (A >>> 16) & 255), !(16 & U))) {
                                                 if (0 === (64 & U)) {
                                                     A = y[(65535 & A) + (w & ((1 << U) - 1))];
-                                                    continue r;
+                                                    continue;
                                                 }
                                                 (e.msg = "invalid distance code"), (r.mode = n);
                                                 break e;
