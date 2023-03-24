@@ -17,7 +17,7 @@
       let baseLayout = sdk_runtime.layouts[baseLayoutName];
       let oldFn = baseLayout.startRunning.bind(baseLayout);
       baseLayout.startRunning = () => {
-        console.log("start");
+        
         globalThis.ovoLevelEditor.applySetup();
         oldFn();
         globalThis.ovoLevelEditor.applyCurrentLevel();
@@ -133,7 +133,7 @@
         wipeAllInstances() {
           Object.values(layers).forEach((layer) => {
             if (!layer) return;
-            console.log("wiping " + layer);
+            
             layer.instances
               .filter((x) => Object.values(types).includes(x.type))
               .forEach(sdk_runtime.DestroyInstance.bind(sdk_runtime));
@@ -229,14 +229,14 @@
           sdk_runtime.trigger(holder.type.plugin.cnds.OnCreated, holder);
         },
         handleDrop(ev) {
-          console.log("File(s) dropped");
+          
 
           // Prevent default behavior (Prevent file from being opened)
           ev.preventDefault();
           let playFile = (file) => {
-            console.log(file);
+            
             file.text().then((text) => {
-              console.log(text);
+              
               try {
                 let json = JSON.parse(text);
                 if (globalThis.ovoLevelEditor.startLevel)

@@ -592,8 +592,8 @@ ${simulation.isCheating ? "<br><br><em>lore disabled</em>": ""}
         } else {
             simulation.makeTextLog("n-gon build URL copied to clipboard.<br>Paste into browser address bar.")
         }
-        console.log('n-gon build URL copied to clipboard.\nPaste into browser address bar.')
-        console.log(url)
+        
+        
         navigator.clipboard.writeText(url).then(function() {
             /* clipboard successfully set */
             if (isCustom) {
@@ -604,7 +604,7 @@ ${simulation.isCheating ? "<br><br><em>lore disabled</em>": ""}
             if (isCustom) {
                 setTimeout(function() { alert('copy failed') }, 300);
             }
-            console.log('copy failed')
+            
         });
 
     },
@@ -1204,24 +1204,24 @@ function localstorageCheck() {
 if (localstorageCheck()) {
     localSettings = JSON.parse(localStorage.getItem("localSettings"))
     if (localSettings) {
-        console.log('localStorage is enabled')
+        
         localSettings.isAllowed = true
         localSettings.isEmpty = false
     } else {
-        console.log('localStorage is enabled, local settings empty')
+        
         localSettings = {
             isAllowed: true,
             isEmpty: true
         }
     }
 } else {
-    console.log("localStorage is disabled")
+    
     localSettings = { isAllowed: false }
 }
 
 
 if (localSettings.isAllowed && !localSettings.isEmpty) {
-    console.log('restoring previous settings')
+    
 
     if (localSettings.key) {
         input.key = localSettings.key
@@ -1251,7 +1251,7 @@ if (localSettings.isAllowed && !localSettings.isEmpty) {
     }
     document.getElementById("fps-select").value = localSettings.fpsCapDefault
 } else {
-    console.log('setting default localSettings')
+    
     const isAllowed = localSettings.isAllowed //don't overwrite isAllowed value
     localSettings = {
         isAllowed: isAllowed,

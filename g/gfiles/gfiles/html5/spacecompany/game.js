@@ -70,7 +70,7 @@ var Game = (function() {
         self.updateAutoSave(delta);
 
         if(delta > 1) {
-            console.log("You have been away for " + Game.utils.getTimeDisplay(delta));
+            
         }
     };
 
@@ -102,19 +102,19 @@ var Game = (function() {
         var text = $('#impexpField').val();
         if (!text.trim()) return console.warn("No save to import provided.");
         if(text.length % 4 !== 0) {
-            console.log("String is not valid base64 encoded: " + text.length + ' (' + text.length % 4 + ')');
+            
             return;
         }
 
         var decompressed = LZString.decompressFromBase64(text);
         if(!decompressed) {
-            console.log("Import Game failed, could not decompress!");
+            
             return;
         }
 
         localStorage.setItem("save", decompressed);
 
-        console.log("Imported Saved Game");
+        
 
         window.location.reload();
     };
@@ -125,8 +125,8 @@ var Game = (function() {
         var string = JSON.stringify(data);
         var compressed = LZString.compressToBase64(string);
 
-        console.log('Compressing Save');
-        console.log('Compressed from ' + string.length + ' to ' + compressed.length + ' characters');
+        
+        
         $('#impexpField').val(compressed);
     };
 
@@ -149,7 +149,7 @@ var Game = (function() {
 
         localStorage.setItem("save",JSON.stringify(data));
         Game.notifyInfo('Game Saved', 'Your save data has been stored in localStorage on your computer');
-        console.log('Game Saved');
+        
 
         return data;
     };
@@ -176,7 +176,7 @@ var Game = (function() {
             }
         }
 
-        console.log("Load Successful");
+        
     };
 
     instance.updateUI = function(self){

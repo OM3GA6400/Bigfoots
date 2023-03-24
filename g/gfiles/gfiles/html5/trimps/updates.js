@@ -74,7 +74,7 @@ function tooltip(what, isItIn, event, textString, attachFunction, numCheck, rena
 	if (isItIn !== null && isItIn != "maps" && isItIn != "customText" && isItIn != "dailyStack" && isItIn != "advMaps"){
 		toTip = game[isItIn];
 		toTip = toTip[what];
-		if (typeof toTip === 'undefined') console.log(what);
+		if (typeof toTip === 'undefined') {};
 		else {
 			tooltipText = toTip.tooltip;
 			if (typeof tooltipText === 'function') tooltipText = tooltipText();
@@ -4436,7 +4436,7 @@ function message(messageString, type, lootIcon, extraClass, extraTag, htmlPrefix
 		return;
 	}
 	var log = document.getElementById("log");
-	if (typeof game.global.messages[type] === 'undefined') console.log(messageString, type, lootIcon, extraClass, extraTag, htmlPrefix);
+	if (typeof game.global.messages[type] === 'undefined') {};
 	var displayType = (game.global.messages[type].enabled) ? "block" : "none";
 	var prefix = "";
 	var addId = "";
@@ -5871,7 +5871,7 @@ function toggleSetting(setting, elem, fromPortal, updateOnly, backwards, fromHot
 				if (rarity == -1) continue;
 				value += (rarity / 10000) * (game.heirlooms.values[y] / 2);
 			}
-			console.log(output + prettify(value));
+			
 		}
 	}
 
@@ -6509,14 +6509,14 @@ function updateDecayStacks(addStack){
 
 function swapClass(prefix, newClass, elem) {
 if (elem == null) {
-	console.log("swapClass, No element found. Prefix: " + prefix + ", newClass: " + newClass);
+	
 	return;
 	}
   var className = elem.className;
   if (typeof className.split('newClass')[1] !== 'undefined') return;
   className = className.split(prefix);
   if(typeof className[1] === 'undefined') {
-	  console.log("swapClass function error: Tried to replace a class that doesn't exist at [" + elem.className + "] using " + prefix + " as prefix and " + newClass + " as target class.");
+	  
 	  elem.className += " " + newClass;
 	  return;
   }

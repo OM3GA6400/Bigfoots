@@ -223,7 +223,7 @@ var UnityLoader = UnityLoader || {
                 preRun: [],
                 postRun: [],
                 print: function (e) {
-                    console.log(e);
+                    
                 },
                 printErr: function (e) {
                     console.error(e);
@@ -441,9 +441,7 @@ var UnityLoader = UnityLoader || {
             if (
                 !(
                     (t && t.errorhandler && t.errorhandler(r, e.filename, e.lineno)) ||
-                    (console.log("Invoking error handler due to\n" + r),
-                    "function" == typeof dump && dump("Invoking error handler due to\n" + r),
-                    r.indexOf("UnknownError") != -1 || r.indexOf("Program terminated with exit(0)") != -1 || this.didShowErrorMessage)
+                    ()
                 )
             ) {
                 var r = "An error occurred running the Unity content on this page. See your browser JavaScript console for more info. The error was:\n" + r;
@@ -517,7 +515,7 @@ var UnityLoader = UnityLoader || {
     },
     XMLHttpRequest: (function () {
         function e(e) {
-            console.log("[UnityCache] " + e);
+            
         }
         function t(e) {
             return (t.link = t.link || document.createElement("a")), (t.link.href = e), t.link.href;
@@ -703,7 +701,7 @@ var UnityLoader = UnityLoader || {
             e || abort("Assertion failed: " + t);
         },
         optimizeMathFround: function (e, t) {
-            console.log("optimizing out Math.fround calls");
+            
             for (
                 var r = { LOOKING_FOR_MODULE: 0, SCANNING_MODULE_VARIABLES: 1, SCANNING_MODULE_FUNCTIONS: 2 },
                     n = ["EMSCRIPTEN_START_ASM", "EMSCRIPTEN_START_FUNCS", "EMSCRIPTEN_END_FUNCS"],
@@ -4990,7 +4988,7 @@ var UnityLoader = UnityLoader || {
             if (
                 (this.serverSetupWarningEnabled &&
                     r != this.identity &&
-                    (console.log("You can reduce your startup time if you configure your web server to host .unityweb files using " + (r == this.gzip ? "gzip" : "brotli") + " compression."), (this.serverSetupWarningEnabled = !1)),
+                    (),
                 "function" != typeof t)
             )
                 return r.decompress(e);

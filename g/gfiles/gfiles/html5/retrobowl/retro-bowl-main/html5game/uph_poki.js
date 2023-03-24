@@ -1,7 +1,7 @@
-console.log("Poki wrapper load");
+
 ///~
 function poki_init_raw() {
-    console.log("Poki wrapper init");
+    
     // fix GMS1 bug with iframes
     var ctr = document.getElementById("gm4html5_div_id");
     if (ctr && !ctr.frames) ctr.frames = [];

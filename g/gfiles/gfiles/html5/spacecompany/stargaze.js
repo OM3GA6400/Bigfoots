@@ -168,7 +168,7 @@ Game.stargaze = (function(){
 		}
 		var upgradeData = this.upgradeEntries[id];
 		if(!upgradeData) {
-			console.log('"' + id + '" is not a recognised upgrade.');
+			
 			return;
 		}
 		if(upgradeData.achieved == false){

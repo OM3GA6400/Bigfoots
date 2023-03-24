@@ -120,7 +120,7 @@ Game.settings = (function(){
     instance.load = function(data) {
         this.loadLegacy(data);
 
-        console.log(this.entries.hideCompleted)
+        
 
         if(data.settings) {
             if(data.settings.version && data.settings.version === this.dataVersion) {
@@ -130,7 +130,7 @@ Game.settings = (function(){
             }
         }
 
-        console.log(this.entries.hideCompleted)
+        
 
         $('#formatSelector').val(this.entries.formatter);
         $('#themeSelector').val(this.entries.theme);

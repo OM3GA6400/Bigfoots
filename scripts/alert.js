@@ -1,4 +1,4 @@
-console.log('Made by Bigfoot9999')
+
 function blank3(){
     let inFrame
     

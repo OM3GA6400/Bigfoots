@@ -122,7 +122,7 @@ Game.interstellar = (function(){
         }
         for(var id in this.entries){
             if(id == "rocket" || "travel")continue;
-            console.log(id)
+            
             for(var entry in Game.interstellar[id].entries){
                 Game.interstellar[id].updateCost[entry];
             }
@@ -475,7 +475,7 @@ Game.interstellar.military = (function(){
     }
 
     instance.spy = function(starName){
-        console.log("Spying on " + starName);
+        
         var star = Game.interstellar.stars.getStarData(starName);
         var chance = this.getSpyChance(star)/100;
         var roll = Math.random();

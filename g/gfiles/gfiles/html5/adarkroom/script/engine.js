@@ -661,7 +661,7 @@
 
 		log: function(msg) {
 			if(this._log) {
-				console.log(msg);
+				
 			}
 		},
 

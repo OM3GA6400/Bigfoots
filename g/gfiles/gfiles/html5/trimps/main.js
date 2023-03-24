@@ -3224,7 +3224,7 @@ function removePerk(what) {
 	var perkLevel = getPerkLevel(what, true);
 	if (removeAmt == "Max") removeAmt = Math.ceil((perkLevel + game.portal[what].levelTemp) * game.global.maxSplit);
 	if (isNumberBad(removeAmt)){
-		console.log("Remove Amount is " + removeAmt);
+		
 		return;
 	}
 	var toBuy = game.portal[what];
@@ -3235,7 +3235,7 @@ function removePerk(what) {
 	//Error Checking
 	var tempLevelTemp = perkLevel + toBuy.levelTemp - removeAmt;
 	if (isNumberBad(tempLevelTemp)) {
-		console.log("Trying to set perk level to " + tempLevelTemp);
+		
 		return;
 	}
 	var perkSpent = getSpentPerkResource(what, true);
@@ -3246,13 +3246,13 @@ function removePerk(what) {
 			forceZeroSpent = true;
 		}
 		else{
-			console.log("Trying to set helium spent on perk to " + tempHeliumSpentTemp);
+			
 			return;
 		}
 	}
 	var tempTotalSpentTemp = game.resources.helium.totalSpentTemp - refund;
 	if (isNaN(tempTotalSpentTemp) || !isFinite(tempTotalSpentTemp)){
-		console.log("Trying to set spent helium to " + tempTotalSpentTemp);
+		
 		return;
 	}
 	toBuy.levelTemp -= removeAmt;
@@ -3264,7 +3264,7 @@ function removePerk(what) {
 	if (toBuy.levelTemp + perkLevel == 0){
 		var roundingError = toBuy.heliumSpentTemp + perkSpent;
 		if (roundingError){
-			console.log('rounding error of ' + roundingError + ', adding to refund');
+			
 			refund += roundingError;
 			toBuy.heliumSpentTemp = perkSpent * -1;
 		}
@@ -4538,7 +4538,7 @@ function buyAutoJobs(allowRatios){
 		if (game.jobs[item].locked) continue;
 		var toBuy = workspaces * (setting[item].ratio / totalRatio);
 		if (isNumberBad(toBuy)) {
-			console.log('wanted to buy ' + toBuy + ' ' + ratios[x] + 's.');
+			
 			continue;
 		}
 		var useMax = (ratios[x] == "Scientist" && thisSetting.buyMax) ? thisSetting.buyMax : false; 
@@ -4757,7 +4757,7 @@ function calculateMaxAfford(itemObj, isBuilding, isEquipment, isJob, forceMax, f
 		if (game.global.maxSplit != 1 && !forceMax && !forceRatio) resourcesAvailable = Math.floor(resourcesAvailable * game.global.maxSplit);
 		else if (forceRatio) resourcesAvailable = Math.floor(resourcesAvailable * forceRatio);
 		if (!resource || typeof resourcesAvailable === 'undefined'){
-			console.log("resource " + item + " not found");
+			
 			return 1;
 		}
 		if (typeof price[1] !== 'undefined'){
@@ -6079,7 +6079,7 @@ function scaleHeirloomModUniverse(type, modName, value){
 
 function getHeirloomBonus(type, mod){
 	if (!game.heirlooms[type] || !game.heirlooms[type][mod]){
-		console.log('oh noes', type, mod)
+		
 	}
 	var bonus = game.heirlooms[type][mod].currentBonus;
 	if (mod == "gammaBurst" && game.global.ShieldEquipped && game.global.ShieldEquipped.rarity >= 10){
@@ -6862,7 +6862,7 @@ function countPriceOfUpgrades(dummyHeirloom, count){
 	for (var x = 0; x < count; x++){
 		var newTotal = Math.ceil(getModUpgradeCost(dummyHeirloom, 0));
 		if (newTotal == Infinity){
-			console.log(dummyHeirloom); break;
+			 break;
 		}
 		total += newTotal;
 		dummyHeirloom.mods[0][3]++;
@@ -6931,7 +6931,7 @@ function replaceMod(confirmed){
 	if (newModName == -1) return;
 	var newMod = game.heirlooms[heirloom.type][newModName];
 	if (typeof newMod === 'undefined'){
-		console.log("something broke");
+		
 		return;
 	}
 	if (resourceCount < cost) return;
@@ -9418,7 +9418,7 @@ function findHomeForSpecial(special, item, array, max){
 		if (level >= max) break;
 		//Resolve resource conflicts. Try +5, reverse, -5, then bail out.
 		var hax = 5;
-		if (typeof array[level] === 'undefined') console.log(level + ", " + item);
+		if (typeof array[level] === 'undefined') {};
 		while (array[level].special !== "") {
 			if (hax >= 5) {
 				hax++;
@@ -10172,7 +10172,7 @@ function startFight() {
 		cell = game.global.mapGridArray[cellNum];
 		if (!cell){
 			mapsSwitch();
-			console.log('Crash from missing map cell averted!')
+			
 			return;
 		}
         cellElem = document.getElementById("mapCell" + cellNum);
@@ -10188,14 +10188,14 @@ function startFight() {
 					drawGrid();
 					document.getElementById("battleContainer").style.visibility = "visible";
 					document.getElementById('metal').style.visibility = "visible";
-					console.log("Attempted to fight in World when no grid was initialized. Find an adult");
+					
 				}
 				return;
 			}
 			nextWorld();
 			game.stats.zonesCleared.value++;
 			checkAchieve("totalZones");
-			console.log("crisis averted");
+			
 			return;
 		}
     }
@@ -13390,7 +13390,7 @@ function getCurrentDailyDescription(){
 
 function testAllWeights(){
 	for (var item in dailyModifiers){
-		console.log(item, dailyModifiers[item].getWeight(dailyModifiers[item].minMaxStep[0]), dailyModifiers[item].getWeight(dailyModifiers[item].minMaxStep[1]));
+		
 	}
 }
 
@@ -13448,7 +13448,7 @@ function abandonDaily(){
 		else if (game.global.universe == 2) game.stats.dailyBonusRadon.value += reward;
 		checkAchieve('dailyHelium');
 	}
-	else console.log('attempted to give ' + reward + ' as daily challenge reward.');
+	else {};
 	message("You have completed the Daily challenge! You have been rewarded with " + prettify(reward) + " extra " + heliumOrRadon() + "!", "Notices");
 	game.global.dailyChallenge = {};
 	handleFinishDailyBtn();
@@ -13663,7 +13663,7 @@ function getDailyChallenge(add, objectOnly, textOnly){
 	}
 	dailyObject.seed = dateSeed;
 	if (objectOnly) return dailyObject;
-	if (countDailyWeight(dailyObject) != currentWeight) console.log('mismatch, objectCount = ' + countDailyWeight(dailyObject) + ", current = " + currentWeight);
+	if (countDailyWeight(dailyObject) != currentWeight) {};
 	returnText += "</ul>Challenge has no end point, and grants an <u><b>additional "  + prettify(getDailyHeliumValue(currentWeight)) + "%</b></u> of all ";
 	returnText += getDailyRewardText(portalUni);
 	returnText += " earned before finishing. <b>Can only be run once!</b> Reward does not count toward Bone Portals or affect best " + ((portalUni == 2) ? "Rn" : "He") + "/Hr stat.";
@@ -13701,7 +13701,7 @@ function testDailySpread(){
 	for (var x = 0; x < 7; x++){
 		var testObj = getDailyChallenge(testLastAdd, true);
 		for (var item in testObj){
-			if (item == "plague" || item == "bogged") console.log(item, testLastAdd);
+			if (item == "plague" || item == "bogged") {};
 		}
 		testLastAdd++;
 	}
@@ -17535,7 +17535,7 @@ function playFabRecoverInfo(needsPassword){
 
 function playFabRecoverCallback(data, error){
 	var errorElem = document.getElementById("playFabLoginError");
-	console.log(data, error);
+	
 	if (errorElem == null) return;
 	if (error) {
 		errorElem.innerHTML = error.errorMessage;
@@ -17654,7 +17654,7 @@ function playFabLoginWithKongregate(attempt){
 		return;
 	}
 	if (typeof kongregate === 'undefined'){
-		console.log("something went wrong... Kongregate defined but not defined?");
+		
 		//This should really never get to this function if Kongregate isn't defined
 		return;
 	}
@@ -17722,7 +17722,7 @@ function playFabSaveCheck(){
 	if (playFabId == -1) return false;
 	if (typeof PlayFab === 'undefined' || typeof PlayFab.ClientApi === 'undefined'){
 		//Should never get this far without the api
-		console.log(error);
+		
 		return;
 	}
 	var requestData = {
@@ -17737,8 +17737,8 @@ function playFabSaveCheck(){
 
 function playFabSaveCheckCallback(data, error){
 	if (error || !data){
-		console.log("error checking existing PlayFab data");
-		console.log(error);
+		
+		
 		return;
 	}
 	if (data){
@@ -17794,7 +17794,7 @@ function saveToPlayFabCallback(data, error){
 		playFabSaveErrors++;
 		message("Unable to back up your save to PlayFab! Double check your internet connection, and don't forget to back up your save manually.", "Notices");
 		swapClass("iconState", "iconStateBad", document.getElementById('playFabIndicator'));
-		console.log(error);
+		
 		if (playFabId != -1) {
 			playFabAttemptReconnect();
 		}
@@ -17809,7 +17809,7 @@ function saveToPlayFabCallback(data, error){
 }
 
 function playFabAttemptReconnect(reconnected){
-	console.log((reconnected) ? "Reconnected" : "Attempting to reconnect");
+	
 	if (reconnected){
 		playFabSaveErrors = 0;
 		message("Reconnected to PlayFab!", "Notices", null, "save");
@@ -17833,7 +17833,7 @@ function loadFromPlayFab(){
 
 function loadFromPlayFabCallback(data, error){
 	if (error){
-		console.log(error);
+		
 		return;
 	}
 	if (data){

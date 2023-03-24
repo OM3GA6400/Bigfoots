@@ -40,7 +40,7 @@ else {
   btn.style.display = 'block';
 
 }
-console.log(`Number ${key} was pressed!`);
+
 }
 };
 const handleKeyPress1 = (e) => {
@@ -65,28 +65,28 @@ else {
   btn.style.display = 'block';
 
 }
-console.log(`Number ${key} was pressed!`);
+
 }
 };
 const handleKeyPress2 = (e) => {
 const key = getCode(e);
 if (key == 2) {
 blank3();
-console.log(`Number ${key} was pressed!`);
+
 }
 };
 const handleKeyPress3 = (e) => {
 const key = getCode(e);
 if (key == 3) {
 opensettings();
-console.log(`Number ${key} was pressed!`);
+
 }
 };
 const handleKeyPress4 = (e) => {
 const key = getCode(e);
 if (key == 4) {
 var url = prompt("about:blank tab cloaker! Enter URL Here (example: https://google.com)");if (url == null) {alert('No URL Entered!')} else {location.href="gfiles/gfiles/lanucher/index.html?url="+url;}
-console.log(`Number ${key} was pressed!`);
+
 }
 };
 
