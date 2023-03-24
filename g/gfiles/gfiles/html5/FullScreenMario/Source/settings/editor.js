@@ -25,9 +25,9 @@ FullScreenMario.FullScreenMario.settings.editor = (function (prethings, macros) 
                 i, j;
 
             for (i in prethings) {
-                if (prethings.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(prethings, i)) {
                     for (j in prethings[i]) {
-                        if (prethings[i].hasOwnProperty(j)) {
+                        if (Object.prototype.hasOwnProperty.call(prethings[i], j)) {
                             things[j] = prethings[i][j];
                         }
                     }

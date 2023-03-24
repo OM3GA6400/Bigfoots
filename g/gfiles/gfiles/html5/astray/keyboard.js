@@ -84,7 +84,7 @@
 
 		//lookup the key pressed and save it to the active keys array
 		for (var key in keys) {
-			if(keys.hasOwnProperty(key) && event.keyCode === keys[key]) {
+			if(Object.prototype.hasOwnProperty.call(keys, key) && event.keyCode === keys[key]) {
 				if(activeKeys.indexOf(key) < 0) {
 					activeKeys.push(key);
 				}
@@ -101,7 +101,7 @@
 
 		//lookup the key released and prune it from the active keys array
 		for(var key in keys) {
-			if(keys.hasOwnProperty(key) && event.keyCode === keys[key]) {
+			if(Object.prototype.hasOwnProperty.call(keys, key) && event.keyCode === keys[key]) {
 
 				var iAK = activeKeys.indexOf(key);
 
@@ -235,7 +235,7 @@
 
 		//loop through the active combos
 		for(var bindingCombo in activeBindings) {
-			if(activeBindings.hasOwnProperty(bindingCombo)) {
+			if(Object.prototype.hasOwnProperty.call(activeBindings, bindingCombo)) {
 				var binding = activeBindings[bindingCombo],
 					active = false;
 

@@ -1,4 +1,4 @@
-﻿/*! howler.js v2.2.3 | (c) 2013-2020, James Simpson of GoldFire Studios | MIT License | howlerjs.com */
+﻿﻿/*! howler.js v2.2.3 | (c) 2013-2020, James Simpson of GoldFire Studios | MIT License | howlerjs.com */
 !(function () {
   "use strict";
   var e = function () {
@@ -1824,7 +1824,7 @@ globalThis.HowlerAudioPlayer = {
   setPaused(paused = true, group) {
     if (group) {
       if (paused) {
-        if (!this.audioStore.hasOwnProperty(group)) return;
+        if (!Object.prototype.hasOwnProperty.call(this.audioStore, group)) return;
         this.paused[group] = this.paused[group] || {};
         Object.keys(this.audioStore[group]).forEach((name) => {
           this.paused[group][name] = this.paused[group][name] || [];
@@ -1838,10 +1838,10 @@ globalThis.HowlerAudioPlayer = {
           }
         });
       } else {
-        if (!this.paused.hasOwnProperty(group)) return;
-        if (!this.audioStore.hasOwnProperty(group)) return;
+        if (!Object.prototype.hasOwnProperty.call(this.paused, group)) return;
+        if (!Object.prototype.hasOwnProperty.call(this.audioStore, group)) return;
         Object.keys(this.paused[group]).forEach((name) => {
-          if (!this.audioStore[group].hasOwnProperty(name)) return;
+          if (!Object.prototype.hasOwnProperty.call(this.audioStore[group], name)) return;
           let ids = this.paused[group][name];
           ids.forEach((id) => {
             this.audioStore[group][name].play(id);
@@ -1867,7 +1867,7 @@ globalThis.HowlerAudioPlayer = {
   },
   setMuted(muted = true, group) {
     if (group) {
-      if (!this.audioStore.hasOwnProperty(group)) return;
+      if (!Object.prototype.hasOwnProperty.call(this.audioStore, group)) return;
       this.muted[group] = muted;
       Object.values(this.audioStore[group]).forEach((howl) => {
         howl.mute(muted);
@@ -1878,7 +1878,7 @@ globalThis.HowlerAudioPlayer = {
   },
   setLooping(looping = true, group) {
     if (group) {
-      if (!this.audioStore.hasOwnProperty(group)) return;
+      if (!Object.prototype.hasOwnProperty.call(this.audioStore, group)) return;
       Object.values(this.audioStore[group]).forEach((howl) => {
         howl.loop(looping);
       });
@@ -1896,7 +1896,7 @@ globalThis.HowlerAudioPlayer = {
   },
   setLinearVolume(volume, group) {
     if (group) {
-      if (!this.audioStore.hasOwnProperty(group)) return;
+      if (!Object.prototype.hasOwnProperty.call(this.audioStore, group)) return;
       this.volumes[group] = volume;
       Object.values(this.audioStore[group]).forEach((howl) => {
         howl.volume(volume);
@@ -1907,9 +1907,9 @@ globalThis.HowlerAudioPlayer = {
   },
   stop(group) {
     if (group) {
-      if (!this.audioStore.hasOwnProperty(group)) return;
+      if (!Object.prototype.hasOwnProperty.call(this.audioStore, group)) return;
 
-      if (this.paused.hasOwnProperty(group)) {
+      if (Object.prototype.hasOwnProperty.call(this.paused, group)) {
         this.paused[group] = {};
       }
 
@@ -1954,7 +1954,7 @@ globalThis.HowlerAudioPlayer = {
   },
   isPlaying(group) {
     if (group) {
-      if (!this.audioStore.hasOwnProperty(group)) return false;
+      if (!Object.prototype.hasOwnProperty.call(this.audioStore, group))) return false;
       let arr = Object.values(this.audioStore[group]);
       for (let i = 0; i < arr.length; i++) {
         const howl = arr[i];

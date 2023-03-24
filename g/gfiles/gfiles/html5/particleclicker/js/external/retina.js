@@ -33,7 +33,7 @@
         }
 
         for (var prop in options) {
-            if (options.hasOwnProperty(prop)) {
+            if (Object.prototype.hasOwnProperty.call(options, prop)) {
                 config[prop] = options[prop];
             }
         }

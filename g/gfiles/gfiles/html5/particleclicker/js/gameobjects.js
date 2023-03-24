@@ -243,8 +243,8 @@ var GameObjects = (function() {
     if (this.state.timeAchieved) {
       return true;
     }
-    if (allObjects.hasOwnProperty(this.targetKey) &&
-        allObjects[this.targetKey].state.hasOwnProperty(this.targetProperty) &&
+    if (Object.prototype.hasOwnProperty.call(allObjects, this.targetKey) &&
+        Object.prototype.hasOwnProperty.call(allObjects[this.targetKey].state, this.targetProperty) &&
         allObjects[this.targetKey].state[this.targetProperty] >= this.threshold) {
       this.state.timeAchieved = lab.state.time + new Date().getTime() - saveTime;
       UI.showAchievement(this);

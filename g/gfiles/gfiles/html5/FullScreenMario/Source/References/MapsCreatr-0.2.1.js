@@ -166,7 +166,7 @@ var MapsCreatr;
         MapsCreatr.prototype.storeMaps = function (maps) {
             var i;
             for (i in maps) {
-                if (maps.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(maps, i)) {
                     this.storeMap(i, maps[i]);
                 }
             }
@@ -333,7 +333,7 @@ var MapsCreatr;
             areasParsed = new areasRaw.constructor(), locationsParsed = new locationsRaw.constructor(), area, location, i;
             // Parse all the Area objects (works for both Arrays and Objects)
             for (i in areasRaw) {
-                if (areasRaw.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(areasRaw, i)) {
                     area = this.ObjectMaker.make("Area", areasRaw[i]);
                     areasParsed[i] = area;
                     area.map = map;
@@ -348,14 +348,14 @@ var MapsCreatr;
             }
             // Parse all the Location objects (works for both Arrays and Objects)
             for (i in locationsRaw) {
-                if (locationsRaw.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(locationsRaw, i)) {
                     location = this.ObjectMaker.make("Location", locationsRaw[i]);
                     locationsParsed[i] = location;
                     location.entryRaw = locationsRaw[i].entry;
                     location.name = i;
                     location.area = locationsRaw[i].area || 0;
                     if (this.requireEntrance) {
-                        if (!this.entrances.hasOwnProperty(location.entryRaw)) {
+                        if (!Object.prototype.hasOwnProperty.call(this.entrances, location.entryRaw)) {
                             throw new Error("Location " + i + " has unknown entry string: " + location.entryRaw);
                         }
                     }
@@ -383,7 +383,7 @@ var MapsCreatr;
             locationsParsed = new locationsRaw.constructor(), location, i;
             // Parse all the keys in locasRaw (works for both Arrays and Objects)
             for (i in locationsRaw) {
-                if (locationsRaw.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(locationsRaw, i)) {
                     location = this.ObjectMaker.make("Location", locationsRaw[i]);
                     locationsParsed[i] = location;
                     // The area should be an object reference, under the Map's areas
@@ -441,7 +441,7 @@ var MapsCreatr;
             var _this = this;
             var output = {}, i;
             for (i in prethings) {
-                if (prethings.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(prethings, i)) {
                     var children = prethings[i], array = {
                         "xInc": this.getArraySorted(children, this.sortPreThingsXInc),
                         "xDec": this.getArraySorted(children, this.sortPreThingsXDec),

@@ -28,26 +28,26 @@ function initWebSdkWrapper(debug = false) {
 
   try {
     let json = JSON.parse(config);
-    if (json.hasOwnProperty("removeSocials")) {
+    if (Object.prototype.hasOwnProperty.call(json, 'removeSocials')) {
       globalThis.adconfigRemoveSocials = json.removeSocials ? 1 : 0;
     } else {
       globalThis.adconfigRemoveSocials = 0;
     }
-    if (json.hasOwnProperty("stopAudioInBackground")) {
+    if (Object.prototype.hasOwnProperty.call(json, 'stopAudioInBackground')) {
       globalThis.adconfigStopAudioInBackground = json.stopAudioInBackground
         ? 1
         : 0;
     } else {
       globalThis.adconfigStopAudioInBackground = 0;
     }
-    if (json.hasOwnProperty("removeMidrollRewarded")) {
+    if (Object.prototype.hasOwnProperty.call(json, 'removeMidrollRewarded')) {
       globalThis.adconfigRemoveMidrollRewarded = json.removeMidrollRewarded
         ? 1
         : 0;
     } else {
       globalThis.adconfigRemoveMidrollRewarded = 0;
     }
-    if (json.hasOwnProperty("noReligion")) {
+    if (Object.prototype.hasOwnProperty.call(json, 'noReligion')) {
       globalThis.adconfigNoReligion = json.noReligion ? 1 : 0;
     } else {
       globalThis.adconfigNoReligion = 0;
@@ -343,7 +343,7 @@ function getLocaleName(locale) {
   if (!localeExists(locale)) locale = detectLanguage();
   if (
     globalThis.languageJSON &&
-    globalThis.languageJSON.languages.hasOwnProperty(locale)
+    Object.prototype.hasOwnProperty.call(globalThis.languageJSON.languages, locale)
   )
     return globalThis.languageJSON.languages[locale];
   return "Unknown";
@@ -356,7 +356,7 @@ function setLanguageJSON() {
 function languageKeyExists(locale, key) {
   if (key.trim() === "") return 0;
   if (!localeExists(locale)) locale = detectLanguage();
-  return globalThis.languageJSON.data[locale].hasOwnProperty(key) ? 1 : 0;
+  return Object.prototype.hasOwnProperty.call(globalThis.languageJSON.data[locale], key) ? 1 : 0;
 }
 
 let cache = {};
@@ -393,7 +393,7 @@ function processString(string, ...params) {
 function localeExists(locale) {
   return (
     globalThis.languageJSON &&
-    globalThis.languageJSON.languages.hasOwnProperty(locale)
+    Object.prototype.hasOwnProperty.call(globalThis.languageJSON.languages, locale)
   );
 }
 
@@ -403,12 +403,12 @@ function doGetLanguageValue(locale, key, value, defaultValue, metadata) {
   if (!localeExists(locale)) locale = detectLanguage();
   if (key !== "" && languageKeyExists(locale, key) === 1) {
     let data = globalThis.languageJSON.data[locale][key];
-    if (data.hasOwnProperty(value)) return data[value];
+    if (Object.prototype.hasOwnProperty.call(data, value)) return data[value];
   }
   if (metadata !== "") {
     try {
       let obj = JSON.parse(metadata);
-      if (obj.hasOwnProperty(value)) return obj[value];
+      if (Object.prototype.hasOwnProperty.call(obj, value)) return obj[value];
       return defaultValue;
     } catch (e) {}
   }

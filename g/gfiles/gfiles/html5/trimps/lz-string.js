@@ -25,14 +25,14 @@ if (typeof Map === "undefined") {
   }
   
   lzs_NewCompatMap.prototype.get = function(key) {
-    if (this.data.hasOwnProperty(key)) return this.data[key];
+    if (Object.prototype.hasOwnProperty.call(this.data, key)) return this.data[key];
     return null;
   }
   lzs_NewCompatMap.prototype.set = function(key,value) {
     this.data[key] = value;
   }
   lzs_NewCompatMap.prototype.has = function(key) {
-    return this.data.hasOwnProperty(key);
+    return Object.prototype.hasOwnProperty.call(this.data, key);
   }
   lzs_NewCompatMap.prototype["delete"] = function(key) {
     delete this.data[key];

@@ -286,7 +286,7 @@ var PixelDrawr;
             }, canvas, context, imageData, i;
             thing.numSprites = 1;
             for (i in spritesRaw.sprites) {
-                if (!spritesRaw.sprites.hasOwnProperty(i)) {
+                if (!Object.prototype.hasOwnProperty.call(spritesRaw.sprites, i)) {
                     continue;
                 }
                 // Make a new sprite for this individual component

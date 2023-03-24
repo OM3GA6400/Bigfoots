@@ -167,7 +167,7 @@ var FullScreenMario;
                 "options": function (FSM) {
                     var mods = FSM.ModAttacher.getMods(), output = [], mod, i;
                     for (i in mods) {
-                        if (!mods.hasOwnProperty(i)) {
+                        if (!Object.prototype.hasOwnProperty.call(mods, i)) {
                             continue;
                         }
                         mod = mods[i];

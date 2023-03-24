@@ -142,7 +142,7 @@ var GroupHoldr;
                 }
                 else {
                     for (j in group) {
-                        if (group.hasOwnProperty(j)) {
+                        if (Object.prototype.hasOwnProperty.call(group, j)) {
                             args[0] = group[j];
                             func.apply(scope, args);
                         }
@@ -192,7 +192,7 @@ var GroupHoldr;
                 }
                 else {
                     for (j in group) {
-                        if (group.hasOwnProperty(j)) {
+                        if (Object.prototype.hasOwnProperty.call(group, j)) {
                             args[0] = group[j];
                             func.apply(scope, args);
                         }

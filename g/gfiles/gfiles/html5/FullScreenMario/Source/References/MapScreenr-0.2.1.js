@@ -25,7 +25,7 @@ var MapScreenr;
             }
             var name;
             for (name in settings) {
-                if (settings.hasOwnProperty(name)) {
+                if (Object.prototype.hasOwnProperty.call(settings, name)) {
                     this[name] = settings[name];
                 }
             }
@@ -65,7 +65,7 @@ var MapScreenr;
         MapScreenr.prototype.setVariables = function () {
             var i;
             for (i in this.variables) {
-                if (this.variables.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(this.variables, i)) {
                     this.setVariable(i);
                 }
             }

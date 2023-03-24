@@ -198,7 +198,7 @@ var PixelRendr;
                 throw new Error("No sprite found for " + key + ".");
             }
             // If the render doesn't have a listing for this key, create one
-            if (!render.sprites.hasOwnProperty(key)) {
+            if (!Object.prototype.hasOwnProperty.call(render.sprites, key)) {
                 this.generateRenderSprite(render, key, attributes);
             }
             sprite = render.sprites[key];
@@ -354,7 +354,7 @@ var PixelRendr;
             var setNew = {}, source, i;
             // For each child of the current layer:
             for (i in reference) {
-                if (!reference.hasOwnProperty(i)) {
+                if (!Object.prototype.hasOwnProperty.call(reference, i)) {
                     continue;
                 }
                 source = reference[i];
@@ -430,7 +430,7 @@ var PixelRendr;
         PixelRendr.prototype.generateSpriteCommandMultipleFromRender = function (render, key, attributes) {
             var sources = render.source[2], sprites = {}, sprite, path, output = new PixelRendr_1.SpriteMultiple(sprites, render), i;
             for (i in sources) {
-                if (sources.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(sources, i)) {
                     path = key + " " + i;
                     sprite = this.ProcessorBase.process(sources[i], path, render.filter);
                     sprites[i] = this.ProcessorDims.process(sprite, path, attributes);
@@ -507,7 +507,7 @@ var PixelRendr;
         PixelRendr.prototype.generateRendersFromFilter = function (directory, filter) {
             var output = {}, child, i;
             for (i in directory) {
-                if (!directory.hasOwnProperty(i)) {
+                if (!Object.prototype.hasOwnProperty.call(directory, i)) {
                     continue;
                 }
                 child = directory[i];
@@ -639,7 +639,7 @@ var PixelRendr;
                     var split = colors.match(this.digitsplit), i;
                     // For each color filter to be applied, replace it
                     for (i in filter[1]) {
-                        if (filter[1].hasOwnProperty(i)) {
+                        if (Object.prototype.hasOwnProperty.call(filter[1], i)) {
                             this.arrayReplace(split, i, filter[1][i]);
                         }
                     }
@@ -823,7 +823,7 @@ var PixelRendr;
             for (i = 0, j = 0; i < data.length; i += 4, j += 1) {
                 pixel = this.getClosestInPalette(this.paletteDefault, data.subarray(i, i + 4));
                 pixels[j] = pixel;
-                if (occurences.hasOwnProperty(pixel)) {
+                if (Object.prototype.hasOwnProperty.call(occurences, pixel)) {
                     occurences[pixel] += 1;
                 }
                 else {
@@ -1046,7 +1046,7 @@ var PixelRendr;
          * @returns A found element within object.
          */
         PixelRendr.prototype.followPath = function (object, path, index) {
-            if (index < path.length && object.hasOwnProperty(path[index])) {
+            if (index < path.length && Object.prototype.hasOwnProperty.call(object, path[index])) {
                 return this.followPath(object[path[index]], path, index + 1);
             }
             return object;
