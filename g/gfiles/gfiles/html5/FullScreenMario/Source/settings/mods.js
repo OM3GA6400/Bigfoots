@@ -90,7 +90,7 @@ FullScreenMario.FullScreenMario.settings.mods = {
             "enabled": false,
             "events": {
                 "onPlayerLanding": (function () {
-                    var shiftLevels = [2, 1.5, 1, .5, 0, -.5, -1, -1.5, -2],
+                    var shiftLevels = [2, 1.5, 1, 0.5, 0, -0.5, -1, -1.5, -2],
                         shiftCount = 0,
                         shiftAll = function (FSM, texts, solids, scenery, characters) {
                             var dy = shiftLevels[shiftCount];
@@ -448,7 +448,7 @@ FullScreenMario.FullScreenMario.settings.mods = {
             "enabled": false,
             "events": {
                 "onModEnable": function () {
-                    this.ObjectMaker.getFunction("Cloud").prototype.parallaxHoriz = .7;
+                    this.ObjectMaker.getFunction("Cloud").prototype.parallaxHoriz = 0.7;
                 },
                 "onModDisable": function () {
                     this.ObjectMaker.getFunction("Cloud").prototype.parallaxHoriz = undefined;

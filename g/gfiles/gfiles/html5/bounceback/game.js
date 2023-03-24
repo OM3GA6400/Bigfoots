@@ -181,7 +181,7 @@ function SpawnPickups(pos, chance=1, count=1)
         
         // add extra velocity to sucessive spawns when dropping multiple
         if (count>1)
-            p.velocity = RandVector(.1 + Clamp(i,3,30)*.03*Rand());
+            p.velocity = RandVector(0.1 + Clamp(i,3,30)*0.03*Rand());
     }
 }
 
@@ -203,13 +203,13 @@ function DestroyLevelObject(pos,bounceRock=1)
         level.DrawTileData(pos.x,pos.y);
         
         // small chance of dropping a pickup
-        SpawnPickups(pos, .05);
+        SpawnPickups(pos, 0.05);
 
         if (type==1)
         {
             // bush
             PlaySound(5);
-            level.DrawEllipse(pos,RandBetween(.1,.15),RGBA(0,0,0,RandBetween(.3,.6)));
+            level.DrawEllipse(pos,RandBetween(0.1,0.15),RGBA(0,0,0,RandBetween(0.3,0.6)));
             bounce=0;
         }
         else
@@ -217,16 +217,16 @@ function DestroyLevelObject(pos,bounceRock=1)
             // rock
             PlaySound(14);
             for(let i=9;i--;)
-                level.DrawEllipse(pos.Clone().Add(RandVector(.2)),RandBetween(.1,.2),RGBA(.2,.1,.05,RandBetween(.3,.6)));      
+                level.DrawEllipse(pos.Clone().Add(RandVector(0.2)),RandBetween(0.1,0.2),RGBA(0.2,0.1,0.05,RandBetween(0.3,0.6)));      
             bounce = bounceRock;
         }
 
         // particle effects
         new ParticleEmitter
         (
-            pos, .5, .1,     // pos, emitter size, particle size
-            type==1 ? new Color(.4,.8,.1,1) : new Color(.4,.2,.1,1),
-            type==1 ? new Color(0,.1,0,1) : new Color(0,0,0,1)
+            pos, 0.5, 0.1,     // pos, emitter size, particle size
+            type==1 ? new Color(0.4,0.8,0.1,1) : new Color(0.4,0.2,0.1,1),
+            type==1 ? new Color(0,0.1,0,1) : new Color(0,0,0,1)
         );
     }
 
@@ -263,7 +263,7 @@ function Update()
         
     // zoom out on final level
     if (isFinalLevel)
-        cameraScale = Max(cameraScale-.001,1); 
+        cameraScale = Max(cameraScale-0.001,1); 
         
     if (isStartLevel)
     {
@@ -338,8 +338,8 @@ function PostRender()
         {
             let t = 1;
             let s = iconSize;
-            if (healthWarning.Get() < .5)
-                s *= 1+Math.sin(2*PI*healthWarning.Get()/.5)*.2;
+            if (healthWarning.Get() < 0.5)
+                s *= 1+Math.sin(2*PI*healthWarning.Get()/0.5)*0.2;
             if (player.health > i)
                 t = player.health-i>=1?3:2;
             DrawScreenTile(iconSize+2*iconSize*i,y,s,t,5);
@@ -460,14 +460,14 @@ function RenderMap()
 
 class MyGameObject extends GameObject
 {
-    constructor(pos,tileX=0,tileY=0,size=.5,collisionSize=0,health=1)
+    constructor(pos,tileX=0,tileY=0,size=0.5,collisionSize=0,health=1)
     {
         super(pos,tileX,tileY,size,collisionSize,health);
         this.walkFrame=0;
         this.rotation=1;
         this.radarSize=1;
         this.isInvisible = 0;
-        this.bloodColor = new Color(.8,0,.05,.5);
+        this.bloodColor = new Color(0.8,0,0.05,0.5);
         this.bloodAdditive = 0;
     }
     
@@ -484,13 +484,13 @@ class MyGameObject extends GameObject
             let offset = (new Vector2(0,side/8)).Rotate(angle);
             let footPos = this.pos.Clone().Add(offset);
             let c = isOnSand?'#4215':'#2223';
-            let s = new Vector2(.2,isOnSand?.2:.1);
+            let s = new Vector2(0.2,isOnSand?0.2:0.1);
             if (isOnSand)
             {
                 s.y*=RandBetween(1,1.5);
                 s.x*=RandBetween(1,1.5);
             }
-            footPos.y+=.3;
+            footPos.y+=0.3;
             level.DrawEllipse(footPos,s,c,angle);
         }
     }
@@ -503,7 +503,7 @@ class MyGameObject extends GameObject
         for(let i=30;i--;)
         {
             let pos = this.pos.Clone().Add(RandVector(Rand(scale*this.size.x)));
-            let size = new Vector2(this.size.x*RandBetween(.2,.5),this.size.y*RandBetween(.2,.5))
+            let size = new Vector2(this.size.x*RandBetween(0.2,0.5),this.size.y*RandBetween(0.2,0.5))
             let angle = RandBetween(0,2*PI);
             level.DrawEllipse(pos,size.Multiply(scale),this.bloodColor.RGBA(),angle); 
         }  
@@ -515,9 +515,9 @@ class MyGameObject extends GameObject
             let s = scale*this.size.x;
             let p = new ParticleEmitter
             (
-                this.pos, s*.6, s*.2, // pos, emitter size, particle size
+                this.pos, s*0.6, s*0.2, // pos, emitter size, particle size
                 this.bloodColor.Clone().SetAlpha(1), 
-                this.bloodColor.Clone(this.bloodAdditive?3:.5).SetAlpha(1)
+                this.bloodColor.Clone(this.bloodAdditive?3:0.5).SetAlpha(1)
             );
         }
     }
@@ -533,7 +533,7 @@ class MyGameObject extends GameObject
     {
         // invisible objects become visible when damaged
         if (this.isInvisible && !shadowRenderPass && !hitRenderPass)
-            mainCanvasContext.globalAlpha= .1 + this.GetDamageFlashPercent();
+            mainCanvasContext.globalAlpha= 0.1 + this.GetDamageFlashPercent();
         super.Render();
     }
     
@@ -544,7 +544,7 @@ class Player extends MyGameObject
 {
     constructor(pos) 
     {
-        super(pos,0,4,.5,.4,playerData.healthMax);
+        super(pos,0,4,0.5,0.4,playerData.healthMax);
         this.health = playerData.health;
         this.dashTimer = new Timer();
         this.throwTimer = new Timer();
@@ -600,7 +600,7 @@ class Player extends MyGameObject
                 --playerData.boomerangs;
             let b = new Boomerang(this.pos,isBig);
             this.throwRotation= b.Throw(this, mousePosWorld);
-            this.throwTimer.Set(.4);
+            this.throwTimer.Set(0.4);
         }
     
         // move input
@@ -647,14 +647,14 @@ class Player extends MyGameObject
             {
                 // start dash
                 PlaySound(12);
-                this.dashTimer.Set(.5);
+                this.dashTimer.Set(0.5);
             }
         }
         
         if (acceleration.x || acceleration.y)
         {
             // apply acceleration
-            acceleration.Normalize(.016*(isOnSand?.5:1));
+            acceleration.Normalize(0.016*(isOnSand?0.5:1));
             if (this.IsDashing())
                 acceleration.Multiply(2);
             this.velocity.Add(acceleration);
@@ -727,7 +727,7 @@ class Player extends MyGameObject
             mainCanvasContext.globalCompositeOperation = 'screen';
             for(let i=this.posBuffer.length;i--;)
             {
-                hitRenderPass = hit*(i/this.posBuffer.length + .01);
+                hitRenderPass = hit*(i/this.posBuffer.length + 0.01);
                 DrawTile(this.posBuffer[i],this.size,this.tileX,this.tileY,this.angle,this.mirror,this.height);
             }
             hitRenderPass = hit;
@@ -735,7 +735,7 @@ class Player extends MyGameObject
         }
     
         let d = this.dashTimer.Get();
-        if (!shadowRenderPass && d<this.dashWaitTime+.5)
+        if (!shadowRenderPass && d<this.dashWaitTime+0.5)
         {
             // show a white outline around the player when dash is charging
             hitRenderPass = d<this.dashWaitTime?d/this.dashWaitTime:Math.sin((d-this.dashWaitTime)*PI*4);
@@ -752,7 +752,7 @@ class Player extends MyGameObject
             if (this.rotation == 3)
                 DrawTile(this.pos,this.size,x,5);
             if (this.rotation%2==0)
-                DrawTile(this.pos.Clone().AddXY(-(this.rotation-1)*.2,0),this.size.Clone(new Vector2(.6,1)),x,5);
+                DrawTile(this.pos.Clone().AddXY(-(this.rotation-1)*0.2,0),this.size.Clone(new Vector2(0.6,1)),x,5);
         }
     }
     
@@ -790,9 +790,9 @@ class Boomerang  extends MyGameObject
 {
     constructor(pos,isBig=0) 
     {
-        super(pos,isBig?7:0,5,.5,isBig?.45:.4);
+        super(pos,isBig?7:0,5,0.5,isBig?0.45:0.4);
             
-        this.damping = .98;
+        this.damping = 0.98;
         this.angle = 0;
         this.canDamageLevel = 1;
         this.heldPickup = 0;
@@ -807,8 +807,8 @@ class Boomerang  extends MyGameObject
         PlaySound(7)
         this.throwFrames = this.isBig?9:8;
         this.throwAccel = targetPos.Clone().Subtract(owner.pos);
-        this.throwAccel.Normalize(.04);
-        this.angleVelocity = .5;
+        this.throwAccel.Normalize(0.04);
+        this.angleVelocity = 0.5;
         this.height = this.angleVelocity/2;
         this.velocity = owner.velocity.Clone();
         return this.throwAccel.Rotation();
@@ -830,12 +830,12 @@ class Boomerang  extends MyGameObject
         {
             // boomerang is on the ground
             this.radarSize=3;
-            this.damageFlashTime = .8;
+            this.damageFlashTime = 0.8;
             this.differenceFlash = 0;
             if (this.heldPickup)
                 this.heldPickup.isHeld=0;
             this.heldPickup=0;
-            if (Rand() < .005 && this.damageTimer.Get() > 4*this.damageFlashTime)
+            if (Rand() < 0.005 && this.damageTimer.Get() > 4*this.damageFlashTime)
                 this.damageTimer.Set(-this.damageFlashTime/2); // sparkle
         }
         else
@@ -851,12 +851,12 @@ class Boomerang  extends MyGameObject
                 this.velocity.Add(this.throwAccel);
         
             // reduce angular velocity
-            this.angleVelocity -= .002;
-            if (this.angleVelocity < .1)
+            this.angleVelocity -= 0.002;
+            if (this.angleVelocity < 0.1)
             {
                 // slow it down even faster
-                this.angleVelocity -= .005;
-                this.velocity.Multiply(.8);
+                this.angleVelocity -= 0.005;
+                this.velocity.Multiply(0.8);
                 if (this.angleVelocity < 0)
                     this.angleVelocity = 0;
             }
@@ -873,7 +873,7 @@ class Boomerang  extends MyGameObject
             
             gameObjects.forEach(o=>
             {
-                if (!this.isBig && o.isSmallPickup && o.GetLifeTime() > .5 && !o.isHeld && !this.heldPickup && o.IsTouching(this))
+                if (!this.isBig && o.isSmallPickup && o.GetLifeTime() > 0.5 && !o.isHeld && !this.heldPickup && o.IsTouching(this))
                 {
                     // grab object
                     o.isHeld = 1;
@@ -889,8 +889,8 @@ class Boomerang  extends MyGameObject
                             // reflect
                             PlaySound(15);
                             this.bounceObject = o;
-                            this.velocity.Multiply(-.4);
-                            this.angleVelocity*=.4;
+                            this.velocity.Multiply(-0.4);
+                            this.angleVelocity*=0.4;
                             this.damageTimer.Set();
                             this.throwAccel=0;
                         }
@@ -899,7 +899,7 @@ class Boomerang  extends MyGameObject
                     {
                         // apply damage
                         if (!isStartLevel) // dont push in hub
-                            o.velocity.Add(this.velocity.Clone(.5));
+                            o.velocity.Add(this.velocity.Clone(0.5));
                         this.damageTimer.Set();
                     }
                 }
@@ -907,14 +907,14 @@ class Boomerang  extends MyGameObject
         }
         
         // let player pick it up
-        if ((!this.angleVelocity || this.GetLifeTime() > .5) && !player.IsDead() && player.Distance(this) < .6)
+        if ((!this.angleVelocity || this.GetLifeTime() > 0.5) && !player.IsDead() && player.Distance(this) < 0.6)
             this.Pickup();
         
         super.Update();
 
         // set all pickups to match our position
         if (this.heldPickup)
-            this.heldPickup.pos.Copy(this.pos).AddXY(0,-.001);
+            this.heldPickup.pos.Copy(this.pos).AddXY(0,-0.001);
     }
     
     Pickup()
@@ -924,7 +924,7 @@ class Boomerang  extends MyGameObject
             playerData.bigBoomerangs++;
         else
             playerData.boomerangs++;
-        player.throwTimer.Set(.3);
+        player.throwTimer.Set(0.3);
         player.throwRotation=this.pos.Clone().Subtract(player.pos).Rotation();
         this.Destroy();
     }
@@ -938,24 +938,24 @@ class Pickup extends MyGameObject
     
     constructor(pos, type=0) 
     { 
-        super(pos,2+type,5,.5,.3); 
+        super(pos,2+type,5,0.5,0.3); 
         this.type = type;
         this.timeOffset = Rand(9);
         this.isSmallPickup = type != 2;
         this.isHeld=0;
         this.differenceFlash = 0;
-        this.damageFlashTime = .8;
+        this.damageFlashTime = 0.8;
         this.radarSize = this.isSmallPickup?1:3;
     }
     
     Update() 
     {
         // random sparkles
-        if (Rand() < .005 && this.damageTimer.Get() > 4*this.damageFlashTime)
+        if (Rand() < 0.005 && this.damageTimer.Get() > 4*this.damageFlashTime)
             this.damageTimer.Set(-this.damageFlashTime/2);
         
         // bob up and down
-        this.height = .1+.1*Math.sin(2*time+this.timeOffset);
+        this.height = 0.1+0.1*Math.sin(2*time+this.timeOffset);
         
         // let player pick it up
         if (!player.IsDead() && player.IsTouching(this))
@@ -995,7 +995,7 @@ class Pickup extends MyGameObject
         else
         {
             // half or whole heart
-            player.Heal(.5+ this.type/2)
+            player.Heal(0.5+ this.type/2)
             PlaySound(3);
         }
         this.Destroy();
@@ -1006,7 +1006,7 @@ class Pickup extends MyGameObject
 
 class Enemy extends MyGameObject
 {
-    constructor(pos,tileX=0,tileY=0,size=.5,collisionSize=0,health=1,big=0)
+    constructor(pos,tileX=0,tileY=0,size=0.5,collisionSize=0,health=1,big=0)
     { 
         super(pos,tileX,tileY,size,collisionSize,health); 
         this.isEnemy = 1
@@ -1021,7 +1021,7 @@ class Enemy extends MyGameObject
         let damageDone = super.Damage(damage);
         if (damageDone && !this.IsDead())
         {
-            this.BloodSplat(.5);
+            this.BloodSplat(0.5);
             PlaySound(8);
         }
         
@@ -1031,11 +1031,11 @@ class Enemy extends MyGameObject
     Update()
     {
         if (player.IsTouching(this))
-        if (player.Damage(.5))
+        if (player.Damage(0.5))
         {
             // push player when damaged
             let accel = player.pos.Clone();
-            accel.Subtract(this.pos).Normalize(.1);
+            accel.Subtract(this.pos).Normalize(0.1);
             player.velocity.Add(accel);
         }
 
@@ -1073,16 +1073,16 @@ class SlimeEnemy extends Enemy
 {
     constructor(pos,healthLevel,difficulty=1)
     { 
-        let size = .25*healthLevel;
-        super(pos,5+difficulty,0,size,size*.8,healthLevel*difficulty,healthLevel>3); 
-        this.bloodColor = difficulty>1?new Color(1,0,.5,.5):new Color(0,.5,1,.5);
+        let size = 0.25*healthLevel;
+        super(pos,5+difficulty,0,size,size*0.8,healthLevel*difficulty,healthLevel>3); 
+        this.bloodColor = difficulty>1?new Color(1,0,0.5,0.5):new Color(0,0.5,1,0.5);
         this.randMoveTimer = new Timer();
         this.randAccel = new Vector2();
         this.spawnPickup = healthLevel == 1? difficulty/2 : 0;
         this.difficulty = difficulty;
         this.healthLevel = healthLevel;
         this.baseSize = size;
-        this.damping = .9;
+        this.damping = 0.9;
     }
     
     Update()
@@ -1093,14 +1093,14 @@ class SlimeEnemy extends Enemy
         
         // draw additive trail
         levelCanvasContext.globalCompositeOperation='screen';
-        let trailColor = this.bloodColor.Clone().SetAlpha(.05).RGBA();
-        level.DrawEllipse(this.pos,(new Vector2(.6,.4)).Multiply(this.size),trailColor);
+        let trailColor = this.bloodColor.Clone().SetAlpha(0.05).RGBA();
+        level.DrawEllipse(this.pos,(new Vector2(0.6,0.4)).Multiply(this.size),trailColor);
         levelCanvasContext.globalCompositeOperation='source-over';
      
         // random movement
         if (this.randMoveTimer.Elapsed())
         {
-            this.randMoveTimer.Set(RandBetween(.5,1));
+            this.randMoveTimer.Set(RandBetween(0.5,1));
             this.randAccel = RandVector(1.3);
         }
     
@@ -1111,14 +1111,14 @@ class SlimeEnemy extends Enemy
                 .Subtract(this.pos)
                 .Normalize();
         accel.Add(this.randAccel)
-            .Multiply(this.difficulty>1?.004:.003)
-            .Multiply(this.IsOnSand()?.5:1);
+            .Multiply(this.difficulty>1?0.004:0.003)
+            .Multiply(this.IsOnSand()?0.5:1);
         this.velocity.Add(accel);
     
         // change shape as it moves
         let s = Math.sin(10 * this.GetLifeTime());
-        let sx = .9+.1*(1-s);
-        let sy = .9+.1*s;
+        let sx = 0.9+0.1*(1-s);
+        let sy = 0.9+0.1*s;
         this.size.Set(this.baseSize*sx,this.baseSize*sy);
         
         super.Update();
@@ -1148,14 +1148,14 @@ class JumpingEnemy extends Enemy
 {
     constructor(pos,isBig=0)
     { 
-        super(pos,2,2,isBig?1:.5,isBig?.8:.4,isBig?12:4,isBig); 
+        super(pos,2,2,isBig?1:0.5,isBig?0.8:0.4,isBig?12:4,isBig); 
         this.landTimer = new Timer();
         this.jumpWaitTimer = new Timer();
         this.jumpWaitTimer.Set(RandBetween(1,3));
         this.zVelocity = 0;
         this.randOffset = new Vector2();
-        this.bloodColor = new Color(1,.5,0,.1);
-        this.speed = isBig?.012:.01;
+        this.bloodColor = new Color(1,0.5,0,0.1);
+        this.speed = isBig?0.012:0.01;
     }
     
     Update()
@@ -1167,7 +1167,7 @@ class JumpingEnemy extends Enemy
         if (this.jumpWaitTimer.Elapsed() && this.height <= 0)
         {
             // jump
-            this.zVelocity = RandBetween(.15,.2);
+            this.zVelocity = RandBetween(0.15,0.2);
             if (this.isBig)
                  this.zVelocity *= 1.2;
             this.jumpWaitTimer.Set(RandBetween(1.5,3));
@@ -1177,15 +1177,15 @@ class JumpingEnemy extends Enemy
     
         // update jump
         this.height += this.zVelocity;
-        this.zVelocity -= .005;
+        this.zVelocity -= 0.005;
         if (this.height <= 0)
         {
             // is on ground
             if (!this.landTimer.IsSet())
             {
                 // just landed
-                this.landTimer.Set(.3);
-                this.BloodSplat(.8,0);
+                this.landTimer.Set(0.3);
+                this.BloodSplat(0.8,0);
             }
             this.height = this.zVelocity = 0;
         }
@@ -1210,7 +1210,7 @@ class JumpingEnemy extends Enemy
     
         // set draw tile when jumping or landed
         this.tileX = 2;
-        if (this.jumpWaitTimer.Get() > -.25 || !this.landTimer.Elapsed())
+        if (this.jumpWaitTimer.Get() > -0.25 || !this.landTimer.Elapsed())
             ++this.tileX;
             
         super.Update();
@@ -1223,35 +1223,35 @@ class ShieldEnemy extends Enemy
 {
     constructor(pos, type=0, isBig=0)
     { 
-        super(pos,4,2,isBig?1:.5,isBig?.8:.4,type?50:isBig?6:2,isBig); 
+        super(pos,4,2,isBig?1:0.5,isBig?0.8:0.4,type?50:isBig?6:2,isBig); 
         this.moveTimer = new Timer();
         this.dashTimer = new Timer();
-        this.damping=.8;
+        this.damping=0.8;
         this.bumped=0;
         this.type = type;
         this.moveBackwards = 0;
-        this.speed = isBig?.015:.012;
+        this.speed = isBig?0.015:0.012;
         if (type)
         {
             boss = this;
-            this.speed = .018;
+            this.speed = 0.018;
             this.bloodAdditive = 0;
         }
         else
-            this.bloodColor = new Color(.3,1,0,.5);
+            this.bloodColor = new Color(0.3,1,0,0.5);
             
         this.bossIntro = this.type && !isStartLevel;
     }
     
     ReflectDamage(direction)
     { 
-        if (this.damageTimer.Get() < .5)
+        if (this.damageTimer.Get() < 0.5)
             return 0;
     
         // figure out if damge should be reflected
         let d = new Vector2(1,0).Rotate(this.rotation*PI/2);
         let a = direction.Clone().Normalize().DotProduct(d);
-        return this.type? (a > .4) : (a < -.4);
+        return this.type? (a > 0.4) : (a < -0.4);
     }
     
     CollideLevel(data, pos)
@@ -1290,7 +1290,7 @@ class ShieldEnemy extends Enemy
         {
             // title screen - run towards the level exit
             let d = this.pos.x - levelExit.pos.x;
-            this.rotation = Math.abs(d) < .5? 1: 0;
+            this.rotation = Math.abs(d) < 0.5? 1: 0;
             if (this.Distance(levelExit) < 1)
                 this.Destroy();
         }
@@ -1325,22 +1325,22 @@ class ShieldEnemy extends Enemy
                     
                     // boss can randomly move backwards
                     if (this.type)
-                        this.moveBackwards = Rand()<.5;
+                        this.moveBackwards = Rand()<0.5;
                     if (this.moveBackwards)
                         this.rotation = (this.rotation+2)%4
 
                     // randomly decide to dash
-                    if (Rand()<.2)
+                    if (Rand()<0.2)
                         this.dashTimer.Set(2);
                 }
                 else
                     this.rotation = RandInt(4);
-                this.moveTimer.Set(RandBetween(.8,2));
+                this.moveTimer.Set(RandBetween(0.8,2));
             }
         }
 
         // apply move acceleration
-        let moveAccel = new Vector2(this.speed*(isOnSand?.5:1),0).Rotate(this.rotation*PI/2);
+        let moveAccel = new Vector2(this.speed*(isOnSand?0.5:1),0).Rotate(this.rotation*PI/2);
         if (!this.dashTimer.Elapsed())
             moveAccel.Multiply((this.dashTimer.Get() < -1)?0:2);
         
@@ -1365,7 +1365,7 @@ class ShieldEnemy extends Enemy
                     // wait to get hit
                     moveAccel.Multiply(0);
                     this.rotation = 1;
-                    this.walkFrame += .021;
+                    this.walkFrame += 0.021;
                 }
             }
             else
@@ -1374,10 +1374,10 @@ class ShieldEnemy extends Enemy
                 if (this.size.x<2)
                 {
                     // grow giant
-                    this.size.AddXY(.005,.005);
-                    this.collisionSize = this.size.x*.8;
+                    this.size.AddXY(0.005,0.005);
+                    this.collisionSize = this.size.x*0.8;
                     moveAccel.Multiply(0);
-                    this.walkFrame += .1;
+                    this.walkFrame += 0.1;
                     if (frame%10==0)
                         this.rotation = (this.rotation+1)%4;
                     moveAccel.Multiply(0);
@@ -1449,7 +1449,7 @@ class Store extends MyGameObject
 {
     constructor(pos) 
     {
-        super(pos,7,1,.5,.5);
+        super(pos,7,1,0.5,0.5);
         
         // spawn random items
         this.count = isStartLevel||isFinalLevel?3:2 + RandInt(2);
@@ -1484,7 +1484,7 @@ class Store extends MyGameObject
     Update()
     {        
         // draw carpet after being spawned
-        if (this.GetLifeTime()<.1)
+        if (this.GetLifeTime()<0.1)
         {
             let p = this.pos.Clone().AddXY(0,2).Multiply(tileSize);
             let w = this.count*16;
@@ -1499,7 +1499,7 @@ class Store extends MyGameObject
         {
             // jump on buy
             let b = buyTimer.Get();
-            this.height = -b*(.5-.5*Math.cos(6*PI*b))/2;
+            this.height = -b*(0.5-0.5*Math.cos(6*PI*b))/2;
         }
         
         // check enemy hits
@@ -1518,7 +1518,7 @@ class StoreItem extends MyGameObject
         // 2 = boomerang
         // 3 = big boomerang
         
-        super(pos,type+3,5,.5,.2); 
+        super(pos,type+3,5,0.5,0.2); 
         this.owner = owner;
         this.type = type;
         this.cost = 5;
@@ -1540,7 +1540,7 @@ class StoreItem extends MyGameObject
     
         // randomize cost
         if (!isStartLevel)
-            this.cost *= RandBetween(.5,1.5);
+            this.cost *= RandBetween(0.5,1.5);
         this.cost = Clamp(this.cost, 1, 99);
         this.cost |= 0;
     }
@@ -1590,7 +1590,7 @@ class StoreItem extends MyGameObject
         {
             // draw the price
             SetCanvasTransform(this.pos.Clone().AddXY(0,-1), this.size);
-            DrawText(this.cost,-6,0,14,'left',.5,this.GetDamageTime()<.5?"#F00":"#000");
+            DrawText(this.cost,-6,0,14,'left',0.5,this.GetDamageTime()<0.5?"#F00":"#000");
             DrawScreenTile(-10,-1,4,5,5);
             mainCanvasContext.restore();
         }
@@ -1605,18 +1605,18 @@ class LevelExit extends MyGameObject
 {
     constructor(pos,type=0) 
     { 
-        super(pos,0,0,0,.5); 
+        super(pos,0,0,0,0.5); 
         this.type=type; 
         this.radarSize=2;
         this.closeTimer = new Timer();
-        this.pos.y+=.01;
+        this.pos.y+=0.01;
     }
        
     Update() 
     {
         // bob and spin
-        this.height =.1+.1*Math.sin(5*time);
-        this.angleVelocity =.05/(this.size+.1); 
+        this.height =0.1+0.1*Math.sin(5*time);
+        this.angleVelocity =0.05/(this.size+0.1); 
         
         let playerOffset = this.pos.Clone().Subtract(player.pos);
         let playerDistance = playerOffset.Length();
@@ -1646,7 +1646,7 @@ class LevelExit extends MyGameObject
         else if (!player.IsDead() && playerDistance < 3 && player.dashTimer.Elapsed())
         {
             // player is close to portal
-            if (playerDistance < .5)
+            if (playerDistance < 0.5)
             {
                 // player entered portal
                 if (isStartLevel && this.type == 3)
@@ -1668,7 +1668,7 @@ class LevelExit extends MyGameObject
             else
             {
                 // pull player into portal
-                player.velocity.Add(playerOffset.Normalize(.005/playerDistance));
+                player.velocity.Add(playerOffset.Normalize(0.005/playerDistance));
             }
         }
         
@@ -1688,7 +1688,7 @@ class LevelExit extends MyGameObject
         for(let i=19;i--;mainCanvasContext.stroke())
         {
             mainCanvasContext.beginPath();
-            color=`hsla(${i*9+time*99},99%,${shadowRenderPass?0:50}%,${shadowRenderPass?.5:1})`;
+            color=`hsla(${i*9+time*99},99%,${shadowRenderPass?0:50}%,${shadowRenderPass?0.5:1})`;
             mainCanvasContext.strokeStyle=color;
             for(let j=8;j--;)
             {
@@ -1798,7 +1798,7 @@ function GenerateMaze(cellCount)
         if (CheckMove(x,y,0,1))
             ++neighbors;
             
-        if (neighbors && i!=cellCount && (i<cellCount || Rand() < .5))
+        if (neighbors && i!=cellCount && (i<cellCount || Rand() < 0.5))
         {  
             // pick a random neighbor to open
             let xd = 0;
@@ -1821,7 +1821,7 @@ function GenerateMaze(cellCount)
             // track dead ends (to put stores and powerups there)
             if (OpenNeighborCount(x,y)<=1)
                 SetCell(x,y,2+endCount++);
-            else if (Rand() < .5) // change up start pos
+            else if (Rand() < 0.5) // change up start pos
                 playerStartPos.Set(x,y);
             
             // pop cell from stack and make current
@@ -1839,9 +1839,9 @@ function GenerateMaze(cellCount)
 function GenerateLevel()
 {
     // randomize background color
-    levelColor=new Color(Rand(.1),Rand(.1),Rand(.1));
+    levelColor=new Color(Rand(0.1),Rand(0.1),Rand(0.1));
     if (isStartLevel)
-        levelColor=new Color(.1,0,.2);
+        levelColor=new Color(0.1,0,0.2);
     
     // loop incase level generation fails
     while(!GenerateLevelInternal()){}
@@ -1861,7 +1861,7 @@ function GenerateLevelInternal()
             continue;
 
         // for each open maze cell, fill out a circle of open space
-        let pos = (new Vector2(x+.5,y+.5)).Multiply(levelSize/levelMazeSize);
+        let pos = (new Vector2(x+0.5,y+0.5)).Multiply(levelSize/levelMazeSize);
         let radius = isFinalLevel?12:9;
         level.FillCircleType(pos,radius,1);
         for(let i=RandInt(4);i--;) // add extra randomness
@@ -1869,7 +1869,7 @@ function GenerateLevelInternal()
     }
     
     // convert player pos to world pos
-    playerStartPos.Add(.5).Multiply(levelSize/levelMazeSize);
+    playerStartPos.Add(0.5).Multiply(levelSize/levelMazeSize);
     
     if (isFinalLevel)
     {
@@ -1941,31 +1941,31 @@ function GenerateLevelInternal()
             // spawn enemy
             let enemyPower = 0;
             let e;
-            if (Rand() < .33 || levelNumber<=1)
+            if (Rand() < 0.33 || levelNumber<=1)
             {
                 // slime enemy
                 let healthLevel = RandIntBetween(1,3);
-                if (Rand() < .1 && levelNumber > 5)
+                if (Rand() < 0.1 && levelNumber > 5)
                     healthLevel = 4;
                 
-                let difficulty = levelNumber<5||Rand()<.5?1:2;
+                let difficulty = levelNumber<5||Rand()<0.5?1:2;
                 e = new SlimeEnemy(pos,healthLevel,difficulty);
                 enemyPower = difficulty*healthLevel;
             }
-            else if (levelNumber != 3 && (Rand() < .5 || levelNumber<=2))
+            else if (levelNumber != 3 && (Rand() < 0.5 || levelNumber<=2))
             {
                 // jumping enemy
-                let isBig = Rand() < .1 && levelNumber > 3;
+                let isBig = Rand() < 0.1 && levelNumber > 3;
                 e = new JumpingEnemy(pos,isBig);
                 enemyPower = isBig?6:2;
             }
             else // shield enemy
             {
-                let isBig = Rand() < .1 && levelNumber > 4;
+                let isBig = Rand() < 0.1 && levelNumber > 4;
                 e = new ShieldEnemy(pos,0,isBig);
                 enemyPower = isBig?9:3;
             }
-            if (levelNumber > 4 && Rand()<.1)
+            if (levelNumber > 4 && Rand()<0.1)
             {
                  // random invisible enemy
                 e.isInvisible = 1;
@@ -1994,7 +1994,7 @@ function GenerateLevelInternal()
     {
         // boss level
         new Store(new Vector2(43,47));
-        new ShieldEnemy(playerStartPos.Clone().Add(new Vector2(.5,0)), 1);
+        new ShieldEnemy(playerStartPos.Clone().Add(new Vector2(0.5,0)), 1);
         new Pickup(new Vector2(24,19.5), 2);
     }
     else
@@ -2006,12 +2006,12 @@ function GenerateLevelInternal()
             let m = levelMaze[x+y*levelMazeSize];
             if (m==2 && levelNumber > 1)
             {
-                let p = new Vector2(x+.5,y+.5).Multiply(levelSize/levelMazeSize);
+                let p = new Vector2(x+0.5,y+0.5).Multiply(levelSize/levelMazeSize);
                 let d = p.Distance(playerStartPos);
-                if (d>30&&Rand()<.3)
+                if (d>30&&Rand()<0.3)
                 {
                     // random powerup spawn
-                    if (Rand()>.5)
+                    if (Rand()>0.5)
                         new Pickup(p, 2);
                     else
                         new Boomerang(p);  
@@ -2069,9 +2069,9 @@ function UpdateTransiton()
 
 ///////////////////////////////////////////////////////////////////////////////
 // ZzFXmicro - Zuper Zmall Zound Zynth - MIT License - Copyright 2019 Frank Force
-let zzfx_v=.2;
+let zzfx_v=0.2;
 let zzfx_x=0;
-let zzfx=(e,f,a,b=1,d=.1,g=0,h=0,k=0,l=0)=>{if(!zzfx_x)return;let S=44100;a*=2*PI/S;a*=1+RandBetween(-f,f);g*=1E3*PI/(S**2);b=S*b|0;d=d*b|0;k*=2*PI/S;l*=PI;f=[];for(let m=0,n=0,c=0;c<b;++c)f[c]=e*zzfx_v*Math.cos(m*a*Math.cos(n*k+l))*(c<d?c/d:1-(c-d)/(b-d)),m+=1+RandBetween(-h,h),n+=1+RandBetween(-h,h),a+=g;e=zzfx_x.createBuffer(1,b,S);a=zzfx_x.createBufferSource();e.getChannelData(0).set(f);a.buffer=e;a.connect(zzfx_x.destination);a.start();return a}
+let zzfx=(e,f,a,b=1,d=0.1,g=0,h=0,k=0,l=0)=>{if(!zzfx_x)return;let S=44100;a*=2*PI/S;a*=1+RandBetween(-f,f);g*=1E3*PI/(S**2);b=S*b|0;d=d*b|0;k*=2*PI/S;l*=PI;f=[];for(let m=0,n=0,c=0;c<b;++c)f[c]=e*zzfx_v*Math.cos(m*a*Math.cos(n*k+l))*(c<d?c/d:1-(c-d)/(b-d)),m+=1+RandBetween(-h,h),n+=1+RandBetween(-h,h),a+=g;e=zzfx_x.createBuffer(1,b,S);a=zzfx_x.createBufferSource();e.getChannelData(0).set(f);a.buffer=e;a.connect(zzfx_x.destination);a.start();return a}
 
 let beatTimer = new Timer();
 let beatCount = 0;
@@ -2096,7 +2096,7 @@ function UpdateAudio()
     if (beatTimer.Elapsed())
     {
         ++beatCount;
-        beatTimer.Set(.5);
+        beatTimer.Set(0.5);
         
         // melody
         if (beatCount>15 && (!(beatCount&1) || RandInt(2)))
@@ -2105,7 +2105,7 @@ function UpdateAudio()
                 lastNote = 1; // return to root note every 8 beats
             
             // play the note
-            zzfx(.4,0,220*2**(scale[lastNote]/12), (RandInt(2)+1)/2, .05, 0, .4);
+            zzfx(0.4,0,220*2**(scale[lastNote]/12), (RandInt(2)+1)/2, 0.05, 0, 0.4);
             
             // random walk to another note in the scale
             lastNote = (lastNote + (RandInt(6)-2)+scale.length)%scale.length;
@@ -2115,9 +2115,9 @@ function UpdateAudio()
         if (beatCount%2==0||beatCount&18||!RandInt(20))
         {
             if (beatCount%4==0)
-                zzfx(.3,.2,1e3,.08,.05,.8,21,51); // ZzFX  highhat
+                zzfx(0.3,0.2,1e3,0.08,0.05,0.8,21,51); // ZzFX  highhat
             else
-                zzfx(.8,.2,150,.04,.002,.1,1,.5,.15); // ZzFX 17553 kick
+                zzfx(0.8,0.2,150,0.04,0.002,0.1,1,0.5,0.15); // ZzFX 17553 kick
         }
     }
 }
@@ -2127,69 +2127,69 @@ function PlaySound(sound, p=0)
     switch(sound)
     {
         case 1: // player hit
-        zzfx(1,.1,4504,.3,.1,-30,.5,.5,.33); // ZzFX 36695
+        zzfx(1,0.1,4504,0.3,0.1,-30,0.5,0.5,0.33); // ZzFX 36695
         break;
         
         case 2: // player die
-        zzfx(.7,0,500,4,.01,-0.2,3,3,0); // ZzFX 23250
+        zzfx(0.7,0,500,4,0.01,-0.2,3,3,0); // ZzFX 23250
         break;
         
         case 3: // get heart
-        zzfx(1,0,1504,.3,.17,1.7,.5,.4,.33); // ZzFX 36695
+        zzfx(1,0,1504,0.3,0.17,1.7,0.5,0.4,0.33); // ZzFX 36695
         break;
         
         case 4: // get heart container
-        zzfx(1,0,805,1.1,.71,.5,1.5,.5);  // ZzFX 16886
+        zzfx(1,0,805,1.1,0.71,0.5,1.5,0.5);  // ZzFX 16886
         break;
         
         case 5: // boomerang cut
-        zzfx(.3,.2,370,.2,.1,3.9,13,27,.12); // ZzFX 23473
+        zzfx(0.3,0.2,370,0.2,0.1,3.9,13,27,0.12); // ZzFX 23473
         break;
         
         case 6: // boomerang catch
-        zzfx(1,.1,0,.2,.23,2,.4,.6,.9); // ZzFX 20183
+        zzfx(1,0.1,0,0.2,0.23,2,0.4,0.6,0.9); // ZzFX 20183
         break;
         
         case 7: // boomerang throw
-        zzfx(1,.1,53,.2,.26,0,.1,7.5,.58); // ZzFX 24904
+        zzfx(1,0.1,53,0.2,0.26,0,0.1,7.5,0.58); // ZzFX 24904
         break;
         
         case 8: // enemy hit
-        zzfx(1,.2,370,.1,.23,4.5,2.8,27.4,.12); // ZzFX 23473
+        zzfx(1,0.2,370,0.1,0.23,4.5,2.8,27.4,0.12); // ZzFX 23473
         break;
 
         case 9: // enemy kill
-        zzfx(1,.1,1138,.2,.02,0,4,1.2,.1); // ZzFX 10015
+        zzfx(1,0.1,1138,0.2,0.02,0,4,1.2,0.1); // ZzFX 10015
         break;
 
         case 10: // coin
         if (!coinSoundTimer.IsSet())
-            coinSoundTimer.Set(.05); // trigger coin sound to play again
-        zzfx(1,.01,800+p,.2,.05); // ZzFX 98600
+            coinSoundTimer.Set(0.05); // trigger coin sound to play again
+        zzfx(1,0.01,800+p,0.2,0.05); // ZzFX 98600
         break;
         
         case 11: // low health
-        zzfx(.4,.1,418,.1,.79,5,0,1.9,.74); // ZzFX 7364
+        zzfx(0.4,0.1,418,0.1,0.79,5,0,1.9,0.74); // ZzFX 7364
         break;
 
         case 12: // dash
-        zzfx(1,.1,319,.4,.08,6.6,3.2,2.6,.59); // ZzFX 79527
+        zzfx(1,0.1,319,0.4,0.08,6.6,3.2,2.6,0.59); // ZzFX 79527
         break;
 
         case 13: // teleport
-        zzfx(1,.1,7,1,.97,0,.6,21.7,.5); // ZzFX 60532
+        zzfx(1,0.1,7,1,0.97,0,0.6,21.7,0.5); // ZzFX 60532
         break;
 
         case 14: // boomerang hit solid
-        zzfx(.8,.1,70,.1,.23,4.5,2.8,27,.12); // ZzFX 23473
+        zzfx(0.8,0.1,70,0.1,0.23,4.5,2.8,27,0.12); // ZzFX 23473
         break;
 
         case 15: // boomerang reflect
-        zzfx(1,.1,800,.2,.02,-0.3); // ZzFX 14772
+        zzfx(1,0.1,800,0.2,0.02,-0.3); // ZzFX 14772
         break;
 
         case 16: // dodge recharge
-        zzfx(1,.1,0,.1,.1,1,.1,100); // ZzFX 88949
+        zzfx(1,0.1,0,0.1,0.1,1,0.1,100); // ZzFX 88949
         break;
     }
 }

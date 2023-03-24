@@ -1087,7 +1087,7 @@ var autoBattle = {
                 return 20 + (10 * this.level);
             },
             shockMod: function(){
-                return .40 + (.1 * this.level);
+                return 0.40 + (0.1 * this.level);
             },
             doStuff: function(){
                 if (autoBattle.trimp.shockTime < 20000) autoBattle.trimp.shockTime = 20000;
@@ -1303,7 +1303,7 @@ var autoBattle = {
                 return 11 + (this.level * 4);
             },
             lifesteal: function(){
-                return 0.2 + (this.level * .1);
+                return 0.2 + (this.level * 0.1);
             },
             doStuff: function(){
                 autoBattle.trimp.attack += this.attack();
@@ -1331,7 +1331,7 @@ var autoBattle = {
                 return 35 + (5 * this.level);
             },
             shockMod: function(){
-                return .65 + (.1 * this.level);
+                return 0.65 + (0.1 * this.level);
             },
             shockResist: function(){
                 return 10 + (5 * this.level);
@@ -2200,7 +2200,7 @@ var autoBattle = {
                 return prettify(this.effect() * 100);
             },
             effect: function(){
-                return .2 + (0.05 * this.level);
+                return 0.2 + (0.05 * this.level);
             },
             doStuff: function(){
                 autoBattle.trimp.attack *= (1 + this.effect());

@@ -1051,7 +1051,7 @@ var FullScreenMario;
             if (xloc > FSM.MapScreener.right) {
                 return 0;
             }
-            return Math.max(.14, Math.min(.84, (FSM.MapScreener.width - Math.abs(xloc - FSM.player.left)) / FSM.MapScreener.width));
+            return Math.max(0.14, Math.min(0.84, (FSM.MapScreener.width - Math.abs(xloc - FSM.player.left)) / FSM.MapScreener.width));
         };
         /**
          * Determines the name of the default theme for the current area,

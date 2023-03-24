@@ -28,7 +28,7 @@ var FullScreenMario;
              * Decreases a player's jumping yvel based on whether it's running.
              */
             "decreasePlayerJumpingYvel": function (constants, equations, player) {
-                var jumpmod = player.FSM.MapScreener.jumpmod - player.xvel * .0014, power = Math.pow(player.keys.jumplev, jumpmod), dy = player.FSM.unitsize / power;
+                var jumpmod = player.FSM.MapScreener.jumpmod - player.xvel * 0.0014, power = Math.pow(player.keys.jumplev, jumpmod), dy = player.FSM.unitsize / power;
                 player.yvel = Math.max(player.yvel - dy, constants.maxyvelinv);
             },
             /**
@@ -41,11 +41,11 @@ var FullScreenMario;
                 if (player.keys.run !== 0 && !player.crouching) {
                     var dir = player.keys.run, 
                     // No sprinting underwater
-                    sprinting = Number(player.keys.sprint && !player.FSM.MapScreener.underwater) || 0, adder = dir * (.098 * (Number(sprinting) + 1)), decel = 0, skiddingChanged = false;
+                    sprinting = Number(player.keys.sprint && !player.FSM.MapScreener.underwater) || 0, adder = dir * (0.098 * (Number(sprinting) + 1)), decel = 0, skiddingChanged = false;
                     // Reduce the speed, both by subtracting and dividing a little
                     player.xvel += adder || 0;
-                    player.xvel *= .98;
-                    decel = .0007;
+                    player.xvel *= 0.98;
+                    decel = 0.0007;
                     // If you're accelerating in the opposite direction from your current velocity, that's a skid
                     if ((player.keys.run > 0) === player.moveleft) {
                         if (!player.skidding) {
@@ -61,8 +61,8 @@ var FullScreenMario;
                 }
                 else {
                     // Otherwise slow down a bit
-                    player.xvel *= .98;
-                    decel = .035;
+                    player.xvel *= 0.98;
+                    decel = 0.035;
                 }
                 if (player.xvel > decel) {
                     player.xvel -= decel;
@@ -87,7 +87,7 @@ var FullScreenMario;
              * @returns A player's yvel for when riding up a springboard.
              */
             "springboardYvelUp": function (constants, equations, thing) {
-                return Math.max(thing.FSM.unitsize * -2, thing.tensionSave * -.98);
+                return Math.max(thing.FSM.unitsize * -2, thing.tensionSave * -0.98);
             },
             /**
              * @returns How many fireworks to show at the end of a level,

@@ -876,7 +876,7 @@ var LevelEditr;
                     "onclick": this.cancelEvent.bind(this),
                     "innerText": "<",
                     "style": {
-                        "opacity": .14
+                        "opacity": 0.14
                     }
                 }),
                 "right": this.GameStarter.createElement("div", {
@@ -1751,7 +1751,7 @@ var LevelEditr;
             this.GameStarter.TimeHandler.cancelAllEvents();
             if ((thing.hasOwnProperty("hidden") && thing.hidden) || thing.opacity === 0) {
                 thing.hidden = false;
-                thing.opacity = .35;
+                thing.opacity = 0.35;
             }
         };
         /**

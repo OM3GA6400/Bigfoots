@@ -37,7 +37,7 @@ var FullScreenMario;
             var dx = -3;
             thing.FSM.TimeHandler.addEventInterval(function (thing) {
                 thing.FSM.shiftVert(thing, dx);
-                dx += .5;
+                dx += 0.5;
                 if (dx === 3.5) {
                     thing.up = undefined;
                     return true;
@@ -418,7 +418,7 @@ var FullScreenMario;
                 && thing.resting.title !== "Floor"
                 && thing.FSM.NumberMaker.randomBoolean()) {
                 thing.falling = true;
-                thing.yvel = thing.FSM.unitsize * -.7;
+                thing.yvel = thing.FSM.unitsize * -0.7;
                 thing.FSM.TimeHandler.addEvent(function () {
                     thing.falling = false;
                 }, 42);
@@ -669,7 +669,7 @@ var FullScreenMario;
                 ], "paddlingCycle", 7);
             }
             thing.paddling = thing.paddlingCycle = thing.swimming = true;
-            thing.yvel = thing.FSM.unitsize * -.84;
+            thing.yvel = thing.FSM.unitsize * -0.84;
         };
         /**
          * Animation Function for when a player lands to reset size and remove
@@ -825,7 +825,7 @@ var FullScreenMario;
             thing.FSM.removeClasses(thing, "climbing running");
             thing.FSM.addClass(thing, "jumping");
             thing.xvel = 1.4;
-            thing.yvel = -.7;
+            thing.yvel = -0.7;
             thing.nocollide = thing.nofall = false;
             thing.gravity = thing.FSM.MapScreener.gravity / 14;
             thing.FSM.TimeHandler.addEvent(function () {

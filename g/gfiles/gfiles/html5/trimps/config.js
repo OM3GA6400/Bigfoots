@@ -4216,7 +4216,7 @@ var toReturn = {
 				return text;
 			},
 			getMult: function(){
-				return 1 + (this.stacks * .2);
+				return 1 + (this.stacks * 0.2);
 			},
 			stacks: 0,
 			lastOverkill: -1,
@@ -4903,7 +4903,7 @@ var toReturn = {
 				return "Your Trimps have -" + prettify((1 - this.getHealthMult(true)) * 100) + "% health and can no longer become frenzied.";
 			},
 			getHealthMult: function(getWeak){
-				if (this.frenzyStacks == 0 || getWeak)	return 1 - (this.weakened * .0499);
+				if (this.frenzyStacks == 0 || getWeak)	return 1 - (this.weakened * 0.0499);
 				return 1 - (this.frenzyStacks * 0.02);
 			},
 			getAttackMult: function(){
@@ -8173,7 +8173,7 @@ var toReturn = {
 			health: 1.5,
 			fast: false,
 			loot: function (level) {
-				var amt = rewardResource("metal", .25, level, true);
+				var amt = rewardResource("metal", 0.25, level, true);
 				message("Mechimp disengaged. Reward encountered: " + prettify(amt) + " bars of metal. Huzzah.", "Loot", "*cubes", null, 'primary');
 			}
 		},
@@ -8184,7 +8184,7 @@ var toReturn = {
 			health: 0.8,
 			fast: false,
 			loot: function (level) {
-				var amt = rewardResource("metal", .25, level, true);
+				var amt = rewardResource("metal", 0.25, level, true);
 				message("Destructimp shorted out. Salvage results: " + prettify(amt) + " bars of metal. Acceptable.", "Loot", "*cubes", null, 'primary');
 			}
 		},
@@ -8195,7 +8195,7 @@ var toReturn = {
 			health: 1.2,
 			fast: false,
 			loot: function (level) {
-				var amt = rewardResource("metal", .25, level, true);
+				var amt = rewardResource("metal", 0.25, level, true);
 				message("Terminatimp Terminated. Findings: " + prettify(amt) + " bars of metal. Hasta la Vista.", "Loot", "*cubes", null, 'primary');
 			}
 		},
@@ -8206,7 +8206,7 @@ var toReturn = {
 			health: 1.3,
 			fast: false,
 			loot: function (level) {
-				var amt = rewardResource("metal", .5, level, true);
+				var amt = rewardResource("metal", 0.5, level, true);
 				message("Autoimp force quit. Memory dump provides " + prettify(amt) + " bars of metal and no clues. It's a feature!", "Loot", "*cubes", null, 'primary');
 			}
 		},
@@ -8250,7 +8250,7 @@ var toReturn = {
 			health: 1.8,
 			fast: true,
 			loot: function (level) {
-				var amt = rewardResource("metal", .5, level, true);
+				var amt = rewardResource("metal", 0.5, level, true);
 				message("The Fusimp explodes, leaving behind " + prettify(amt) + " bars of metal and a nice dose of radiation.", "Loot", "*cubes", null, 'primary');
 			}
 		},
@@ -10839,7 +10839,7 @@ var toReturn = {
 			get tooltip (){
 				var text = "<p>Each Geneticist will increase the health of each Trimp by 1% (compounding), but slows the rate at which baby Trimps grow by 2% (compounding).</p>"
 				if (this.owned > 0) {
-					var breedMult = Math.pow(.98, game.jobs.Geneticist.owned);
+					var breedMult = Math.pow(0.98, game.jobs.Geneticist.owned);
 					var breedDisplay = (breedMult > 0.0001) ? breedMult.toFixed(4) : breedMult.toExponential(3);
 					var healthMult = Math.pow(1.01, this.owned);
 					var healthDisplay = prettify((healthMult * 100) - 100) + "%";
