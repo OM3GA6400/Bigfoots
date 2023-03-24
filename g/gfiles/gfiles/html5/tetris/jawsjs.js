@@ -711,7 +711,7 @@ jaws.GameLoop = function(setup, update, draw, wanted_fps) {
 function MeanValue(size) {
   this.size = size
   this.values = new Array(this.size)
-  this.value
+  
 
   this.add = function(value) {
     if(this.values.length > this.size) {  // is values filled?
@@ -845,7 +845,7 @@ jaws.Sprite.prototype.set = function(options) {
   this.angle = options.angle || 0
   this.flipped = options.flipped || false
   this.anchor(options.anchor || "top_left")
-  options.image && this.setImage(options.image)
+  
   this.cacheOffsets()
   return this
 }
@@ -1009,7 +1009,7 @@ jaws.Sprite.prototype.draw = function() {
   this.context.save()
   this.context.translate(this.x, this.y)
   if(this.angle!=0) { jaws.context.rotate(this.angle * Math.PI / 180) }
-  this.flipped && this.context.scale(-1, 1)
+  
   this.context.globalAlpha = this.alpha
   this.context.translate(-this.left_offset, -this.top_offset) // Needs to be separate from above translate call cause of flipped
   this.context.drawImage(this.image, 0, 0, this.width, this.height)
@@ -1311,8 +1311,8 @@ jaws.Viewport = function(options) {
   };
  
   this.move = function(x, y) {
-    x && (this.x += x)
-    y && (this.y += y)
+    
+    
     this.verifyPosition()
   };
   

@@ -222,12 +222,7 @@ function DestroyLevelObject(pos,bounceRock=1)
         }
 
         // particle effects
-        new ParticleEmitter
-        (
-            pos, 0.5, 0.1,     // pos, emitter size, particle size
-            type==1 ? new Color(0.4,0.8,0.1,1) : new Color(0.4,0.2,0.1,1),
-            type==1 ? new Color(0,0.1,0,1) : new Color(0,0,0,1)
-        );
+        
     }
 
     return bounce;
@@ -1425,7 +1420,7 @@ class ShieldEnemy extends Enemy
             if (isFinalLevel)
             {
                 // player win
-                new Pickup(this.pos, 2);
+                
                 SpawnPickups(this.pos,1,40);
                 winTimer.Set();
                 localStorage.kbap_warp=0;
@@ -1466,7 +1461,7 @@ class Store extends MyGameObject
                 else if (i==1)
                     item = RandIntBetween(2,3);
             }
-            new StoreItem(pos.Clone().AddXY(i*2+o,0),item,this);
+            
         }
             
         this.pos.y-=2;
@@ -1980,22 +1975,22 @@ function GenerateLevelInternal()
     if (isStartLevel)
     {
         // title screen
-        new Store(new Vector2(24,3.5));
-        new ShieldEnemy(playerStartPos.Clone(), 1);
-        new Pickup(playerStartPos.Clone().Add(new Vector2(16,0)), 2);
+        
+        
+        
         levelExit = new LevelExit(new Vector2(24,13));
         
         if (warpLevel>1)
-            new LevelExit(new Vector2(29.5,8),2); // warp
+             // warp
         if (localStorage.kbap_won)
-            new LevelExit(new Vector2(29.5,13),3); // speed run
+             // speed run
     }
     else if (isFinalLevel)
     {
         // boss level
-        new Store(new Vector2(43,47));
-        new ShieldEnemy(playerStartPos.Clone().Add(new Vector2(0.5,0)), 1);
-        new Pickup(new Vector2(24,19.5), 2);
+        
+        
+        
     }
     else
     {
@@ -2012,19 +2007,19 @@ function GenerateLevelInternal()
                 {
                     // random powerup spawn
                     if (Rand()>0.5)
-                        new Pickup(p, 2);
+                        
                     else
-                        new Boomerang(p);  
+                          
                          
                     level.FillCircleType(p,RandIntBetween(2,4),1);
                     level.FillCircleObject(p,RandIntBetween(3,5),0); 
                 }
                 else
-                    new Store(p);
+                    
             }
         }
 
-        new LevelExit(playerStartPos,1);
+        
     }
     
     // draw the level
