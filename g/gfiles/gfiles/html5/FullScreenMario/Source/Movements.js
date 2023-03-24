@@ -86,7 +86,7 @@ var FullScreenMario;
          * @remarks thing.counter must be set elsewhere, such as during spawning.
          */
         Movements.prototype.movePacing = function (thing) {
-            thing.counter += .007;
+            thing.counter += 0.007;
             thing.xvel = Math.sin(Math.PI * thing.counter) / 2.1;
         };
         /**
@@ -552,10 +552,10 @@ var FullScreenMario;
                     break;
             }
             if (thing.squeeze) {
-                thing.yvel = Math.max(thing.yvel + .021, .7); // going down
+                thing.yvel = Math.max(thing.yvel + 0.021, 0.7); // going down
             }
             else {
-                thing.yvel = Math.min(thing.yvel - .035, -.7); // going up
+                thing.yvel = Math.min(thing.yvel - 0.035, -0.7); // going up
             }
             if (thing.top > thing.FSM.unitsize * 16) {
                 thing.FSM.shiftVert(thing, thing.yvel, true);
@@ -640,8 +640,8 @@ var FullScreenMario;
                 }
             }
             else {
-                thing.counter += .007;
-                thing.FSM.slideToX(thing, player.left + player.xvel + Math.sin(Math.PI * thing.counter) * 117, player.maxspeed * .7);
+                thing.counter += 0.007;
+                thing.FSM.slideToX(thing, player.left + player.xvel + Math.sin(Math.PI * thing.counter) * 117, player.maxspeed * 0.7);
             }
         };
         /**
@@ -754,7 +754,7 @@ var FullScreenMario;
             }
             // Movement mods
             // Slowing down
-            if (Math.abs(thing.xvel) < .14) {
+            if (Math.abs(thing.xvel) < 0.14) {
                 if (thing.running) {
                     thing.running = false;
                     if (thing.power === 1) {
@@ -805,7 +805,7 @@ var FullScreenMario;
                     if (thing.power === 1) {
                         thing.FSM.setPlayerSizeSmall(thing);
                     }
-                    thing.FSM.addClass(thing, Math.abs(thing.xvel) < .14 ? "still" : "running");
+                    thing.FSM.addClass(thing, Math.abs(thing.xvel) < 0.14 ? "still" : "running");
                 }
                 // Paddling
                 if (thing.paddling) {

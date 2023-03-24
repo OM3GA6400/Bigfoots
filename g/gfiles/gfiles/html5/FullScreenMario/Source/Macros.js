@@ -412,7 +412,7 @@ var FullScreenMario;
          * @returns Multiple Platforms.
          */
         Macros.prototype.macroPlatformGenerator = function (reference, prethings, area, map, FSM) {
-            var output = [], direction = reference.direction || 1, levels = direction > 0 ? [0, 48] : [8, 56], width = reference.width || 16, x = reference.x || 0, yvel = direction * FSM.unitsize * .42, i;
+            var output = [], direction = reference.direction || 1, levels = direction > 0 ? [0, 48] : [8, 56], width = reference.width || 16, x = reference.x || 0, yvel = direction * FSM.unitsize * 0.42, i;
             for (i = 0; i < levels.length; i += 1) {
                 output.push({
                     "thing": "Platform",
@@ -425,7 +425,7 @@ var FullScreenMario;
             }
             output.push({
                 "thing": "PlatformString",
-                "x": x + (width / 2) - .5,
+                "x": x + (width / 2) - 0.5,
                 "y": FSM.MapScreener.floor,
                 "width": 1,
                 "height": FSM.MapScreener.height / FSM.unitsize

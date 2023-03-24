@@ -1675,7 +1675,7 @@ function getChallengeSquaredButtonColor(challenge){
 	var g = parseInt(255 - (percent * 255), 10);
 	//var b = parseInt(255 - (percent * 102)); commenting this out and reusing r is technically an optimization
 	var rgb = "rgb(" + r + "," + g + "," + r + ")";
-	if (percent < .5) rgb += "; color: black; border-color: black";
+	if (percent < 0.5) rgb += "; color: black; border-color: black";
 	return rgb;
 }
 
@@ -3677,7 +3677,7 @@ function rewardResource(what, baseAmt, level, checkMapLootScale, givePercentage)
 	}
 	//Scale 20% across the Zone, depending on cell number
 	if (what != "helium" && what != "fragments"){
-		amt = (amt * .8) + ((amt * .002) * (cell + 1));
+		amt = (amt * 0.8) + ((amt * 0.002) * (cell + 1));
 	}
 	if (checkMapLootScale){
 		var compare = game.global.world;
@@ -5011,7 +5011,7 @@ function breed() {
 	//console.log(getDesiredGenes(potencyMod.toNumber()));
 
 	//Geneticist
-	if (game.jobs.Geneticist.owned > 0) potencyMod = potencyMod.mul(Math.pow(.98, game.jobs.Geneticist.owned));
+	if (game.jobs.Geneticist.owned > 0) potencyMod = potencyMod.mul(Math.pow(0.98, game.jobs.Geneticist.owned));
 	
 	breeding = potencyMod.mul(breeding);
     updatePs(breeding.toNumber(), true);
@@ -5324,7 +5324,7 @@ function createMap(newLevel, nameOverride, locationOverride, lootOverride, sizeO
 	if (!nameOverride && newMap.difficulty == getMapMinMax('difficulty', 0)[0] && newMap.size == getMapMinMax('size', 0)[0] && newMap.loot == maxLoot)
 		giveSingleAchieve('Maptastic')
 	if (newMap.location == 'Plentiful' && game.global.decayDone){
-		newMap.loot += .25;
+		newMap.loot += 0.25;
 	}
 	if (game.global.farmlandsUnlocked && newMap.location == 'Farmlands' && game.global.universe == 2){
 		newMap.loot += 1;
@@ -8300,7 +8300,7 @@ var mutations = {
 			if (game.global.world < 20 || game.global.runningChallengeSquared) return;
 			var percentage = 0.45;
 			var baseValue = 30;
-			if (game.talents.healthStrength2.purchased) percentage += .2;
+			if (game.talents.healthStrength2.purchased) percentage += 0.2;
 			var amt = rewardResource("helium", baseValue, 99, false, percentage);
 			var text = "The land looks even healthier now that the Bad Guy is dead! <span class='helium'>You find " + prettify(amt) + " canisters of Helium and figure it was worth it.</span>";
 			message(text, "Loot", heliumIcon(true), "Healthy", "helium");
@@ -9163,7 +9163,7 @@ function getRandomBadGuy(mapSuffix, level, totalCells, world, imports, mutation,
 		return imports[getRandomIntSeeded(enemySeed++, 0, imports.length)];
 	}
 	if (!mapSuffix && !force) {
-		var chance = .35 * (1 / (100 - 1 - (exoticChance * imports.length)));
+		var chance = 0.35 * (1 / (100 - 1 - (exoticChance * imports.length)));
 		chance = Math.round(chance * 100000);
 		if (game.talents.turkimp.purchased) chance *= 1.33;
 		var roll = getRandomIntSeeded(enemySeed++, 0, 100000);
@@ -10948,7 +10948,7 @@ function getBaseBlock(){
 }
 
 function calculateDamage(number, buildString, isTrimp, noCheckAchieve, cell, noFluctuation) { //number = base attack
-    var fluctuation = .2; //%fluctuation
+    var fluctuation = 0.2; //%fluctuation
 	var maxFluct = -1;
 	var minFluct = -1;
 	if (getPerkLevel("Equality")) number *= game.portal.Equality.getMult(isTrimp);
@@ -10976,7 +10976,7 @@ function calculateDamage(number, buildString, isTrimp, noCheckAchieve, cell, noF
 		if (!game.global.mapsActive && game.global.mapBonus > 0){
 			var mapBonus = game.global.mapBonus;
 			if (game.talents.mapBattery.purchased && mapBonus == 10) mapBonus *= 2;
-			number *= ((mapBonus * .2) + 1);
+			number *= ((mapBonus * 0.2) + 1);
 		}
 		if (game.global.titimpLeft >= 1 && game.global.mapsActive){
 			number *= 2;
@@ -10985,10 +10985,10 @@ function calculateDamage(number, buildString, isTrimp, noCheckAchieve, cell, noF
 			number *= (1 + (game.global.achievementBonus / 100));
 		}
 		if (game.global.challengeActive == "Discipline" || game.global.challengeActive == "Unlucky"){
-			fluctuation = .995;
+			fluctuation = 0.995;
 		}
 		else if (getPerkLevel("Range") > 0){
-			minFluct = fluctuation - (.02 * getPerkLevel("Range"));
+			minFluct = fluctuation - (0.02 * getPerkLevel("Range"));
 		}
 		if (game.global.challengeActive == "Decay" || game.global.challengeActive == "Melt"){
 			var challenge = game.challenges[game.global.challengeActive];
@@ -11876,8 +11876,8 @@ function nextWorld() {
 		}
 	}
 	if (game.talents.blacksmith.purchased && (game.global.challengeActive != "Mapology" || !game.global.runningChallengeSquared)){
-		var smithWorld = .5;
-		if (game.talents.blacksmith3.purchased) smithWorld = .9;
+		var smithWorld = 0.5;
+		if (game.talents.blacksmith3.purchased) smithWorld = 0.9;
 		else if (game.talents.blacksmith2.purchased) smithWorld = 0.75;
 		smithWorld =  Math.floor((getHighestLevelCleared(false, true) + 1) * smithWorld);
 		if (game.global.world <= smithWorld){
@@ -12934,7 +12934,7 @@ var dailyModifiers = {
 				return str / 10;
 			},
 			getWeight: function (str) {
-				return .25 * str * -1;
+				return 0.25 * str * -1;
 			},
 			minMaxStep: [5, 10, 1],
 			incompatible: ["trimpCritChanceDown"],
@@ -14544,7 +14544,7 @@ function fight(makeUp) {
 function reduceSoldierHealth(amt, directAttack){
 	if (game.global.soldierHealth <= 0) return;
 	if (game.global.challengeActive == "Mayhem" && (game.global.mapsActive || game.global.lastClearedCell == 98)){
-		game.challenges.Mayhem.poison += (amt * .2);
+		game.challenges.Mayhem.poison += (amt * 0.2);
 		game.challenges.Mayhem.drawStacks();
 	}
 	var wasFull = (game.global.soldierHealth >= game.global.soldierHealthMax)

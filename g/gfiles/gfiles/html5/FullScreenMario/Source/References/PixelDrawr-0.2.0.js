@@ -37,7 +37,7 @@ var PixelDrawr;
             this.groupNames = settings.groupNames;
             this.framerateSkip = settings.framerateSkip || 1;
             this.framesDrawn = 0;
-            this.epsilon = settings.epsilon || .007;
+            this.epsilon = settings.epsilon || 0.007;
             this.keyWidth = settings.keyWidth || "width";
             this.keyHeight = settings.keyHeight || "height";
             this.keyTop = settings.keyTop || "top";

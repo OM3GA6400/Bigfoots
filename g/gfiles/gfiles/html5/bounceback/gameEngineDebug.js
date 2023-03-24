@@ -120,7 +120,7 @@ function DebugRect(pos,size,color="#F00")
     if (debug) debugRects.push({pos:pos.Clone(),size:size.Clone(),color:color.slice(0)});
 }
 
-function DebugPoint(pos,size=.1,color="#F00")
+function DebugPoint(pos,size=0.1,color="#F00")
 {
     if (debug) DebugRect(pos, new Vector2(size,size), color)
 }

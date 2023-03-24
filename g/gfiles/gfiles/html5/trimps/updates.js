@@ -471,7 +471,7 @@ function tooltip(what, isItIn, event, textString, attachFunction, numCheck, rena
 				max = ((setting && setting.buyMax) ? setting.buyMax : 0 );
 				if (max > 1e4) max = max.toExponential().replace('+', '');	
 				checkbox = buildNiceCheckbox('autoJobCheckbox' + item, 'autoCheckbox', (setting && setting.enabled));	
-				var options = "<option value='0.1'" + ((selectedPerc == 0.001) ? " selected" : "") + ">0.1%</option><option value='1'" + ((selectedPerc == .01) ? " selected" : "") + ">1%</option><option value='5'" + ((selectedPerc == .05) ? " selected" : "") + ">5%</option><option value='10'" + ((selectedPerc == .10) ? " selected" : "") + ">10%</option><option value='25'" + ((selectedPerc == .25) ? " selected" : "") + ">25%</option><option value='50'" + ((selectedPerc == .50) ? " selected" : "") + ">50%</option><option value='99'" + ((selectedPerc == .99) ? " selected" : "") + ">99%</option>";
+				var options = "<option value='0.1'" + ((selectedPerc == 0.001) ? " selected" : "") + ">0.1%</option><option value='1'" + ((selectedPerc == 0.01) ? " selected" : "") + ">1%</option><option value='5'" + ((selectedPerc == 0.05) ? " selected" : "") + ">5%</option><option value='10'" + ((selectedPerc == 0.10) ? " selected" : "") + ">10%</option><option value='25'" + ((selectedPerc == 0.25) ? " selected" : "") + ">25%</option><option value='50'" + ((selectedPerc == 0.50) ? " selected" : "") + ">50%</option><option value='99'" + ((selectedPerc == 0.99) ? " selected" : "") + ">99%</option>";
 				tooltipText += "<td style='width: 60%'><div class='row'><div class='col-xs-5' style='padding-right: 5px'>" + checkbox + "&nbsp;&nbsp;<span>" + item + "</span></div><div style='text-align: center; padding-left: 0px;' class='col-xs-2'><select  id='autoJobSelect" + item + "'>" + options + "</select></div><div class='col-xs-5 lowPad' style='text-align: right'>Up To: <input class='jobConfigQuantity' id='autoJobQuant" + item + "'  value='" + prettify(max) + "'/></div></div></td></tr>";	
 			}
 		}
@@ -1638,7 +1638,7 @@ function positionTooltip(elem, event, extraInf){
 	var bodw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0),
 		bodh = Math.max(document.documentElement.clientHeight, window.innerHeight || 0),
 		tiph = Math.max(elem.clientHeight, elem.scrollHeight, elem.offsetHeight),
-		tipw = bodw * .325,
+		tipw = bodw * 0.325,
 		center = cordx - (tipw / 2),
 		spacing = bodh * 0.04,
 		setLeft,
@@ -1647,7 +1647,7 @@ function positionTooltip(elem, event, extraInf){
 		if (extraInf == "Heirloom") setting = 1;
 		else setting = game.options.menu.tooltipPosition.enabled;
 	if (extraInf == "forceLeft") {
-		elem.style.left = Math.floor(cordx - (bodw * .55)) + "px";
+		elem.style.left = Math.floor(cordx - (bodw * 0.55)) + "px";
 		elem.style.top = Math.floor(cordy - (tiph * 0.5)) + "px";
 		return;
 	}
@@ -1921,7 +1921,7 @@ function getPsString(what, rawNum) {
 		var meditation = game.portal.Meditation;
 		var medStrength = meditation.getBonusPercent();
 		if (medStrength > 0){
-			currentCalc *= (1 + (medStrength * .01));
+			currentCalc *= (1 + (medStrength * 0.01));
 			textString += "<tr><td class='bdTitle'>Meditation</td><td class='bdPercent'>" + (meditation.getBonusPercent(true) * 10) + " minutes (+" + medStrength + "%)</td><td class='bdNumber'>" + prettify(currentCalc) + "</td></tr>";
 		}
 	}
@@ -2188,7 +2188,7 @@ function getTrimpPs() {
 	}
 	//Add Geneticist
 	if (game.jobs.Geneticist.owned > 0) {
-		var mult = Math.pow(.98, game.jobs.Geneticist.owned);
+		var mult = Math.pow(0.98, game.jobs.Geneticist.owned);
 		currentCalc *= mult;
 		var display = (mult > 0.0001) ? mult.toFixed(4) : mult.toExponential(3);
 		textString += "<tr style='color: red'><td class='bdTitle'>Geneticist</td><td class='bdPercent'>x  " + display + "</td><td class='bdNumber'>" + prettify(currentCalc) + "</td></tr>";
@@ -3085,7 +3085,7 @@ function getLootBd(what) {
 				amt = avgSec * 3.5;
 			else
 				amt = avgSec * 5;
-			amt = (amt * .8) + ((amt * .002) * (cell + 1));
+			amt = (amt * 0.8) + ((amt * 0.002) * (cell + 1));
 			currentCalc = amt;
 			textString += "<tr><td class='bdTitle'>Base</td><td></td><td></td><td>" + prettify(amt) + "</td><td>" + prettify(currentCalc) + "</td></tr>";
 			if ((game.talents.turkimp2.purchased || game.global.turkimpTimer > 0) && (game.global.playerGathering == "food" || game.global.playerGathering == "metal" || game.global.playerGathering == "wood")){
@@ -3107,12 +3107,12 @@ function getLootBd(what) {
 			}
 			amt = Math.round(0.5 * Math.pow(1.23, Math.sqrt(level)));
 			amt += Math.round(0.5 * level);
-			amt = (amt * .8) + ((amt * .002) * (cell + 1));
+			amt = (amt * 0.8) + ((amt * 0.002) * (cell + 1));
 			currentCalc = amt;
 			textString += "<tr><td class='bdTitle'>Base</td><td></td><td></td><td>" + prettify(amt) + "</td><td>" + prettify(currentCalc) + "</td></tr>";
 			if (game.jobs.Dragimp.owned >= 1){
 				amt = 1.5 * game.jobs.Dragimp.modifier;
-				amt = (amt * .8) + ((amt * .002) * (cell + 1));
+				amt = (amt * 0.8) + ((amt * 0.002) * (cell + 1));
 				currentCalc += amt;
 				textString += "<tr><td class='bdTitle'>Dragimp Scouting</td><td></td><td></td><td>+ " + prettify(amt) + "</td><td>" + prettify(currentCalc) + "</td></tr>";
 			}

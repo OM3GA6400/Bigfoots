@@ -307,7 +307,7 @@ var DeviceLayr;
                     "dpadLeft",
                     "dpadRight"
                 ],
-                "joystickThreshold": .49
+                "joystickThreshold": 0.49
             }
         };
         return DeviceLayr;

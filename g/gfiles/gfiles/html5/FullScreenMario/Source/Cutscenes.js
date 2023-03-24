@@ -127,7 +127,7 @@ var FullScreenMario;
             FSM.arrayToBeginning(flag, FSM.GroupHolder.getGroup(flag.groupType));
             // Animate the flag raising
             FSM.TimeHandler.addEventInterval(function () {
-                FSM.shiftVert(flag, FSM.unitsize * -.25);
+                FSM.shiftVert(flag, FSM.unitsize * -0.25);
             }, 1, flagMovements);
             // If there should be fireworks, add each of them on an interval
             if (numFireworks > 0) {

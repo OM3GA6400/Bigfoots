@@ -2542,7 +2542,7 @@ function decorateBrambles(level) {
 	angle += Math.PI;
 	dist += (ROT.RNG.getUniform()-0.5)*radius;
 
-	for (let a=angle-da; a<angle+da; a+=.01) {
+	for (let a=angle-da; a<angle+da; a+=0.01) {
 		let xy = center.plus(new XY(Math.cos(a), Math.sin(a)).scale(dist)).round();
 		if (!level.isInside(xy)) { continue; }
 		if (level.getEntity(xy) != WALL) { continue; }

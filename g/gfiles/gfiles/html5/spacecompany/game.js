@@ -278,10 +278,10 @@ var Game = (function() {
         var logoElement = $('#loadLogo');
         var opacity = logoElement.css('opacity');
         if(opacity >= 0.9) {
-            logoElement.fadeTo(1000, .95, function() { Game.logoAnimating = false; });
+            logoElement.fadeTo(1000, 0.95, function() { Game.logoAnimating = false; });
             self.logoAnimating = true;
         } else if (opacity <= 0.3) {
-            logoElement.fadeTo(1000, .95, function() { Game.logoAnimating = false; });
+            logoElement.fadeTo(1000, 0.95, function() { Game.logoAnimating = false; });
             self.logoAnimating = true;
         }
     };

@@ -113,7 +113,7 @@ class Color
 
 class GameObject 
 {
-    constructor(pos,tileX,tileY,size=.5,collisionSize=0,health=1) 
+    constructor(pos,tileX,tileY,size=0.5,collisionSize=0,health=1) 
     { 
         this.pos = pos.Clone();
         this.tileX = tileX;
@@ -128,10 +128,10 @@ class GameObject
         this.velocity = new Vector2();
         this.angle = 0;
         this.angleVelocity = 0;
-        this.damping = .8;
+        this.damping = 0.8;
         this.mirror = 0;
         this.height = 0;
-        this.damageFlashTime = .5;
+        this.damageFlashTime = 0.5;
         this.differenceFlash = 1;
         
         gameObjects.push(this); 
@@ -155,12 +155,12 @@ class GameObject
             if (!isClearX || isClearY)
             {
                 newPos.x = oldPos.x;
-                this.velocity.x *= -.5;
+                this.velocity.x *= -0.5;
             }
             if (!isClearY || isClearX)
             {
                 newPos.y = oldPos.y;
-                this.velocity.y *= -.5;
+                this.velocity.y *= -0.5;
             }
         }
         this.pos = newPos;
@@ -188,7 +188,7 @@ class GameObject
     
     Damage(damage) 
     {
-        if (this.IsDead() || this.GetDamageTime() < .5)
+        if (this.IsDead() || this.GetDamageTime() < 0.5)
             return 0;
             
         // apply damage
@@ -303,7 +303,7 @@ function EngineUpdate()
     mainCanvasContext.imageSmoothingEnabled = 0;
     
     // get mouse world pos
-    mousePosWorld.Copy(mousePos).Subtract(mainCanvasSize.Clone(.5)).Multiply(1/cameraScale*tileSize).Add(cameraPos);
+    mousePosWorld.Copy(mousePos).Subtract(mainCanvasSize.Clone(0.5)).Multiply(1/cameraScale*tileSize).Add(cameraPos);
     
     // main update
     if (!paused)
@@ -414,9 +414,9 @@ function ClearInput()       { keyInputData.map(k=>k.wasDown=k.isDown=0);mouseIsD
 // rendering
 
 // shadow settings
-let shadowAlpha      = .5;
-let shadowSkew       = .7;
-let shadowScale      = .7;
+let shadowAlpha      = 0.5;
+let shadowSkew       = 0.7;
+let shadowScale      = 0.7;
 
 function DrawScreenTile(x,y,size,tileX,tileY)
 {
@@ -433,7 +433,7 @@ function SetCanvasTransform(pos,size,angle=0,height=0)
     else
         drawPos.y -= height;
     drawPos.Subtract(cameraPos).Multiply(tileSize*cameraScale);
-    drawPos.Add(mainCanvasSize.Clone(.5));
+    drawPos.Add(mainCanvasSize.Clone(0.5));
     mainCanvasContext.translate(drawPos.x|0, drawPos.y|0);
     
     let s = size.Clone(tileSize);
@@ -463,7 +463,7 @@ function DrawTile(pos,size,tileX,tileY,angle=0,mirror=0,height=0)
     }
 
     // shrink size of tile to fix bleeding on edges
-    let renderTileShrink = .25;
+    let renderTileShrink = 0.25;
     
     /// render the tile
     let s = size.Clone(2*tileSize);
@@ -472,7 +472,7 @@ function DrawTile(pos,size,tileX,tileY,angle=0,mirror=0,height=0)
         tileX*tileSize+renderTileShrink,
         tileY*tileSize+renderTileShrink,
         tileSize-2*renderTileShrink,
-        tileSize-2*renderTileShrink, -.5, -.5, 1, 1);
+        tileSize-2*renderTileShrink, -0.5, -0.5, 1, 1);
     mainCanvasContext.restore();
     mainCanvasContext.globalAlpha = 1;   
 }
@@ -538,7 +538,7 @@ class Level
         {
             for(let xo = x - size; xo <= x + size;)
             {
-                let p = new Vector2(Math.floor(xo)+.5,Math.floor(yo)+.5);
+                let p = new Vector2(Math.floor(xo)+0.5,Math.floor(yo)+0.5);
                 let data = this.GetDataFromPos(p);
                 if (gameObject)
                 {
@@ -572,7 +572,7 @@ class Level
         // fill a circle of tiles using the provided callback
         for(let i=-r;i<=r;i++)
         {
-            let h = (r**2-(i+.5)**2)**.5;
+            let h = (r**2-(i+0.5)**2)**0.5;
             for(let j=pos.y-h;j<pos.y+h;j++)
             {
                 let x = pos.x+i|0;
@@ -638,7 +638,7 @@ class Level
         for(let y = 0; y<levelSize; y++)
         for(let x = 0; x<levelSize; x++)
         {
-            if (Rand() > .05)
+            if (Rand() > 0.05)
                 continue;
             
             let d = level.GetData(x,y);
@@ -691,15 +691,15 @@ class Level
         // draw the bottom layer
         let tx = d.tile%8;
         let ty = (d.tile/8|0);
-        let pos = new Vector2(x+.5,y+.5);
-        this.DrawTile(pos, .5, tx, ty, d.rotation*PI/2);
+        let pos = new Vector2(x+0.5,y+0.5);
+        this.DrawTile(pos, 0.5, tx, ty, d.rotation*PI/2);
         
         if (d.object)
         {
             // draw the object/top layer
             tx = (d.object-1)%8;
             ty = 3+((d.object-1)/8|0);
-            this.DrawTile(pos, .5, tx, ty);
+            this.DrawTile(pos, 0.5, tx, ty);
         }
     }
     
@@ -725,7 +725,7 @@ class Level
     Render()
     {
         // draw the entire level (cached on a canvas) onto the main canvas
-        let pos = cameraPos.Clone(-cameraScale*tileSize).Add(mainCanvasSize.Clone(.5));
+        let pos = cameraPos.Clone(-cameraScale*tileSize).Add(mainCanvasSize.Clone(0.5));
         mainCanvasContext.drawImage
         (
             levelCanvas, 
@@ -756,7 +756,7 @@ class Particle
     Update()
     {
         // update physics
-        this.pos.Add(this.velocity.Multiply(.9));
+        this.pos.Add(this.velocity.Multiply(0.9));
         
         // remove if dead
         if (this.lifeTimer.Get() > this.lifeTime)
@@ -771,17 +771,17 @@ class Particle
         // get the color
         let p = Percent(this.lifeTimer.Get(), 0, this.lifeTime);
         let c = this.startColor.Clone().Lerp(this.endColor, p);
-        c.a *= p<.1? p /.1 : 1; // fade in alpha
+        c.a *= p<0.1? p /0.1 : 1; // fade in alpha
         mainCanvasContext.fillStyle=c.RGBA();
             
         // get the size
-        let size = this.size * cameraScale * tileSize * Lerp(p,1,.5);
+        let size = this.size * cameraScale * tileSize * Lerp(p,1,0.5);
     
         // get the screen pos and render
         let pos = this.pos.Clone()
             .Subtract(cameraPos)
             .Multiply(tileSize*cameraScale)
-            .Add(mainCanvasSize.Clone(.5))
+            .Add(mainCanvasSize.Clone(0.5))
             .Add(-size);
         mainCanvasContext.fillRect(pos.x, pos.y, 2*size, 2*size);
     }
@@ -804,7 +804,7 @@ class ParticleEmitter extends GameObject
         // update particles
         this.particles.forEach(particle=>particle.Update());
         
-        if (this.GetLifeTime() <= .05)
+        if (this.GetLifeTime() <= 0.05)
         {
             // emit new particles
             let secondsPerEmit = 1/200;
@@ -838,9 +838,9 @@ class ParticleEmitter extends GameObject
             (
                 this,
                 this.pos.Clone().Add(RandVector(Rand(this.size.x))),
-                RandVector(Rand(.2)),
+                RandVector(Rand(0.2)),
                 RandBetween(this.particleSize,2*this.particleSize),
-                RandBetween(.5,1),
+                RandBetween(0.5,1),
                 RandColorBetween(this.color1,this.color2),
                 RandColorBetween(this.color1,this.color2).SetAlpha(0)
             )

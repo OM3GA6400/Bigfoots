@@ -354,7 +354,7 @@ FullScreenMario.FullScreenMario.settings.objects = {
         },
         "enemy": {
             "type": "enemy",
-            "speed": FullScreenMario.FullScreenMario.unitsize * .21,
+            "speed": FullScreenMario.FullScreenMario.unitsize * 0.21,
             "collide": FullScreenMario.Collisions.prototype.collideEnemy,
             "death": FullScreenMario.Deaths.prototype.killFlip
         },
@@ -402,8 +402,8 @@ FullScreenMario.FullScreenMario.settings.objects = {
             }
         },
         "Beetle": {
-            "speed": FullScreenMario.FullScreenMario.unitsize * .21,
-            "xvel": FullScreenMario.FullScreenMario.unitsize * .21,
+            "speed": FullScreenMario.FullScreenMario.unitsize * 0.21,
+            "xvel": FullScreenMario.FullScreenMario.unitsize * 0.21,
             "height": 8,
             "nofire": 2,
             "shellspawn": true,
@@ -524,7 +524,7 @@ FullScreenMario.FullScreenMario.settings.objects = {
         "Bowser": {
             "width": 16,
             "height": 16,
-            "speed": FullScreenMario.FullScreenMario.unitsize * .14,
+            "speed": FullScreenMario.FullScreenMario.unitsize * 0.14,
             "gravity": FullScreenMario.FullScreenMario.gravity / 2.8,
             "jumpTimes": [117],
             "fireTimes": [280, 350, 490],
@@ -566,7 +566,7 @@ FullScreenMario.FullScreenMario.settings.objects = {
             "deadly": true,
             "nofire": true,
             "movement": FullScreenMario.Movements.prototype.moveBowserFire,
-            "xvel": FullScreenMario.FullScreenMario.unitsize * -.63,
+            "xvel": FullScreenMario.FullScreenMario.unitsize * -0.63,
             "spriteCycle": [
                 [
                     FullScreenMario.FullScreenMario.prototype.flipVert,
@@ -583,7 +583,7 @@ FullScreenMario.FullScreenMario.settings.objects = {
         },
         "Mushroom": {
             "action": FullScreenMario.FullScreenMario.prototype.playerShroom,
-            "speed": FullScreenMario.FullScreenMario.unitsize * .42
+            "speed": FullScreenMario.FullScreenMario.unitsize * 0.42
         },
         "Mushroom1Up": {
             "action": FullScreenMario.FullScreenMario.prototype.playerShroom1Up
@@ -628,7 +628,7 @@ FullScreenMario.FullScreenMario.settings.objects = {
             "name": "star item", // Item class so player's star isn't confused with this
             "width": 7,
             "grounded": true,
-            "speed": FullScreenMario.FullScreenMario.unitsize * .56,
+            "speed": FullScreenMario.FullScreenMario.unitsize * 0.56,
             "action": FullScreenMario.Collisions.prototype.collideStar,
             "movement": FullScreenMario.Movements.prototype.moveJumping,
             "jumpheight": FullScreenMario.FullScreenMario.unitsize * 1.17,
@@ -913,8 +913,8 @@ FullScreenMario.FullScreenMario.settings.objects = {
         "DecorativeBack": {
             "width": 88,
             "height": 44,
-            "spritewidth": .5,
-            "spriteheight": .5,
+            "spritewidth": 0.5,
+            "spriteheight": 0.5,
         },
         "DecorativeDot": {
             "width": 1.5,
@@ -968,7 +968,7 @@ FullScreenMario.FullScreenMario.settings.objects = {
         "Text1Up": [8, 4],
         "CustomText": {
             "hidden": true,
-            "spacingHorizontal": .5,
+            "spacingHorizontal": 0.5,
             "spacingVertical": 8,
             "spacingVerticalBlank": 6,
             "onThingAdded": FullScreenMario.Spawns.prototype.spawnCustomText

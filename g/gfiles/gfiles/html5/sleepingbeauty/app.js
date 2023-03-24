@@ -3550,7 +3550,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		angle += Math.PI;
 		dist += (ROT.RNG.getUniform() - 0.5) * radius;
 
-		for (var a = angle - da; a < angle + da; a += .01) {
+		for (var a = angle - da; a < angle + da; a += 0.01) {
 			var xy = center.plus(new XY(Math.cos(a), Math.sin(a)).scale(dist)).round();
 			if (!level.isInside(xy)) {
 				continue;
