@@ -4042,7 +4042,7 @@ function gather() {
 			if ((game.talents.turkimp2.purchased || game.global.turkimpTimer > 0) && (what == "food" || what == "wood" || what == "metal")){
 				var tBonus = 1.5;
 				if (game.talents.turkimp2.purchased) tBonus = 2;
-				else if (game.talents.turkimp2.purchased) tBonus = 1.75;
+				 
 				perSec *= tBonus;
 			}
 			perSec += getPlayerModifier();
@@ -15264,7 +15264,7 @@ function simpleSeconds(what, seconds) {
 			if ((game.talents.turkimp2.purchased || game.global.turkimpTimer > 0) && (what == "food" || what == "metal" || what == "wood")){
 				var tBonus = 1.5;
 				if (game.talents.turkimp2.purchased) tBonus = 2;
-				else if (game.talents.turkimp2.purchased) tBonus = 1.75;
+				 
 				amt *= tBonus;
 			}
 			amt += getPlayerModifier() * seconds;
