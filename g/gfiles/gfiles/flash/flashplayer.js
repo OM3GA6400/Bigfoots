@@ -109,7 +109,7 @@ var mainarea, ffd, upload, legacy, rplayer, useLegacy;
 				ffd = document.getElementById("ffd");
 				upload = document.getElementById("upload");
 				legacy = document.getElementById("legacy");
-				useLegacy = !!localStorage.getItem("useFlashObject");
+				useLegacy = Boolean(localStorage.getItem("useFlashObject"));
 				
 				if (useLegacy) legacy.checked = true;
 				

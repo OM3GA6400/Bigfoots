@@ -1160,7 +1160,7 @@ $(function () {
     }
 
     // score
-    var score_text = ''+Game.score;
+    var score_text = String(Game.score);
     Text.renderText(score_text, 18, Game.canvasWidth - 14 * score_text.length, 20);
 
     // extra dudes
@@ -1174,7 +1174,7 @@ $(function () {
     }
 
     if (showFramerate) {
-      Text.renderText(''+avgFramerate, 24, Game.canvasWidth - 38, Game.canvasHeight - 2);
+      Text.renderText(String(avgFramerate), 24, Game.canvasWidth - 38, Game.canvasHeight - 2);
     }
 
     frameCount++;

@@ -1271,7 +1271,7 @@ const m = {
         a = m.angle - aMag
         cp1x = m.pos.x + 0.6 * range * Math.cos(a)
         cp1y = m.pos.y + 0.6 * range * Math.sin(a)
-        ctx.quadraticCurveTo(cp1x, cp1y, m.pos.x + 1 * range * Math.cos(m.angle - Math.PI * m.fieldArc), m.pos.y + 1 * range * Math.sin(m.angle - Math.PI * m.fieldArc))
+        ctx.quadraticCurveTo(cp1x, cp1y, m.pos.x + Number(range) * Math.cos(m.angle - Math.PI * m.fieldArc), m.pos.y + Number(range) * Math.sin(m.angle - Math.PI * m.fieldArc))
         ctx.fill();
         // ctx.lineTo(m.pos.x + eye * Math.cos(m.angle), m.pos.y + eye * Math.sin(m.angle));
 
@@ -1766,7 +1766,7 @@ const m = {
                         a = m.angle - aMag
                         cp1x = m.pos.x + curve * m.fieldRange * Math.cos(a)
                         cp1y = m.pos.y + curve * m.fieldRange * Math.sin(a)
-                        ctx.quadraticCurveTo(cp1x, cp1y, m.pos.x + 1 * m.fieldRange * Math.cos(m.angle - Math.PI * m.fieldArc), m.pos.y + 1 * m.fieldRange * Math.sin(m.angle - Math.PI * m.fieldArc))
+                        ctx.quadraticCurveTo(cp1x, cp1y, m.pos.x + Number(m.fieldRange) * Math.cos(m.angle - Math.PI * m.fieldArc), m.pos.y + Number(m.fieldRange) * Math.sin(m.angle - Math.PI * m.fieldArc))
                         ctx.fill();
                         m.perfectPush();
                     } else if (m.holdingTarget && m.fieldCDcycle < m.cycle) { //holding, but field button is released
@@ -1784,7 +1784,7 @@ const m = {
                             const curve = 0.8 + 0.06 * wave
                             const aMag = (1 - curve * 1.2) * Math.PI * m.fieldArc
                             let a = m.fieldAngle + aMag
-                            ctx.quadraticCurveTo(m.fieldPosition.x + curve * m.fieldRange * Math.cos(a), m.fieldPosition.y + curve * m.fieldRange * Math.sin(a), m.fieldPosition.x + 1 * m.fieldRange * Math.cos(m.fieldAngle - Math.PI * m.fieldArc), m.fieldPosition.y + 1 * m.fieldRange * Math.sin(m.fieldAngle - Math.PI * m.fieldArc))
+                            ctx.quadraticCurveTo(m.fieldPosition.x + curve * m.fieldRange * Math.cos(a), m.fieldPosition.y + curve * m.fieldRange * Math.sin(a), m.fieldPosition.x + Number(m.fieldRange) * Math.cos(m.fieldAngle - Math.PI * m.fieldArc), m.fieldPosition.y + Number(m.fieldRange) * Math.sin(m.fieldAngle - Math.PI * m.fieldArc))
                             ctx.fill();
                             m.perfectPush(true);
                         }
@@ -1973,7 +1973,7 @@ const m = {
                                 if (m.energy > drain) {
                                     m.energy -= drain
                                     b.worm({ x: m.pos.x + 35 * Math.cos(m.angle), y: m.pos.y + 35 * Math.sin(m.angle) })
-                                    const SPEED = 2 + 1 * Math.random();
+                                    const SPEED = 2 + Number(Math.random());
                                     Matter.Body.setVelocity(bullet[bullet.length - 1], {
                                         x: SPEED * Math.cos(m.angle),
                                         y: SPEED * Math.sin(m.angle)

@@ -1907,7 +1907,7 @@ var autoBattle = {
             },
             upgrade: "+1s Minimum Bleed Time, +4% Bleed Chance, +2.5% Lifesteal",
             bleedTime: function(){
-                return 11 + (1 * this.level);
+                return 11 + (Number(this.level));
             },
             lifesteal: function(){
                 return 0.175 + (0.025 * this.level);
@@ -2073,7 +2073,7 @@ var autoBattle = {
                 return Math.pow(0.99, this.level);
             },
             resist: function(){
-                return (1 * this.level);
+                return (Number(this.level));
             },
             lifesteal: function(){
                 return (0.01 * this.level);
@@ -2862,7 +2862,7 @@ var autoBattle = {
         this.enemy.baseAttack *= attackMult;
         for (var x = 0; x < selectedEffects.length; x++){
             this.profile += selectedEffects[x];
-            if (selectedEffectsCount[x] > 1) this.profile += " x" + selectedEffectsCount[x] + "";
+            if (selectedEffectsCount[x] > 1) this.profile += String(" x" + selectedEffectsCount[x]);
             this.profile += ", ";
         }
         this.profile = this.profile.substring(0, this.profile.length - 2)

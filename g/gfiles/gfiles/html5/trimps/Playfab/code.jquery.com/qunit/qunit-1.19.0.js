@@ -895,7 +895,7 @@ Test.prototype = {
 		runLoggingCallbacks( "testDone", {
 			name: this.testName,
 			module: this.module.name,
-			skipped: !!this.skip,
+			skipped: Boolean(this.skip),
 			failed: bad,
 			passed: this.assertions.length - bad,
 			total: this.assertions.length,
@@ -956,7 +956,7 @@ Test.prototype = {
 		// `bad` initialized at top of scope
 		// defer when previous test run passed, if storage is available
 		bad = QUnit.config.reorder && defined.sessionStorage &&
-				+sessionStorage.getItem( "qunit-test-" + this.module.name + "-" + this.testName );
+				Number(sessionStorage.getItem( "qunit-test-" + this.module.name + "-" + this.testName ));
 
 		if ( bad ) {
 			run();
@@ -990,7 +990,7 @@ Test.prototype = {
 		runLoggingCallbacks( "log", details );
 
 		this.assertions.push({
-			result: !!result,
+			result: Boolean(result),
 			message: message
 		});
 	},
@@ -1304,7 +1304,7 @@ QUnit.assert = Assert.prototype = {
 	ok: function( result, message ) {
 		message = message || ( result ? "okay" : "failed, expected argument to be truthy, was: " +
 			QUnit.dump.parse( result ) );
-		this.push( !!result, result, true, message );
+		this.push( Boolean(result), result, true, message );
 	},
 
 	notOk: function( result, message ) {
@@ -1702,7 +1702,7 @@ QUnit.dump = (function() {
 		return "\"" + str.toString().replace( /\\/g, "\\\\" ).replace( /"/g, "\\\"" ) + "\"";
 	}
 	function literal( o ) {
-		return o + "";
+		return String(o);
 	}
 	function join( pre, arr, post ) {
 		var s = dump.separator(),
@@ -3235,7 +3235,7 @@ function escapeText( s ) {
 	if ( !s ) {
 		return "";
 	}
-	s = s + "";
+	s = String(s);
 
 	// Both single quotes and double quotes (for attributes)
 	return s.replace( /['"<>&]/g, function( s ) {
@@ -3774,7 +3774,7 @@ QUnit.testStart(function( details ) {
 	running = id( "qunit-testresult" );
 	if ( running ) {
 		bad = QUnit.config.reorder && defined.sessionStorage &&
-			+sessionStorage.getItem( "qunit-test-" + details.module + "-" + details.name );
+			Number(sessionStorage.getItem( "qunit-test-" + details.module + "-" + details.name ));
 
 		running.innerHTML = ( bad ?
 			"Rerunning previously failed test: <br />" :

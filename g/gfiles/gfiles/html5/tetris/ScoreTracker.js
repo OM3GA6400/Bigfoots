@@ -196,18 +196,18 @@ ScoreTracker.prototype.getResults = function() {
 
 ScoreTracker.prototype.outputScore = function() {
     this.scoreOutput.addLine("Score:");
-    this.scoreOutput.addLine("" + this.score);
+    this.scoreOutput.addLine(String(this.score));
     this.scoreOutput.addLine("");
 };
 
 ScoreTracker.prototype.outputLines = function() {
     this.linesOutput.addLine("Lines:");
-    this.linesOutput.addLine("" + this.linesRemaining);
+    this.linesOutput.addLine(String(this.linesRemaining));
     this.linesOutput.addLine("");
 };
 
 ScoreTracker.prototype.outputLevel = function() {
     this.levelOutput.addLine("Level:");
-    this.levelOutput.addLine("" + this.level);
+    this.levelOutput.addLine(String(this.level));
     this.levelOutput.addLine("");
 };

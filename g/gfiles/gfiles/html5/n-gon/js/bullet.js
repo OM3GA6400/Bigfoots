@@ -2696,7 +2696,7 @@ const b = {
                     }
                 },
             });
-            const SPEED = 2 + 1 * Math.random();
+            const SPEED = 2 + Number(Math.random());
             const ANGLE = 2 * Math.PI * Math.random()
             Matter.Body.setVelocity(bullet[bIndex], {
                 x: SPEED * Math.cos(ANGLE),
@@ -5083,7 +5083,7 @@ const b = {
                 if (tech.isIceCrystals) {
                     bullet[bullet.length - 1].beforeDmg = function(who) {
                         mobs.statusSlow(who, 60)
-                        if (tech.isNailRadiation) mobs.statusDoT(who, 1 * (tech.isFastRadiation ? 1.3 : 0.44), tech.isSlowRadiation ? 360 : (tech.isFastRadiation ? 60 : 180)) // one tick every 30 cycles
+                        if (tech.isNailRadiation) mobs.statusDoT(who, Number(tech.isFastRadiation ? 1.3 : 0.44), tech.isSlowRadiation ? 360 : (tech.isFastRadiation ? 60 : 180)) // one tick every 30 cycles
                         if (tech.isNailCrit && !who.shield && Vector.dot(Vector.normalise(Vector.sub(who.position, this.position)), Vector.normalise(this.velocity)) > 0.94) {
                             b.explosion(this.position, 150 + 30 * Math.random()); //makes bullet do explosive damage at end
                         }

@@ -419,7 +419,7 @@
 				
 				for (j = 0, fl = f.length; j < fl; j++){
 					
-					temp = s[i] + '';
+					temp = String(s[i]);
 					repl = ra ? (r[j] !== undefined ? r[j] : '') : r[0];
 					s[i] = (temp).split(f[j]).join(repl);
 					

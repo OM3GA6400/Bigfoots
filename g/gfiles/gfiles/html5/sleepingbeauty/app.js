@@ -1103,7 +1103,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		};
 
 		Being.prototype.describeVerb = function describeVerb(verb) {
-			return "" + verb + (verb.charAt(verb.length - 1) == "s" || verb == "do" ? "es" : "s");
+			return String(verb) + (verb.charAt(verb.length - 1) == "s" || verb == "do" ? "es" : "s");
 		};
 
 		return Being;
@@ -2501,7 +2501,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 			bold = true;
 		}
 
-		CTX.font = "" + (bold ? "bold " : "") + CELL * 0.8 + "px metrickal, monospace";
+		CTX.font = String(bold ? "bold " : "") + CELL * 0.8 + "px metrickal, monospace";
 		CTX.globalAlpha = alpha;
 
 		CTX.fillStyle = color;
@@ -3129,7 +3129,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 			remain -= 9; // knight
 			remain -= 5; // flower
 
-			var row = "" + PAD + knight[i] + new Array(remain + 1).join(" ") + flower[i];
+			var row = String(PAD) + knight[i] + new Array(remain + 1).join(" ") + flower[i];
 			result.push(row);
 		}
 

@@ -56,7 +56,7 @@ Game.utils = (function(){
         return function (value)
         {
             // ensure we have a number
-            var value = value * 1;
+            var value = Number(value);
 
             var base = 0;
             var notationValue = '';
@@ -151,7 +151,7 @@ Game.utils = (function(){
 
     instance.pad = function(n, width, z) {
         z = z || '0';
-        n = n + '';
+        n = String(n);
         return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
     };
 

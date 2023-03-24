@@ -52,9 +52,9 @@ function initWebSdkWrapper(debug = false) {
     } else {
       globalThis.adconfigNoReligion = 0;
     }
-    WebSdkWrapper.init(json.name, !!debug, json).then(postInit);
+    WebSdkWrapper.init(json.name, Boolean(debug), json).then(postInit);
   } catch (e) {
-    WebSdkWrapper.init("", !!debug).then(postInit);
+    WebSdkWrapper.init("", Boolean(debug)).then(postInit);
   }
 }
 

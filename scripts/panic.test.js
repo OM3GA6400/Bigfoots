@@ -151,7 +151,7 @@
           if (status !== "active") {
             ifvisible.wakeup();
           }
-          idleStartedTime = +(new Date());
+          idleStartedTime = Number(new Date());
           return timer = setTimeout(function() {
             if (status === "active") {
               return ifvisible.idle();
@@ -202,7 +202,7 @@
         },
         getIdleInfo: function() {
           var now, res;
-          now = +(new Date());
+          now = Number(new Date());
           res = {};
           if (status === "idle") {
             res.isIdle = true;

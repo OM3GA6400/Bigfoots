@@ -1938,7 +1938,7 @@ const spawn = {
             Composite.add(engine.world, consBB[consBB.length - 1]);
         }
         //spawn shield around all nodes
-        spawn.groupShield(targets, x, y, sideLength + 1 * radius + nodes * 5 - 25);
+        spawn.groupShield(targets, x, y, sideLength + Number(radius) + nodes * 5 - 25);
         spawn.allowShields = true;
     },
     mantisBoss(x, y, radius = 35, isSpawnBossPowerUp = true) {
