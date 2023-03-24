@@ -996,7 +996,7 @@ var Events = {
 			Notifications.notify(null, info.notification);
 		}
 
-    info.onClick && info.onClick();
+    
 
     // Link
     if (info.link) {

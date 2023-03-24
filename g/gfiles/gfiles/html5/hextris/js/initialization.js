@@ -47,7 +47,7 @@ function initialize(a) {
 		};
 	})();
 	$('#clickToExit').bind('click', toggleDevTools);
-	window.settings;
+	
 	if (/Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         $('.rrssb-email').remove();
 		settings = {
@@ -121,7 +121,7 @@ function initialize(a) {
 		}
 	}
 	window.blocks = [];
-	window.MainHex;
+	
 	window.gdx = 0;
 	window.gdy = 0;
 	window.devMode = 0;
@@ -132,7 +132,7 @@ function initialize(a) {
 	window.importing = 0;
 	window.importedHistory = undefined;
 	window.startTime = undefined;
-	window.gameState;
+	
 	setStartScreen();
 	if (a != 1) {
 		window.canRestart = 1;

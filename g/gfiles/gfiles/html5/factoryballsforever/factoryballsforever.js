@@ -14751,7 +14751,7 @@ p.nominalBounds = new cjs.Rectangle(-87.3,-81.7,204.2,166.5);
 	this.frame_1 = function() {
 		var sceneScherm=this;
 		var itel=0;
-		this.mysong;
+		
 		this.hoogste=1;
 		this.soundon=true;
 		this.musicon=true;

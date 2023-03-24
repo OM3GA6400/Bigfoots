@@ -124,7 +124,7 @@ Game.interstellar = (function(){
             if(id == "rocket" || "travel")continue;
             
             for(var entry in Game.interstellar[id].entries){
-                Game.interstellar[id].updateCost[entry];
+                
             }
         }
 

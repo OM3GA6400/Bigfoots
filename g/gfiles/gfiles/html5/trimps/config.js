@@ -4341,7 +4341,7 @@ var toReturn = {
 				message("You have a new quest! <b>" + this.getQuestDescription() + "</b>. Good luck!", "Notices", "*exclamation", "questMessage questNew")
 			},
 			getQuestDescription: function(addProgress){
-				if (this.questId == -1) "No active quest";
+				if (this.questId == -1) 
 				var desc = this.questDescriptions[this.questId];
 				if (this.questId <= 1) desc = desc.replace("{resource}", this.resource);
 				if (addProgress) desc += ". Progress: " + this.getQuestProgress();

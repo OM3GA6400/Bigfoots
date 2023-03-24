@@ -8937,7 +8937,7 @@ const level = {
             //     powerUps.spawn(9200, -5700, "tech");
             // }
             powerUps.addResearchToLevel() //needs to run after mobs are spawned
-            initialSpawn == true;
+            
         }
     },
     islands() {

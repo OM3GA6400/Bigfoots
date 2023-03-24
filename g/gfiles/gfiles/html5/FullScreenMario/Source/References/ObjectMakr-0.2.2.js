@@ -172,7 +172,7 @@ var ObjectMakr;
             // For each name in the current object:
             for (name in base) {
                 if (Object.prototype.hasOwnProperty.call(base, name)) {
-                    this.functions[name] = (function () { undefined });
+                    this.functions[name] = (function () {  });
                     // This sets the Function as inheriting from the parent
                     this.functions[name].prototype = new parent();
                     this.functions[name].prototype.constructor = this.functions[name];

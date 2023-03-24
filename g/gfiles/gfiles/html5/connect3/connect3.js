@@ -87,7 +87,7 @@ class Tile {
     tileElems[this.y][this.x] = null, tiles[this.y][this.x] = null;
     for (let tempY = this.y; tempY--;) tileElems[tempY][this.x].moveTo(this.x, tempY + 1);
     if (addNewItem) {
-      new Tile(this.x, 0, Math.floor(Math.random() * colours.length), true);
+      
     }
     if (selectedTile && selectedTile.elem === this) selectedTile = null;
   }
@@ -194,7 +194,7 @@ let selectedTile = null;
 for (let y = 8; y--;) {
   let elemRow = [];
   tileElems[y] = elemRow;
-  for (let x = 8; x--;) new Tile(x, y, tiles[y][x]);
+  for (let x = 8; x--;) 
 }
 document.body.appendChild(squareElem);
 score.set(0);

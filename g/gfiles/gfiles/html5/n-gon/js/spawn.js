@@ -671,7 +671,7 @@ const spawn = {
                     this.rotateCount++
                     Matter.Body.setAngle(this, this.rotateCount * this.rotateVelocity)
                     Matter.Body.setAngularVelocity(this, 0)
-                    Matter
+                    
                 }
             }
             if (this.cycle < 240) { //damage scales up over 2 seconds to give player time to move

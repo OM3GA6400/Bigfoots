@@ -1088,12 +1088,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		};
 
 		Being.prototype.moveTo = function moveTo(xy, level) {
-			this._xy && this._level.setBeing(this._xy, null); // remove from old position
+			 // remove from old position
 
 			this._level = level || this._level;
 			this._xy = xy;
 
-			this._xy && this._level.setBeing(this._xy, this); // draw at new position
+			 // draw at new position
 
 			return this;
 		};

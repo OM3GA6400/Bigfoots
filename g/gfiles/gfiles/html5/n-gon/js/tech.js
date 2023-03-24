@@ -8385,7 +8385,7 @@ const tech = {
                 m.look = () => {
                     m.angle = 2 * Math.sin(m.cycle * 0.0133) + Math.sin(m.cycle * 0.013) + 0.5 * Math.sin(m.cycle * 0.031) + 0.33 * Math.sin(m.cycle * 0.03)
                     const scale = 0.8;
-                    simulation.mouse.y
+                    
                     m.transSmoothX = canvas.width2 - m.pos.x - (simulation.mouse.x - canvas.width2) * scale;
                     m.transSmoothY = canvas.height2 - m.pos.y - (simulation.mouse.y - canvas.height2) * scale;
                     m.transX += (m.transSmoothX - m.transX) * 0.07;

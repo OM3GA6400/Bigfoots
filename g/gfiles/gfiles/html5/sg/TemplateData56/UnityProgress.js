@@ -123,4 +123,3 @@ window.Game = (function () {
     };
     return Game;
 })();
-new Game();
