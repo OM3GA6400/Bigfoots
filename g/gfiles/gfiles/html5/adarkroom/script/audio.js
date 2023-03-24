@@ -207,9 +207,7 @@ var AudioEngine = {
             src = window.location + src;
         }
         if (AudioEngine.AUDIO_BUFFER_CACHE[src]) {
-            return new Promise(function (resolve, reject) {
-                resolve(AudioEngine.AUDIO_BUFFER_CACHE[src]);
-            });
+            return Promise.resolve(AudioEngine.AUDIO_BUFFER_CACHE[src]);
         } else {
             var request = new Request(src);
             return fetch(request).then(function (response) {
