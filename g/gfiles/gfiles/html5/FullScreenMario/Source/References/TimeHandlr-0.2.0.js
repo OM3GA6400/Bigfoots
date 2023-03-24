@@ -307,7 +307,7 @@ var TimeHandlr;
         TimeHandlr.prototype.cancelAllCycles = function (thing) {
             var keyCycles = thing[this.keyCycles], cycle, name;
             for (name in keyCycles) {
-                if (!keyCycles.hasOwnProperty(name)) {
+                if (!Object.prototype.hasOwnProperty.call(keyCycles, name)) {
                     continue;
                 }
                 cycle = keyCycles[name];
@@ -428,7 +428,7 @@ var TimeHandlr;
         TimeHandlr.prototype.makeSettingsCopy = function (original) {
             var output = new original.constructor(), i;
             for (i in original) {
-                if (original.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(original, i)) {
                     output[i] = original[i];
                 }
             }

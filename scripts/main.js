@@ -26,14 +26,14 @@ const local_title = localStorage.getItem("title");
 const local_icon = localStorage.getItem("icon");
 
 // Set tab title (if needed)
-if (window.localStorage.hasOwnProperty("title")) {
+if (Object.prototype.hasOwnProperty.call(window.localStorage, 'title')) {
   document.title = local_title;
   tab("Title set to: " + local_title);
 } else {
   tab("Title not set :(");
 }
 // Set tab icon (if needed)
-if (window.localStorage.hasOwnProperty("icon")) {
+if (Object.prototype.hasOwnProperty.call(window.localStorage, 'icon')) {
   document.querySelector("link[rel=icon]").href = local_icon;
   tab("Icon set to: " + local_icon);
 } else {

@@ -675,7 +675,7 @@ var UnityLoader = UnityLoader || {
             });
         var u = new XMLHttpRequest();
         for (var f in u)
-            a.prototype.hasOwnProperty(f) ||
+            Object.prototype.hasOwnProperty.call(a.prototype, f) ||
                 !(function (e) {
                     Object.defineProperty(
                         a.prototype,
@@ -688,7 +688,7 @@ var UnityLoader = UnityLoader || {
                               }
                             : {
                                   get: function () {
-                                      return this.cache.revalidated && this.cache.result.xhr.hasOwnProperty(e) ? this.cache.result.xhr[e] : this.xhr[e];
+                                      return this.cache.revalidated && Object.prototype.hasOwnProperty.call(this.cache.result.xhr, e) ? this.cache.result.xhr[e] : this.xhr[e];
                                   },
                                   set: function (t) {
                                       this.xhr[e] = t;
@@ -1216,7 +1216,7 @@ var UnityLoader = UnityLoader || {
                                 var r = t.shift();
                                 if (r) {
                                     if ("object" != typeof r) throw new TypeError(r + "must be non-object");
-                                    for (var n in r) r.hasOwnProperty(n) && (e[n] = r[n]);
+                                    for (var n in r) Object.prototype.hasOwnProperty.call(r, n) && (e[n] = r[n]);
                                 }
                             }
                             return e;

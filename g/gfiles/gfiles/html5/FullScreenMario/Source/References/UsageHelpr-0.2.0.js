@@ -102,7 +102,7 @@ var UsageHelpr;
             }
             var message = line[0], styles = line
                 .slice(1)
-                .filter(function (style) { return UsageHelpr.styles.hasOwnProperty(style); })
+                .filter(function (style) { return Object.prototype.hasOwnProperty.call(UsageHelpr.styles, style); })
                 .map(function (style) { return UsageHelpr.styles[style]; });
             // A last blank "" style allows the last "%c" in the message to reset text styles
             this.logger.apply(this, [this.filterHelpText(message)].concat(styles, [""]));

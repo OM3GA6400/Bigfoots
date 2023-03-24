@@ -48,7 +48,7 @@ var ThingHittr;
          * @param groupName   The general group the type fall sunder.
          */
         ThingHittr.prototype.cacheChecksForType = function (typeName, groupName) {
-            if (!this.generatedGlobalChecks.hasOwnProperty(typeName) && this.globalCheckGenerators.hasOwnProperty(groupName)) {
+            if (!Object.prototype.hasOwnProperty.call(this.generatedGlobalChecks, typeName) && Object.prototype.hasOwnProperty.call(this.globalCheckGenerators, groupName)) {
                 this.generatedGlobalChecks[typeName] = this.globalCheckGenerators[groupName]();
                 this.generatedHitsChecks[typeName] = this.generateHitsCheck(typeName);
             }
@@ -156,7 +156,7 @@ var ThingHittr;
         ThingHittr.prototype.generateGroupHitLists = function (group) {
             var output = {}, i;
             for (i in group) {
-                if (group.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(group, i)) {
                     output[i] = Object.keys(group[i]);
                 }
             }

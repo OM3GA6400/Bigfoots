@@ -85,7 +85,7 @@ var ObjectMakr;
          * @returns Whether that class exists.
          */
         ObjectMakr.prototype.hasFunction = function (name) {
-            return this.functions.hasOwnProperty(name);
+            return Object.prototype.hasOwnProperty.call(this.functions, name);
         };
         /**
          * @returns The optional mapping of indices.
@@ -106,7 +106,7 @@ var ObjectMakr;
         ObjectMakr.prototype.make = function (name, settings) {
             var output;
             // Make sure the type actually exists in Functions
-            if (!this.functions.hasOwnProperty(name)) {
+            if (!Object.prototype.hasOwnProperty.call(this.functions, name)) {
                 throw new Error("Unknown type given to ObjectMakr: " + name);
             }
             // Create the new object, copying any given settings
@@ -132,7 +132,7 @@ var ObjectMakr;
             var name;
             // For each of the given properties:
             for (name in properties) {
-                if (properties.hasOwnProperty(name)) {
+                if (Object.prototype.hasOwnProperty.call(properties, name)) {
                     // If it's an Array, replace it with a mapped version
                     if (properties[name] instanceof Array) {
                         properties[name] = this.processPropertyArray(properties[name]);
@@ -171,14 +171,14 @@ var ObjectMakr;
             var name, ref;
             // For each name in the current object:
             for (name in base) {
-                if (base.hasOwnProperty(name)) {
+                if (Object.prototype.hasOwnProperty.call(base, name)) {
                     this.functions[name] = (new Function());
                     // This sets the Function as inheriting from the parent
                     this.functions[name].prototype = new parent();
                     this.functions[name].prototype.constructor = this.functions[name];
                     // Add each property from properties to the Function prototype
                     for (ref in this.properties[name]) {
-                        if (this.properties[name].hasOwnProperty(ref)) {
+                        if (Object.prototype.hasOwnProperty.call(this.properties[name], ref)) {
                             this.functions[name].prototype[ref] = this.properties[name][ref];
                         }
                     }
@@ -188,13 +188,13 @@ var ObjectMakr;
                         this.propertiesFull[name] = {};
                         if (parentName) {
                             for (ref in this.propertiesFull[parentName]) {
-                                if (this.propertiesFull[parentName].hasOwnProperty(ref)) {
+                                if (Object.prototype.hasOwnProperty.call(this.propertiesFull[parentName], ref)) {
                                     this.propertiesFull[name][ref] = this.propertiesFull[parentName][ref];
                                 }
                             }
                         }
                         for (ref in this.properties[name]) {
-                            if (this.properties[name].hasOwnProperty(ref)) {
+                            if (Object.prototype.hasOwnProperty.call(this.properties[name], ref)) {
                                 this.propertiesFull[name][ref] = this.properties[name][ref];
                             }
                         }
@@ -218,13 +218,13 @@ var ObjectMakr;
             // For each attribute of the donor:
             for (i in donor) {
                 // If noOverride is specified, don't override if it already exists
-                if (noOverride && recipient.hasOwnProperty(i)) {
+                if (noOverride && Object.prototype.hasOwnProperty.call(recipient, i)) {
                     continue;
                 }
                 // If it's an object, recurse on a new version of it
                 setting = donor[i];
                 if (typeof setting === "object") {
-                    if (!recipient.hasOwnProperty(i)) {
+                    if (!Object.prototype.hasOwnProperty.call(recipient, i)) {
                         recipient[i] = new setting.constructor();
                     }
                     this.proliferate(recipient[i], setting, noOverride);

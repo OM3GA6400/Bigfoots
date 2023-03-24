@@ -101,7 +101,7 @@ var AudioPlayr;
             var i;
             if (!this.getMuted()) {
                 for (i in this.sounds) {
-                    if (this.sounds.hasOwnProperty(i)) {
+                    if (Object.prototype.hasOwnProperty.call(this.sounds, i)) {
                         this.sounds[i].volume = Number(this.sounds[i].getAttribute("volumeReal")) * volume;
                     }
                 }
@@ -135,7 +135,7 @@ var AudioPlayr;
         AudioPlayr.prototype.setMutedOn = function () {
             var i;
             for (i in this.sounds) {
-                if (this.sounds.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(this.sounds, i)) {
                     this.sounds[i].volume = 0;
                 }
             }
@@ -148,7 +148,7 @@ var AudioPlayr;
         AudioPlayr.prototype.setMutedOff = function () {
             var volume = this.getVolume(), sound, i;
             for (i in this.sounds) {
-                if (this.sounds.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(this.sounds, i)) {
                     sound = this.sounds[i];
                     sound.volume = Number(sound.getAttribute("volumeReal")) * volume;
                 }
@@ -199,9 +199,9 @@ var AudioPlayr;
         AudioPlayr.prototype.play = function (name) {
             var sound, used;
             // If the sound isn't yet being played, see if it's in the library
-            if (!this.sounds.hasOwnProperty(name)) {
+            if (!Object.prototype.hasOwnProperty.call(this.sounds, name)) {
                 // If the sound also isn't in the library, it's unknown
-                if (!this.library.hasOwnProperty(name)) {
+                if (!Object.prototype.hasOwnProperty.call(this.library, name)) {
                     throw new Error("Unknown name given to AudioPlayr.play: '" + name + "'.");
                 }
                 sound = this.sounds[name] = this.library[name];
@@ -233,7 +233,7 @@ var AudioPlayr;
         AudioPlayr.prototype.pauseAll = function () {
             var i;
             for (i in this.sounds) {
-                if (this.sounds.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(this.sounds, i)) {
                     this.pauseSound(this.sounds[i]);
                 }
             }
@@ -244,7 +244,7 @@ var AudioPlayr;
         AudioPlayr.prototype.resumeAll = function () {
             var i;
             for (i in this.sounds) {
-                if (!this.sounds.hasOwnProperty(i)) {
+                if (!Object.prototype.hasOwnProperty.call(this.sounds, i)) {
                     continue;
                 }
                 this.playSound(this.sounds[i]);
@@ -445,7 +445,7 @@ var AudioPlayr;
          * @param callback   The Function to be called by the event.
          */
         AudioPlayr.prototype.addEventImmediate = function (name, event, callback) {
-            if (!this.sounds.hasOwnProperty(name) || this.sounds[name].paused) {
+            if (!Object.prototype.hasOwnProperty.call(this.sounds, name) || this.sounds[name].paused) {
                 callback();
                 return;
             }
@@ -459,7 +459,7 @@ var AudioPlayr;
          * @param name   The name of the sound that just finished.
          */
         AudioPlayr.prototype.soundFinish = function (name) {
-            if (this.sounds.hasOwnProperty(name)) {
+            if (Object.prototype.hasOwnProperty.call(this.sounds, name)) {
                 delete this.sounds[name];
             }
         };
@@ -485,7 +485,7 @@ var AudioPlayr;
             this.directories = {};
             // For each given directory (e.g. names, themes):
             for (directoryName in librarySettings) {
-                if (!librarySettings.hasOwnProperty(directoryName)) {
+                if (!Object.prototype.hasOwnProperty.call(librarySettings, directoryName)) {
                     continue;
                 }
                 directory = {};

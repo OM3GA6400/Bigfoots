@@ -266,7 +266,7 @@ var AreaSpawnr;
             var name, group, prething, mid, start, end, i;
             // For each group of PreThings currently able to spawn...
             for (name in this.prethings) {
-                if (!this.prethings.hasOwnProperty(name)) {
+                if (!Object.prototype.hasOwnProperty.call(this.prethings, name)) {
                     continue;
                 }
                 // Don't bother trying to spawn the group if it has no members

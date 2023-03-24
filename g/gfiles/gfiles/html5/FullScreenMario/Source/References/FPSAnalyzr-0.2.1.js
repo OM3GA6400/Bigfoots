@@ -189,7 +189,7 @@ var FPSAnalyzr;
             else {
                 copy = [];
                 for (i in this.measurements) {
-                    if (this.measurements.hasOwnProperty(i)) {
+                    if (Object.prototype.hasOwnProperty.call(this.measurements, i)) {
                         if (typeof this.measurements[i] !== "undefined") {
                             copy[i] = this.measurements[i];
                         }

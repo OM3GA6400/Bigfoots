@@ -7,7 +7,7 @@
       globalThis.sdk_runtime = old;
 
       let setLayout = (name) => {
-        if (sdk_runtime.layouts.hasOwnProperty(name)) {
+        if (Object.prototype.hasOwnProperty.call(sdk_runtime.layouts, name)) {
           sdk_runtime.changelayout = sdk_runtime.layouts[name];
           return sdk_runtime.layouts[name];
         }
@@ -275,7 +275,7 @@
     if (event.data.messageType.toLowerCase() === "isready") {
       event.source.postMessage(
         {
-          isReady: !globalThis.ovoLevelEditor.hasOwnProperty("init"),
+          isReady: !Object.prototype.hasOwnProperty.call(globalThis.ovoLevelEditor, 'init'),
           isLevelEditor: true,
           messageType: event.data.messageType,
         },
@@ -283,7 +283,7 @@
       );
     }
     if (event.data.messageType.toLowerCase() === "startlevel") {
-      if (globalThis.ovoLevelEditor.hasOwnProperty("init")) {
+      if (Object.prototype.hasOwnProperty.call(globalThis.ovoLevelEditor, 'init')) {
         event.source.postMessage(
           {
             levelStarted: false,

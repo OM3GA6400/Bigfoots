@@ -41,12 +41,12 @@ var InputWritr;
                 this.getTimestamp = settings.getTimestamp;
             }
             this.eventInformation = settings.eventInformation;
-            this.canTrigger = settings.hasOwnProperty("canTrigger")
+            this.canTrigger = Object.prototype.hasOwnProperty.call(settings, 'canTrigger')
                 ? settings.canTrigger
                 : function () {
                     return true;
                 };
-            this.isRecording = settings.hasOwnProperty("isRecording")
+            this.isRecording = Object.prototype.hasOwnProperty.call(settings, 'isRecording')
                 ? settings.isRecording
                 : function () {
                     return true;
@@ -89,7 +89,7 @@ var InputWritr;
         InputWritr.prototype.getAliasesAsKeyStrings = function () {
             var output = {}, alias;
             for (alias in this.aliases) {
-                if (this.aliases.hasOwnProperty(alias)) {
+                if (Object.prototype.hasOwnProperty.call(this.aliases, alias)) {
                     output[alias] = this.getAliasAsKeyStrings(alias);
                 }
             }
@@ -230,7 +230,7 @@ var InputWritr;
          */
         InputWritr.prototype.addAliasValues = function (name, values) {
             var triggerName, triggerGroup, i;
-            if (!this.aliases.hasOwnProperty(name)) {
+            if (!Object.prototype.hasOwnProperty.call(this.aliases, name)) {
                 this.aliases[name] = values;
             }
             else {
@@ -238,10 +238,10 @@ var InputWritr;
             }
             // triggerName = "onkeydown", "onkeyup", ...
             for (triggerName in this.triggers) {
-                if (this.triggers.hasOwnProperty(triggerName)) {
+                if (Object.prototype.hasOwnProperty.call(this.triggers, triggerName)) {
                     // triggerGroup = { "left": function, ... }, ...
                     triggerGroup = this.triggers[triggerName];
-                    if (triggerGroup.hasOwnProperty(name)) {
+                    if (Object.prototype.hasOwnProperty.call(triggerGroup, name)) {
                         // values[i] = 37, 65, ...
                         for (i = 0; i < values.length; i += 1) {
                             triggerGroup[values[i]] = triggerGroup[name];
@@ -259,7 +259,7 @@ var InputWritr;
          */
         InputWritr.prototype.removeAliasValues = function (name, values) {
             var triggerName, triggerGroup, i;
-            if (!this.aliases.hasOwnProperty(name)) {
+            if (!Object.prototype.hasOwnProperty.call(this.aliases, name)) {
                 return;
             }
             for (i = 0; i < values.length; i += 1) {
@@ -267,13 +267,13 @@ var InputWritr;
             }
             // triggerName = "onkeydown", "onkeyup", ...
             for (triggerName in this.triggers) {
-                if (this.triggers.hasOwnProperty(triggerName)) {
+                if (Object.prototype.hasOwnProperty.call(this.triggers, triggerName)) {
                     // triggerGroup = { "left": function, ... }, ...
                     triggerGroup = this.triggers[triggerName];
-                    if (triggerGroup.hasOwnProperty(name)) {
+                    if (Object.prototype.hasOwnProperty.call(triggerGroup, name)) {
                         // values[i] = 37, 65, ...
                         for (i = 0; i < values.length; i += 1) {
-                            if (triggerGroup.hasOwnProperty(values[i])) {
+                            if (Object.prototype.hasOwnProperty.call(triggerGroup, values[i])) {
                                 delete triggerGroup[values[i]];
                             }
                         }
@@ -304,7 +304,7 @@ var InputWritr;
         InputWritr.prototype.addAliases = function (aliasesRaw) {
             var aliasName;
             for (aliasName in aliasesRaw) {
-                if (aliasesRaw.hasOwnProperty(aliasName)) {
+                if (Object.prototype.hasOwnProperty.call(aliasesRaw, aliasName)) {
                     this.addAliasValues(aliasName, aliasesRaw[aliasName]);
                 }
             }
@@ -322,11 +322,11 @@ var InputWritr;
          */
         InputWritr.prototype.addEvent = function (trigger, label, callback) {
             var i;
-            if (!this.triggers.hasOwnProperty(trigger)) {
+            if (!Object.prototype.hasOwnProperty.call(this.triggers, trigger)) {
                 throw new Error("Unknown trigger requested: '" + trigger + "'.");
             }
             this.triggers[trigger][label] = callback;
-            if (this.aliases.hasOwnProperty(label)) {
+            if (Object.prototype.hasOwnProperty.call(this.aliases, label)) {
                 for (i = 0; i < this.aliases[label].length; i += 1) {
                     this.triggers[trigger][this.aliases[label][i]] = callback;
                 }
@@ -342,11 +342,11 @@ var InputWritr;
          */
         InputWritr.prototype.removeEvent = function (trigger, label) {
             var i;
-            if (!this.triggers.hasOwnProperty(trigger)) {
+            if (!Object.prototype.hasOwnProperty.call(this.triggers, trigger)) {
                 throw new Error("Unknown trigger requested: '" + trigger + "'.");
             }
             delete this.triggers[trigger][label];
-            if (this.aliases.hasOwnProperty(label)) {
+            if (Object.prototype.hasOwnProperty.call(this.aliases, label)) {
                 for (i = 0; i < this.aliases[label].length; i += 1) {
                     if (this.triggers[trigger][this.aliases[label][i]]) {
                         delete this.triggers[trigger][this.aliases[label][i]];
@@ -392,7 +392,7 @@ var InputWritr;
         InputWritr.prototype.playHistory = function (history) {
             var time;
             for (time in history) {
-                if (history.hasOwnProperty(time)) {
+                if (Object.prototype.hasOwnProperty.call(history, time)) {
                     setTimeout(this.makeEventCall(history[time]), (Number(time) - this.startingTime) | 0);
                 }
             }
@@ -446,7 +446,7 @@ var InputWritr;
                     event.preventDefault();
                 }
                 // If there's a Function under that alias, run it
-                if (functions.hasOwnProperty(alias)) {
+                if (Object.prototype.hasOwnProperty.call(functions, alias)) {
                     if (_this.isRecording()) {
                         _this.saveEventInformation([trigger, alias]);
                     }

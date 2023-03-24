@@ -1,6 +1,6 @@
 // @echo '/// <reference path="GameStartr-0.2.0.ts" />'
 var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
@@ -803,7 +803,7 @@ var FullScreenMario;
             }
             while (true) {
                 keyString = key + "-Text";
-                if (!collection.hasOwnProperty(keyString)) {
+                if (!Object.prototype.hasOwnProperty.call(collection, keyString)) {
                     break;
                 }
                 texts = collection[keyString].children;
@@ -1137,7 +1137,7 @@ var FullScreenMario;
             // Copy all attributes, if they exist
             if (scope.attributes) {
                 for (i in scope.attributes) {
-                    if (scope.hasOwnProperty(i) && scope[i]) {
+                    if (Object.prototype.hasOwnProperty.call(scope, i) && scope[i]) {
                         FullScreenMario.prototype.proliferate(scope, scope.attributes[i]);
                     }
                 }

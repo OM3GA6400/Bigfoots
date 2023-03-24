@@ -82,10 +82,10 @@ var ModAttachr;
         ModAttachr.prototype.addMod = function (mod) {
             var modEvents = mod.events, name;
             for (name in modEvents) {
-                if (!modEvents.hasOwnProperty(name)) {
+                if (!Object.prototype.hasOwnProperty.call(modEvents, name)) {
                     continue;
                 }
-                if (!this.events.hasOwnProperty(name)) {
+                if (!Object.prototype.hasOwnProperty.call(this.events, name)) {
                     this.events[name] = [mod];
                 }
                 else {
@@ -97,7 +97,7 @@ var ModAttachr;
             // Record the mod in the ModAttachr's mods listing.
             this.mods[mod.name] = mod;
             // If the mod is enabled, trigger its "onModEnable" event
-            if (mod.enabled && mod.events.hasOwnProperty("onModEnable")) {
+            if (mod.enabled && Object.prototype.hasOwnProperty.call(mod.events, 'onModEnable')) {
                 this.fireModEvent("onModEnable", mod.name, arguments);
             }
             // If there's a ItemsHoldr, record the mod in it
@@ -154,7 +154,7 @@ var ModAttachr;
             if (this.ItemsHolder) {
                 this.ItemsHolder.setItem(name, true);
             }
-            if (mod.events.hasOwnProperty("onModEnable")) {
+            if (Object.prototype.hasOwnProperty.call(mod.events, 'onModEnable')) {
                 return this.fireModEvent("onModEnable", mod.name, arguments);
             }
         };
@@ -193,7 +193,7 @@ var ModAttachr;
             if (this.ItemsHolder) {
                 this.ItemsHolder.setItem(name, false);
             }
-            if (mod.events.hasOwnProperty("onModDisable")) {
+            if (Object.prototype.hasOwnProperty.call(mod.events, 'onModDisable')) {
                 return this.fireModEvent("onModDisable", mod.name, args);
             }
         };

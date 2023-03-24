@@ -391,15 +391,15 @@ var EightBittr;
             var setting, i;
             // For each attribute of the donor:
             for (i in donor) {
-                if (donor.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(donor, i)) {
                     // If noOverride, don't override already existing properties
-                    if (noOverride && recipient.hasOwnProperty(i)) {
+                    if (noOverride && Object.prototype.hasOwnProperty.call(recipient, i)) {
                         continue;
                     }
                     // If it's an object, recurse on a new version of it
                     setting = donor[i];
                     if (typeof setting === "object") {
-                        if (!recipient.hasOwnProperty(i)) {
+                        if (!Object.prototype.hasOwnProperty.call(recipient, i)) {
                             recipient[i] = new setting.constructor();
                         }
                         this.proliferate(recipient[i], setting, noOverride);
@@ -426,7 +426,7 @@ var EightBittr;
             var setting, i;
             // For each attribute of the donor:
             for (i in donor) {
-                if (donor.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(donor, i)) {
                     // If noOverride, don't override already existing properties
                     if (noOverride && recipient[i]) {
                         continue;
@@ -463,9 +463,9 @@ var EightBittr;
             var setting, i, j;
             // For each attribute of the donor:
             for (i in donor) {
-                if (donor.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(donor, i)) {
                     // If noOverride, don't override already existing properties
-                    if (noOverride && recipient.hasOwnProperty(i)) {
+                    if (noOverride && Object.prototype.hasOwnProperty.call(recipient, i)) {
                         continue;
                     }
                     setting = donor[i];
@@ -492,7 +492,7 @@ var EightBittr;
                             }
                             else if (typeof setting === "object") {
                                 // If it's an object, recurse on a new version of it
-                                if (!recipient.hasOwnProperty(i)) {
+                                if (!Object.prototype.hasOwnProperty.call(recipient, i)) {
                                     recipient[i] = new setting.constructor();
                                 }
                                 this.proliferate(recipient[i], setting, noOverride);

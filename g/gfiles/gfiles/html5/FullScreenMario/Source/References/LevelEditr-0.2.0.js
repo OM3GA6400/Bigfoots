@@ -1691,7 +1691,7 @@ var LevelEditr;
         LevelEditr.prototype.parseSmart = function (text) {
             var map = JSON.parse(text, this.jsonReplacerSmart), areas = map.areas, i;
             for (i in areas) {
-                if (areas.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(areas, i)) {
                     areas[i].editor = true;
                 }
             }
@@ -1733,7 +1733,7 @@ var LevelEditr;
         LevelEditr.prototype.disableAllThings = function () {
             var scope = this, groups = this.GameStarter.GroupHolder.getGroups(), i;
             for (i in groups) {
-                if (groups.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(groups, i)) {
                     groups[i].forEach(function (thing) {
                         scope.disableThing(thing);
                     });
@@ -1749,7 +1749,7 @@ var LevelEditr;
             this.GameStarter.addThing(thing, left, top);
             this.disableThing(thing);
             this.GameStarter.TimeHandler.cancelAllEvents();
-            if ((thing.hasOwnProperty("hidden") && thing.hidden) || thing.opacity === 0) {
+            if ((Object.prototype.hasOwnProperty.call(thing, 'hidden') && thing.hidden) || thing.opacity === 0) {
                 thing.hidden = false;
                 thing.opacity = 0.35;
             }
@@ -1760,7 +1760,7 @@ var LevelEditr;
         LevelEditr.prototype.clearAllThings = function () {
             var scope = this, groups = this.GameStarter.GroupHolder.getGroups(), i;
             for (i in groups) {
-                if (groups.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(groups, i)) {
                     groups[i].forEach(function (thing) {
                         scope.GameStarter.killNormal(thing);
                     });
@@ -1862,7 +1862,7 @@ var LevelEditr;
         LevelEditr.prototype.applyElementAttributes = function (element, attributes) {
             var i;
             for (i in attributes) {
-                if (attributes.hasOwnProperty(i) && i.indexOf("data:") === 0) {
+                if (Object.prototype.hasOwnProperty.call(attributes, i) && i.indexOf("data:") === 0) {
                     element.setAttribute(i, attributes[i]);
                 }
             }

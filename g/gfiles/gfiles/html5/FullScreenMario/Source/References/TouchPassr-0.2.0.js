@@ -1,6 +1,6 @@
 /// <reference path="InputWritr-0.2.0.ts" />
 var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
@@ -73,9 +73,9 @@ var TouchPassr;
             var setting, i, j;
             // For each attribute of the donor:
             for (i in donor) {
-                if (donor.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(donor, i)) {
                     // If noOverride, don't override already existing properties
-                    if (noOverride && recipient.hasOwnProperty(i)) {
+                    if (noOverride && Object.prototype.hasOwnProperty.call(recipient, i)) {
                         continue;
                     }
                     setting = donor[i];
@@ -102,7 +102,7 @@ var TouchPassr;
                             }
                             else if (typeof setting === "object") {
                                 // If it's an object, recurse on a new version of it
-                                if (!recipient.hasOwnProperty(i)) {
+                                if (!Object.prototype.hasOwnProperty.call(recipient, i)) {
                                     recipient[i] = new setting.constructor();
                                 }
                                 this.proliferateElement(recipient[i], setting, noOverride);
@@ -306,7 +306,7 @@ var TouchPassr;
                 return;
             }
             for (i in events) {
-                if (!events.hasOwnProperty(i)) {
+                if (!Object.prototype.hasOwnProperty.call(events, i)) {
                     continue;
                 }
                 for (j = 0; j < events[i].length; j += 1) {
@@ -573,7 +573,7 @@ var TouchPassr;
         JoystickControl.prototype.onEvent = function (pipes, event) {
             var i, j;
             for (i in pipes) {
-                if (!pipes.hasOwnProperty(i)) {
+                if (!Object.prototype.hasOwnProperty.call(pipes, i)) {
                     continue;
                 }
                 for (j = 0; j < pipes[i].length; j += 1) {
@@ -691,7 +691,7 @@ var TouchPassr;
         TouchPassr.prototype.addControls = function (schemas) {
             var i;
             for (i in schemas) {
-                if (schemas.hasOwnProperty(i)) {
+                if (Object.prototype.hasOwnProperty.call(schemas, i)) {
                     this.addControl(schemas[i]);
                 }
             }
@@ -702,7 +702,7 @@ var TouchPassr;
          * @param schema   The schema for the new control to be made.
          */
         TouchPassr.prototype.addControl = function (schema) {
-            if (!TouchPassr.controlClasses.hasOwnProperty(schema.control)) {
+            if (!Object.prototype.hasOwnProperty.call(TouchPassr.controlClasses, schema.control)) {
                 throw new Error("Unknown control schema: '" + schema.control + "'.");
             }
             var control = new TouchPassr.controlClasses[schema.control](this.InputWriter, schema, this.styles);
