@@ -13614,7 +13614,7 @@ function getDailyChallenge(add, objectOnly, textOnly){
 					totalChance -= dailyModifiers[modifierList[y]].chance;
 					chanceMod = 1000 / totalChance;
 					selectedIndex = y;
-					break lookupLoop;
+					break;
 				}
 			}
 			var selectedMod = modifierList[selectedIndex];
@@ -13628,7 +13628,7 @@ function getDailyChallenge(add, objectOnly, textOnly){
 			}
 			else if (sizeCount[modSize] >= sizeTarget[modSize] && z != maxZLoops - 1){
 				if (!firstChoice.length) firstChoice = [selectedMod, str, selectedIndex, modSize, modWeight];
-				continue modLoop;
+				continue;
 			}
 			else if (z == maxZLoops - 1 && firstChoice.length){
 				selectedMod = firstChoice[0];
@@ -13657,7 +13657,7 @@ function getDailyChallenge(add, objectOnly, textOnly){
 					}
 				}
 			}
-			break modLoop;
+			break;
 		}
 
 	}
