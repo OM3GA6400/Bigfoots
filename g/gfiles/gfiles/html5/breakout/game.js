@@ -70,7 +70,7 @@ if (!window.requestAnimationFrame) {// http://paulirish.com/2011/requestanimatio
 // Minimal DOM Library ($)
 //=============================================================================
 
-Element = function() {
+Element = (function() {
 
   var instance = {
 
@@ -106,7 +106,7 @@ Element = function() {
 
   return get;
 
-}();
+}());
 
 $ = Element;
 
@@ -206,7 +206,7 @@ Game = {
       return Game.current = Object.construct(Game.Runner, id, game, cfg).game; // return the game instance, not the runner (caller can always get at the runner via game.runner)
   },
 
-  ua: function() { // should avoid user agent sniffing... but sometimes you just gotta do what you gotta do
+  ua: (function() { // should avoid user agent sniffing... but sometimes you just gotta do what you gotta do
     var ua  = navigator.userAgent.toLowerCase();
     var key =        ((ua.indexOf("opera")   > -1) ? "opera"   : null);
         key = key || ((ua.indexOf("firefox") > -1) ? "firefox" : null);
@@ -233,7 +233,7 @@ Game = {
       hasAudio:  (typeof(Audio) != 'undefined'),
       hasTouch:  ('ontouchstart' in window)
     }
-  }(),
+  }()),
 
   addEvent:    function(obj, type, fn) { $(obj).addEventListener(type, fn, false);    },
   removeEvent: function(obj, type, fn) { $(obj).removeEventListener(type, fn, false); },

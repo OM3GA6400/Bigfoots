@@ -520,7 +520,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 	var _COLORS, _SUFFIXES, _COMBAT_OPTIONS, _LABELS;
 
-	var XY = function () {
+	var XY = (function () {
 		XY.fromString = function fromString(str) {
 			var numbers = str.split(",").map(Number);
 			return new (Function.prototype.bind.apply(this, [null].concat(numbers)))();
@@ -616,11 +616,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		};
 
 		return XY;
-	}();
+	}());
 
 	var SPEED = 10; // cells per second
 
-	var Animation = function () {
+	var Animation = (function () {
 		function Animation() {
 			_classCallCheck(this, Animation);
 
@@ -688,13 +688,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		};
 
 		return Animation;
-	}();
+	}());
 
 	var BLOCKS_NONE = 0;
 	var BLOCKS_MOVEMENT = 1;
 	var BLOCKS_LIGHT = 2;
 
-	var Entity = function () {
+	var Entity = (function () {
 		function Entity(visual) {
 			_classCallCheck(this, Entity);
 
@@ -721,7 +721,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		};
 
 		return Entity;
-	}();
+	}());
 
 	String.format.map.the = "describeThe";
 	String.format.map.a = "describeA";
@@ -742,7 +742,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		storage[message].push(subscriber);
 	}
 
-	var Inventory = function () {
+	var Inventory = (function () {
 		function Inventory() {
 			_classCallCheck(this, Inventory);
 
@@ -775,7 +775,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		};
 
 		return Inventory;
-	}();
+	}());
 
 	var queue = [];
 
@@ -841,7 +841,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}, 20);
 	}
 
-	var Brambles = function (_Entity) {
+	var Brambles = (function (_Entity) {
 		_inherits(Brambles, _Entity);
 
 		function Brambles() {
@@ -855,9 +855,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		};
 
 		return Brambles;
-	}(Entity);
+	}(Entity));
 
-	var Princess = function (_Entity2) {
+	var Princess = (function (_Entity2) {
 		_inherits(Princess, _Entity2);
 
 		function Princess() {
@@ -870,9 +870,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return Princess;
-	}(Entity);
+	}(Entity));
 
-	var Pillar = function (_Entity3) {
+	var Pillar = (function (_Entity3) {
 		_inherits(Pillar, _Entity3);
 
 		function Pillar() {
@@ -885,9 +885,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return Pillar;
-	}(Entity);
+	}(Entity));
 
-	var Floor = function (_Entity4) {
+	var Floor = (function (_Entity4) {
 		_inherits(Floor, _Entity4);
 
 		function Floor() {
@@ -897,9 +897,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return Floor;
-	}(Entity);
+	}(Entity));
 
-	var Wall = function (_Entity5) {
+	var Wall = (function (_Entity5) {
 		_inherits(Wall, _Entity5);
 
 		function Wall() {
@@ -912,9 +912,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return Wall;
-	}(Entity);
+	}(Entity));
 
-	var Grass = function (_Entity6) {
+	var Grass = (function (_Entity6) {
 		_inherits(Grass, _Entity6);
 
 		function Grass(ch) {
@@ -924,9 +924,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return Grass;
-	}(Entity);
+	}(Entity));
 
-	var Tree = function (_Entity7) {
+	var Tree = (function (_Entity7) {
 		_inherits(Tree, _Entity7);
 
 		function Tree() {
@@ -936,9 +936,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return Tree;
-	}(Entity);
+	}(Entity));
 
-	var Door = function (_Entity8) {
+	var Door = (function (_Entity8) {
 		_inherits(Door, _Entity8);
 
 		function Door(closed) {
@@ -979,9 +979,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		};
 
 		return Door;
-	}(Entity);
+	}(Entity));
 
-	var Staircase = function (_Entity9) {
+	var Staircase = (function (_Entity9) {
 		_inherits(Staircase, _Entity9);
 
 		function Staircase(up, callback) {
@@ -1003,7 +1003,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		};
 
 		return Staircase;
-	}(Entity);
+	}(Entity));
 
 	var ROOM = new Floor();
 	var CORRIDOR = new Floor();
@@ -1012,7 +1012,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 	var IT = ["it", "her", "him"];
 
-	var Being = function (_Entity10) {
+	var Being = (function (_Entity10) {
 		_inherits(Being, _Entity10);
 
 		function Being(visual) {
@@ -1107,7 +1107,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		};
 
 		return Being;
-	}(Entity);
+	}(Entity));
 
 	String.format.map.verb = "describeVerb";
 	String.format.map.it = "describeIt";
@@ -1138,7 +1138,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 	var SUFFIXES = (_SUFFIXES = {}, _SUFFIXES[ATTACK_1] = "power", _SUFFIXES[ATTACK_2] = "treachery", _SUFFIXES[MAGIC_1] = "magical domination", _SUFFIXES[MAGIC_2] = "magical weakness", _SUFFIXES);
 
-	var Item = function (_Entity11) {
+	var Item = (function (_Entity11) {
 		_inherits(Item, _Entity11);
 
 		function Item(type, visual) {
@@ -1160,9 +1160,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		};
 
 		return Item;
-	}(Entity);
+	}(Entity));
 
-	var Drinkable = function (_Item) {
+	var Drinkable = (function (_Item) {
 		_inherits(Drinkable, _Item);
 
 		function Drinkable(strength, visual) {
@@ -1189,9 +1189,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		};
 
 		return Drinkable;
-	}(Item);
+	}(Item));
 
-	var Wearable = function (_Item2) {
+	var Wearable = (function (_Item2) {
 		_inherits(Wearable, _Item2);
 
 		function Wearable(type, visual, modifier, prefixes) {
@@ -1237,7 +1237,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		};
 
 		return Wearable;
-	}(Item);
+	}(Item));
 
 	var WEAPON_PREFIXES = {
 		"sharp": +1,
@@ -1257,7 +1257,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		"tempered": 3
 	};
 
-	var Dagger = function (_Wearable) {
+	var Dagger = (function (_Wearable) {
 		_inherits(Dagger, _Wearable);
 
 		function Dagger() {
@@ -1267,11 +1267,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return Dagger;
-	}(Wearable);
+	}(Wearable));
 
 	Dagger.danger = 1;
 
-	var Sword = function (_Wearable2) {
+	var Sword = (function (_Wearable2) {
 		_inherits(Sword, _Wearable2);
 
 		function Sword() {
@@ -1281,11 +1281,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return Sword;
-	}(Wearable);
+	}(Wearable));
 
 	Sword.danger = 2;
 
-	var Axe = function (_Wearable3) {
+	var Axe = (function (_Wearable3) {
 		_inherits(Axe, _Wearable3);
 
 		function Axe() {
@@ -1295,11 +1295,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return Axe;
-	}(Wearable);
+	}(Wearable));
 
 	Axe.danger = 3;
 
-	var Mace = function (_Wearable4) {
+	var Mace = (function (_Wearable4) {
 		_inherits(Mace, _Wearable4);
 
 		function Mace() {
@@ -1309,11 +1309,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return Mace;
-	}(Wearable);
+	}(Wearable));
 
 	Mace.danger = 4;
 
-	var GreatSword = function (_Wearable5) {
+	var GreatSword = (function (_Wearable5) {
 		_inherits(GreatSword, _Wearable5);
 
 		function GreatSword() {
@@ -1323,11 +1323,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return GreatSword;
-	}(Wearable);
+	}(Wearable));
 
 	GreatSword.danger = 5;
 
-	var Shield = function (_Wearable6) {
+	var Shield = (function (_Wearable6) {
 		_inherits(Shield, _Wearable6);
 
 		function Shield() {
@@ -1337,11 +1337,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return Shield;
-	}(Wearable);
+	}(Wearable));
 
 	Shield.danger = 2;
 
-	var Helmet = function (_Wearable7) {
+	var Helmet = (function (_Wearable7) {
 		_inherits(Helmet, _Wearable7);
 
 		function Helmet() {
@@ -1351,11 +1351,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return Helmet;
-	}(Wearable);
+	}(Wearable));
 
 	Helmet.danger = 2;
 
-	var Armor = function (_Wearable8) {
+	var Armor = (function (_Wearable8) {
 		_inherits(Armor, _Wearable8);
 
 		function Armor() {
@@ -1365,11 +1365,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return Armor;
-	}(Wearable);
+	}(Wearable));
 
 	Armor.danger = 3;
 
-	var HealthPotion = function (_Drinkable) {
+	var HealthPotion = (function (_Drinkable) {
 		_inherits(HealthPotion, _Drinkable);
 
 		function HealthPotion() {
@@ -1391,9 +1391,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		};
 
 		return HealthPotion;
-	}(Drinkable);
+	}(Drinkable));
 
-	var Lutefisk = function (_Drinkable2) {
+	var Lutefisk = (function (_Drinkable2) {
 		_inherits(Lutefisk, _Drinkable2);
 
 		function Lutefisk() {
@@ -1413,9 +1413,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		};
 
 		return Lutefisk;
-	}(Drinkable);
+	}(Drinkable));
 
-	var ManaPotion = function (_Drinkable3) {
+	var ManaPotion = (function (_Drinkable3) {
 		_inherits(ManaPotion, _Drinkable3);
 
 		function ManaPotion() {
@@ -1437,9 +1437,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		};
 
 		return ManaPotion;
-	}(Drinkable);
+	}(Drinkable));
 
-	var Gold = function (_Item3) {
+	var Gold = (function (_Item3) {
 		_inherits(Gold, _Item3);
 
 		function Gold() {
@@ -1465,7 +1465,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		};
 
 		return Gold;
-	}(Item);
+	}(Item));
 
 	var items = Object.freeze({
 		Dagger: Dagger,
@@ -1576,7 +1576,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 	var HERO_TYPES = ["knight", "adventurer", "hero", "explorer"];
 	var HERO_CHATS = ["Hi there, fellow adventurer!", "I wonder how many tower floors are there...", "Some monsters in this tower give a pretty hard fight!", "Look out for potions, they might save your butt.", "So, you are also looking for that sleeping princess?", "A sharp sword is better than a blunt one.", "I used to be an adventurer like you. But then I got hurt on a thorn..."];
 
-	var Autonomous = function (_Being) {
+	var Autonomous = (function (_Being) {
 		_inherits(Autonomous, _Being);
 
 		function Autonomous(visual) {
@@ -1601,9 +1601,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		};
 
 		return Autonomous;
-	}(Being);
+	}(Being));
 
-	var Rat = function (_Autonomous) {
+	var Rat = (function (_Autonomous) {
 		_inherits(Rat, _Autonomous);
 
 		function Rat() {
@@ -1617,11 +1617,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return Rat;
-	}(Autonomous);
+	}(Autonomous));
 
 	Rat.danger = 1;
 
-	var Bat = function (_Autonomous2) {
+	var Bat = (function (_Autonomous2) {
 		_inherits(Bat, _Autonomous2);
 
 		function Bat() {
@@ -1635,11 +1635,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return Bat;
-	}(Autonomous);
+	}(Autonomous));
 
 	Bat.danger = 1;
 
-	var Goblin = function (_Autonomous3) {
+	var Goblin = (function (_Autonomous3) {
 		_inherits(Goblin, _Autonomous3);
 
 		function Goblin() {
@@ -1653,11 +1653,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return Goblin;
-	}(Autonomous);
+	}(Autonomous));
 
 	Goblin.danger = 2;
 
-	var Orc = function (_Autonomous4) {
+	var Orc = (function (_Autonomous4) {
 		_inherits(Orc, _Autonomous4);
 
 		function Orc() {
@@ -1674,11 +1674,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return Orc;
-	}(Autonomous);
+	}(Autonomous));
 
 	Orc.danger = 3;
 
-	var OrcWitch = function (_Autonomous5) {
+	var OrcWitch = (function (_Autonomous5) {
 		_inherits(OrcWitch, _Autonomous5);
 
 		function OrcWitch() {
@@ -1695,11 +1695,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return OrcWitch;
-	}(Autonomous);
+	}(Autonomous));
 
 	OrcWitch.danger = 4;
 
-	var Skeleton = function (_Autonomous6) {
+	var Skeleton = (function (_Autonomous6) {
 		_inherits(Skeleton, _Autonomous6);
 
 		function Skeleton() {
@@ -1718,11 +1718,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return Skeleton;
-	}(Autonomous);
+	}(Autonomous));
 
 	Skeleton.danger = 5;
 
-	var Ogre = function (_Autonomous7) {
+	var Ogre = (function (_Autonomous7) {
 		_inherits(Ogre, _Autonomous7);
 
 		function Ogre() {
@@ -1742,11 +1742,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return Ogre;
-	}(Autonomous);
+	}(Autonomous));
 
 	Ogre.danger = 6;
 
-	var Zombie = function (_Autonomous8) {
+	var Zombie = (function (_Autonomous8) {
 		_inherits(Zombie, _Autonomous8);
 
 		function Zombie() {
@@ -1756,11 +1756,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return Zombie;
-	}(Autonomous);
+	}(Autonomous));
 
 	Zombie.danger = 6;
 
-	var Spider = function (_Autonomous9) {
+	var Spider = (function (_Autonomous9) {
 		_inherits(Spider, _Autonomous9);
 
 		function Spider() {
@@ -1775,11 +1775,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return Spider;
-	}(Autonomous);
+	}(Autonomous));
 
 	Spider.danger = 3;
 
-	var Snake = function (_Autonomous10) {
+	var Snake = (function (_Autonomous10) {
 		_inherits(Snake, _Autonomous10);
 
 		function Snake() {
@@ -1794,11 +1794,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return Snake;
-	}(Autonomous);
+	}(Autonomous));
 
 	Snake.danger = 4;
 
-	var Minotaur = function (_Autonomous11) {
+	var Minotaur = (function (_Autonomous11) {
 		_inherits(Minotaur, _Autonomous11);
 
 		function Minotaur() {
@@ -1822,11 +1822,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return Minotaur;
-	}(Autonomous);
+	}(Autonomous));
 
 	Minotaur.danger = 8;
 
-	var Tree$1 = function (_Autonomous12) {
+	var Tree$1 = (function (_Autonomous12) {
 		_inherits(Tree$1, _Autonomous12);
 
 		function Tree$1() {
@@ -1842,11 +1842,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}
 
 		return Tree$1;
-	}(Autonomous);
+	}(Autonomous));
 
 	Tree$1.danger = 8;
 
-	var Hero = function (_Autonomous13) {
+	var Hero = (function (_Autonomous13) {
 		_inherits(Hero, _Autonomous13);
 
 		function Hero() {
@@ -1876,7 +1876,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		};
 
 		return Hero;
-	}(Autonomous);
+	}(Autonomous));
 
 	var beings = Object.freeze({
 		Rat: Rat,
@@ -2019,7 +2019,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		enemy: false
 	};
 
-	var PC = function (_Being2) {
+	var PC = (function (_Being2) {
 		_inherits(PC, _Being2);
 
 		function PC() {
@@ -2301,14 +2301,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		};
 
 		return PC;
-	}(Being);
+	}(Being));
 
 	var pc = new PC();
 
 	var W = 6;
 	var H = W;
 
-	var Board = function () {
+	var Board = (function () {
 		function Board() {
 			_classCallCheck(this, Board);
 
@@ -2461,7 +2461,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		};
 
 		return Board;
-	}();
+	}());
 
 	var CELL = 30;
 	var CTX = document.createElement("canvas").getContext("2d");
@@ -2580,7 +2580,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		}));
 	}
 
-	var Memory = function () {
+	var Memory = (function () {
 		Memory.forLevel = function forLevel(level) {
 			if (!(level.id in memories)) {
 				memories[level.id] = new this(level);
@@ -2628,7 +2628,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		};
 
 		return Memory;
-	}();
+	}());
 
 	var FONT_BASE = 18;
 	var FONT_ZOOM = 120;
@@ -3224,7 +3224,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		return D2_RADIUS + Math.round((danger - 2) / (regularCount - 1) * diff);
 	}
 
-	var Level = function () {
+	var Level = (function () {
 		function Level(danger) {
 			_classCallCheck(this, Level);
 
@@ -3413,7 +3413,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 		};
 
 		return Level;
-	}();
+	}());
 
 	function get(classes, danger) {
 		var d = ROT.RNG.getNormal(danger, 1);
