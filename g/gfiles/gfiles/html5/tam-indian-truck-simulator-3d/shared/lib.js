@@ -70,7 +70,7 @@ function enableSound() {
   return;
 }
 
-!function() {
+!(function() {
   if (window.UnityLoader) {
     if (window.UnityLoader.compatibilityCheck) {
       window.UnityLoader.compatibilityCheck = function(element, callback, errCallback) {
@@ -116,4 +116,4 @@ function enableSound() {
     .forEach(e => document.addEventListener(e, function() {
       soundOverlay.style.display = 'none';
     }, false));
-}();
+}());

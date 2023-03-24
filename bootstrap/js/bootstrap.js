@@ -17,7 +17,7 @@
  * limitations under the License.
  * ========================================================== */
 
-!function( $ ) {
+!(function( $ ) {
 
   $(function () {
 
@@ -48,7 +48,7 @@
 
   })
 
-}( window.jQuery );/* ==========================================================
+}( window.jQuery ));/* ==========================================================
  * bootstrap-alert.js v2.0.1
  * http://twitter.github.com/bootstrap/javascript.html#alerts
  * ==========================================================
@@ -68,7 +68,7 @@
  * ========================================================== */
 
 
-!function( $ ){
+!(function( $ ){
 
   "use strict"
 
@@ -141,7 +141,7 @@
     $('body').on('click.alert.data-api', dismiss, Alert.prototype.close)
   })
 
-}( window.jQuery );/* ============================================================
+}( window.jQuery ));/* ============================================================
  * bootstrap-button.js v2.0.1
  * http://twitter.github.com/bootstrap/javascript.html#buttons
  * ============================================================
@@ -160,7 +160,7 @@
  * limitations under the License.
  * ============================================================ */
 
-!function( $ ){
+!(function( $ ){
 
   "use strict"
 
@@ -240,7 +240,7 @@
     })
   })
 
-}( window.jQuery );/* ==========================================================
+}( window.jQuery ));/* ==========================================================
  * bootstrap-carousel.js v2.0.1
  * http://twitter.github.com/bootstrap/javascript.html#carousel
  * ==========================================================
@@ -260,7 +260,7 @@
  * ========================================================== */
 
 
-!function( $ ){
+!(function( $ ){
 
   "use strict"
 
@@ -400,7 +400,7 @@
     })
   })
 
-}( window.jQuery );/* =============================================================
+}( window.jQuery ));/* =============================================================
  * bootstrap-collapse.js v2.0.1
  * http://twitter.github.com/bootstrap/javascript.html#collapse
  * =============================================================
@@ -419,7 +419,7 @@
  * limitations under the License.
  * ============================================================ */
 
-!function( $ ){
+!(function( $ ){
 
   "use strict"
 
@@ -537,7 +537,7 @@
     })
   })
 
-}( window.jQuery );/* ============================================================
+}( window.jQuery ));/* ============================================================
  * bootstrap-dropdown.js v2.0.1
  * http://twitter.github.com/bootstrap/javascript.html#dropdowns
  * ============================================================
@@ -557,7 +557,7 @@
  * ============================================================ */
 
 
-!function( $ ){
+!(function( $ ){
 
   "use strict"
 
@@ -628,7 +628,7 @@
     $('body').on('click.dropdown.data-api', toggle, Dropdown.prototype.toggle)
   })
 
-}( window.jQuery );/* =========================================================
+}( window.jQuery ));/* =========================================================
  * bootstrap-modal.js v2.0.1
  * http://twitter.github.com/bootstrap/javascript.html#modals
  * =========================================================
@@ -648,7 +648,7 @@
  * ========================================================= */
 
 
-!function( $ ){
+!(function( $ ){
 
   "use strict"
 
@@ -837,7 +837,7 @@
     })
   })
 
-}( window.jQuery );/* ===========================================================
+}( window.jQuery ));/* ===========================================================
  * bootstrap-tooltip.js v2.0.1
  * http://twitter.github.com/bootstrap/javascript.html#tooltips
  * Inspired by the original jQuery.tipsy by Jason Frame
@@ -857,7 +857,7 @@
  * limitations under the License.
  * ========================================================== */
 
-!function( $ ) {
+!(function( $ ) {
 
   "use strict"
 
@@ -1106,7 +1106,7 @@
   , template: '<div class="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>'
   }
 
-}( window.jQuery );/* ===========================================================
+}( window.jQuery ));/* ===========================================================
  * bootstrap-popover.js v2.0.1
  * http://twitter.github.com/bootstrap/javascript.html#popovers
  * ===========================================================
@@ -1126,7 +1126,7 @@
  * =========================================================== */
 
 
-!function( $ ) {
+!(function( $ ) {
 
  "use strict"
 
@@ -1200,7 +1200,7 @@
   , template: '<div class="popover"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
   })
 
-}( window.jQuery );/* =============================================================
+}( window.jQuery ));/* =============================================================
  * bootstrap-scrollspy.js v2.0.1
  * http://twitter.github.com/bootstrap/javascript.html#scrollspy
  * =============================================================
@@ -1219,7 +1219,7 @@
  * limitations under the License.
  * ============================================================== */
 
-!function ( $ ) {
+!(function ( $ ) {
 
   "use strict"
 
@@ -1324,7 +1324,7 @@
     })
   })
 
-}( window.jQuery );/* ========================================================
+}( window.jQuery ));/* ========================================================
  * bootstrap-tab.js v2.0.1
  * http://twitter.github.com/bootstrap/javascript.html#tabs
  * ========================================================
@@ -1344,7 +1344,7 @@
  * ======================================================== */
 
 
-!function( $ ){
+!(function( $ ){
 
   "use strict"
 
@@ -1453,7 +1453,7 @@
     })
   })
 
-}( window.jQuery );/* =============================================================
+}( window.jQuery ));/* =============================================================
  * bootstrap-typeahead.js v2.0.1
  * http://twitter.github.com/bootstrap/javascript.html#typeahead
  * =============================================================
@@ -1472,7 +1472,7 @@
  * limitations under the License.
  * ============================================================ */
 
-!function( $ ){
+!(function( $ ){
 
   "use strict"
 
@@ -1723,4 +1723,4 @@
     })
   })
 
-}( window.jQuery );
+}( window.jQuery ));
