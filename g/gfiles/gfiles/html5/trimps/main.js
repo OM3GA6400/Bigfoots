@@ -13602,12 +13602,10 @@ function getDailyChallenge(add, objectOnly, textOnly){
 	for (var x = 0; x < maxLoops; x++){
 		var maxZLoops = modifierList.length;
 		var firstChoice = [];
-		modLoop:
 		for (var z = 0; z < maxZLoops; z++){
 			var roll = getRandomIntSeeded(seedStr++, 0, 1000);
 			var selectedIndex;
 			var checkedTotal = 0;
-			lookupLoop:
 			for (var y = 0; y < modifierList.length; y++){
 				checkedTotal += dailyModifiers[modifierList[y]].chance * chanceMod;
 				if ((roll < checkedTotal) || y == modifierList.length - 1){
