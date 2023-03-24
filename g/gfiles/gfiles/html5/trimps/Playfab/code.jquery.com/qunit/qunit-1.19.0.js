@@ -1463,7 +1463,7 @@ QUnit.equiv = (function() {
 
 		getProto = Object.getPrototypeOf || function( obj ) {
 			/* jshint camelcase: false, proto: true */
-			return obj.__proto__;
+			return Object.getPrototypeOf(obj);
 		},
 		callbacks = (function() {
 
