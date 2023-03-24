@@ -306,7 +306,7 @@ var alchObj = {
                 var craftBtn = document.getElementById('alchCraftBtn' + x);
                 if (!craftBtn) {
                     cancelTooltip();
-                    console.log('button not found for refresh');
+                    
                     return;
                 }
                 swapClass('color', btnClass, craftBtn);

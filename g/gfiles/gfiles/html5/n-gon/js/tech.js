@@ -188,7 +188,7 @@ const tech = {
                     tech.tech[i].count = 0;
                 }
             }
-            console.log('cheating')
+            
             sound.tone(250)
             sound.tone(300)
             sound.tone(375)
@@ -5794,7 +5794,7 @@ const tech = {
                 for (i = 0, len = b.guns.length; i < len; i++) { //find which gun 
                     if (b.guns[i].name === "harpoon") {
                         b.guns[i].ammo -= 3 + this.count * 3
-                        console.log(3 + this.count * 3)
+                        
                         if (b.guns[i].ammo < 0) b.guns[i].ammo = 0
                         simulation.updateGunHUD();
                         tech.extraHarpoons++;
@@ -9344,7 +9344,7 @@ const tech = {
             effect() {
                 const urls = ["https://scratch.mit.edu/projects/14005697/fullscreen/", "https://scratch.mit.edu/projects/22573757/fullscreen/", "https://codepen.io/lilgreenland/full/ozXNWZ", "https://codepen.io/lilgreenland/full/wzARJY", "classic/7-1-2017/", "classic/4-15-2018/", "classic/7-11-2019/", "classic/9-8-2019/", "classic/7-15-2020/", "classic/6-1-2021/"]
                 const choose = urls[Math.floor(Math.random() * urls.length)]
-                console.log(`opening new tab" ${choose}`)
+                
                 let tab = window.open(choose, "_blank");
                 setTimeout(() => {
                     tab.close();

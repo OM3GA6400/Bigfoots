@@ -720,7 +720,7 @@ Game.interstellarUI = (function(){
             var html = this.factionNavTemplate(data);
             this.createFactionContent(data);
         } else {
-            console.log(data)
+            
             console.error(data.id + " is not a valid nav.")
         }
         target.append($(html));

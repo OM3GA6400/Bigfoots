@@ -3856,7 +3856,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 	// import { draw } from "ui/map/debug.js"
 
 	var seed = Date.now();
-	console.log("seed", seed);
+	
 	ROT.RNG.setSeed(seed);
 
 	function init$$1() {

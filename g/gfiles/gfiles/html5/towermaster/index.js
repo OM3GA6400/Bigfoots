@@ -12,6 +12,6 @@ server.get('*', (req, res) => {
 })
 
 server.listen(8082, () => {
-  console.log(`server started at ${host}`)
+  
   opn(host)
 })

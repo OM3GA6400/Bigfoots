@@ -77,11 +77,10 @@ function crazyGamesLoaded() {
     c2_callFunction("adOverFail");
   }); // reenable sound, enable ui
   crazysdk.addEventListener("bannerRendered", (event) => {
-    console.log(`Banner for container ${event.containerId} has been
-    rendered!`);
+    
   });
   crazysdk.addEventListener("bannerError", (event) => {
-    console.log(`Banner render error: ${event.error}`);
+    
   });
   // crazyMidRoll();
 }
@@ -373,7 +372,7 @@ function findLanguageKey(locale, text) {
         text.toLowerCase()
       ) <= Math.min(3, Math.floor(text.length / 5))
   );
-  console.log(key);
+  
   if (key) {
     cache[locale] = cache[locale] || {};
     cache[locale][text] = key;

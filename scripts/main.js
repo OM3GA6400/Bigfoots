@@ -8,13 +8,13 @@ console.warn(
   "Thanks for using Bigfoot's Game Shack! Tab Cloak made by 3kh0! If you are trying to steal my code its literally public on github, if you need games message me on Discord and ill hit you up."
 );
 function log(text) {
-  console.log("%cSite script", "color: red; font-weight: 600; background: black; padding: 0 5px; border-radius: 5px", text);
+  
 }
 function tab(text) {
-  console.log("%cTab Cloak", "color: green; font-weight: 600; background: black; padding: 0 5px; border-radius: 5px", text);
+  
 }
 function script(text) {
-  console.log("%cScript Injection", "color: cyan; font-weight: 600; background: black; padding: 0 5px; border-radius: 5px", text);
+  
 }
 // ====================================
 // TAB CLOAK

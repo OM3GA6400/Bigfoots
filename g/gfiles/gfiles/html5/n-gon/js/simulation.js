@@ -63,7 +63,7 @@ const simulation = {
             m.fireCDcycle = m.cycle + 15; //fire cooldown       
             for (let i = 0, len = mob.length; i < len; i++) {
                 if (Vector.magnitudeSquared(Vector.sub(mob[i].position, simulation.mouseInGame)) < mob[i].radius * mob[i].radius) {
-                    console.log(mob[i])
+                    
                 }
             }
         }
@@ -823,7 +823,7 @@ const simulation = {
         simulation.drawList = [];
 
         if (tech.isDronesTravel && m.alive) {
-            console.log('hi')
+            
             //count drones
             let count = 0
             let deliveryCount = 0
@@ -1377,8 +1377,8 @@ const simulation = {
             out += simulation.constructMapString[i];
             outHTML += "<div>" + simulation.constructMapString[i] + "</div>"
         }
-        console.log(out)
-        navigator.clipboard.writeText(out).then(function() { /* clipboard successfully set */ }, function() { /* clipboard write failed */ console.log('copy failed') });
+        
+        navigator.clipboard.writeText(out).then(function() { /* clipboard successfully set */ }, function() { /* clipboard write failed */  });
         document.getElementById("construct").innerHTML = outHTML
     },
     // copyToClipBoard(value) {

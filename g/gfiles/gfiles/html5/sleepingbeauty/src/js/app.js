@@ -12,7 +12,7 @@ import { generate } from "level/generator.js";
 // import { draw } from "ui/map/debug.js"
 
 let seed = Date.now();
-console.log("seed", seed);
+
 ROT.RNG.setSeed(seed);
 
 function init() {

@@ -10,7 +10,7 @@ document.onreadystatechange = function (event) {
             "GameStartrConstructor": FullScreenMario.FullScreenMario
         }, FullScreenMario.FullScreenMario.settings.ui, true));
 
-    console.log("It took " + (Date.now() - time) + " milliseconds to start.");
+    ;
     
     UserWrapper.GameStarter.UsageHelper.displayHelpMenu();
 };

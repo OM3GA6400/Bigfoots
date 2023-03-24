@@ -352,7 +352,7 @@
 
     log: function () {
       if (this._log) {
-        console.log(arguments);
+        
       }
     }
   };

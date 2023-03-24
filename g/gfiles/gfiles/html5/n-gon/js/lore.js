@@ -83,7 +83,7 @@ const lore = {
                         lore.nextSentence()
                     }
                     speechFrozen = setTimeout(() => { // speech frozen after 10 seconds of no end
-                        console.log('speech frozen')
+                        
                         lore.isSpeech = false
                         lore.nextSentence()
                     }, 20000);
@@ -115,7 +115,7 @@ const lore = {
                         lore.nextSentence()
                     }
                     speechFrozen = setTimeout(function() { // speech frozen after 10 seconds of no end
-                        console.log('speech frozen')
+                        
                         lore.isSpeech = false
                         lore.nextSentence()
                     }, 20000);
@@ -369,22 +369,22 @@ const lore = {
                 function success(position) {
                     const latitude = position.coords.latitude;
                     const longitude = position.coords.longitude;
-                    console.log(`https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`)
-                    console.log(`Latitude: ${latitude} °, Longitude: ${longitude} °`)
+                    
+                    
                     lore.miriam.text("We tracked the location down to this Latitude and Longitude:")
                     simulation.makeTextLog(`Latitude: ${latitude} °, Longitude: ${longitude} °`, Infinity);
                     simulation.makeTextLog(`https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`, Infinity);
                 }
 
                 function error() {
-                    console.log('Unable to retrieve your location')
+                    
                     lore.miriam.text("The exact coordinates are blocked.")
                 }
                 if (!navigator.geolocation) {
-                    console.log('Geolocation is not supported')
+                    
                     lore.miriam.text("The exact coordinates are blocked.")
                 } else {
-                    console.log('Locating…')
+                    
                     const options = {
                         enableHighAccuracy: true,
                         maximumAge: 30000,
