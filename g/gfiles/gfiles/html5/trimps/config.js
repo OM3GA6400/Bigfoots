@@ -28,7 +28,7 @@ var toReturn = {
 		isBeta: false,
 		betaV: 0,
 		killSavesBelow: 0.13,
-		uniqueId: new Date().getTime() + "" + Math.floor(Math.random() * 1e10),
+		uniqueId: String(new Date().getTime()) + Math.floor(Math.random() * 1e10),
 		playerGathering: "",
 		playerModifier: 1,
 		buildingsQueue: [],
@@ -2110,7 +2110,7 @@ var toReturn = {
 		fluffyExp: {
 			get description(){
 				var prestige = Fluffy.getCurrentPrestige();
-				return "" + Fluffy.getName() + " gains +25% more Exp per Zone for each completed Evolution. " + Fluffy.getName() + " has Evolved " + prestige + " time" + needAnS(prestige) + ", " + ((this.purchased) ? "earning" : "which would earn") + " you a bonus of +" + prettify(prestige * 25) + "% Exp.";
+				return String(Fluffy.getName()) + " gains +25% more Exp per Zone for each completed Evolution. " + Fluffy.getName() + " has Evolved " + prestige + " time" + needAnS(prestige) + ", " + ((this.purchased) ? "earning" : "which would earn") + " you a bonus of +" + prettify(prestige * 25) + "% Exp.";
 			},
 			get name(){
 				var name = Fluffy.getName();

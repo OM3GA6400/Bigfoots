@@ -740,7 +740,7 @@ FastClick.notNeeded = function(layer) {
 	}
 
 	// Chrome version - zero for other browsers
-	chromeVersion = +(/Chrome\/([0-9]+)/.exec(navigator.userAgent) || [,0])[1];
+	chromeVersion = Number((/Chrome\/([0-9]+)/.exec(navigator.userAgent) || [,0])[1]);
 
 	if (chromeVersion) {
 

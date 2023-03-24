@@ -271,7 +271,7 @@ Breakout = {
       this.width  = this.game.court.width;
       this.height = this.game.court.wall.size*2;
       this.scorefont = "bold " + Math.max(9, this.game.court.wall.size - 2) + "pt arial";
-      this.highfont  = ""      + Math.max(9, this.game.court.wall.size - 8) + "pt arial";
+      this.highfont  = String(Math.max(9, this.game.court.wall.size - 8)) + "pt arial";
       ctx.save();
       ctx.font = this.scorefont;
       this.scorewidth = ctx.measureText(this.format(0)).width;

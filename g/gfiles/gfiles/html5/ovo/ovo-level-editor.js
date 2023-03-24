@@ -143,7 +143,7 @@
           return sdk_runtime.types_by_index
             .filter(
               (x) =>
-                !!x.animations &&
+                Boolean(x.animations) &&
                 x.animations[0].frames[0].texture_file.includes("collider")
             )[0]
             .instances.filter(
@@ -225,7 +225,7 @@
             y: -500,
           });
           holder.instance_vars[0] = this.curLevel.layout.name || "";
-          holder.instance_vars[2] = !!this.curLevel.layout.useSlope;
+          holder.instance_vars[2] = Boolean(this.curLevel.layout.useSlope);
           sdk_runtime.trigger(holder.type.plugin.cnds.OnCreated, holder);
         },
         handleDrop(ev) {

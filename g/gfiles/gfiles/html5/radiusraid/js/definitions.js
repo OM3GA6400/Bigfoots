@@ -288,7 +288,7 @@ $.definitions.enemies = [
 			var dx = $.hero.x - this.x,
 				dy = $.hero.y - this.y,
 				direction = Math.atan2( dy, dx );
-			direction = direction + Math.cos( $.tick / 50 ) * 1;
+			direction = direction + Number(Math.cos( $.tick / 50 ));
 			this.vx = Math.cos( direction ) * speed;
 			this.vy = Math.sin( direction ) * speed;
 		}
@@ -379,7 +379,7 @@ $.definitions.enemies = [
 			var dx = $.hero.x - this.x,
 				dy = $.hero.y - this.y,
 				direction = Math.atan2( dy, dx );
-				direction = direction + Math.cos( $.tick / 50 ) * 1;
+				direction = direction + Number(Math.cos( $.tick / 50 ));
 			this.vx = Math.cos( direction ) * speed;
 			this.vy = Math.sin( direction ) * speed;
 

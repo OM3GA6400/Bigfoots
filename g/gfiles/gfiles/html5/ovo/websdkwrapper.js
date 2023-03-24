@@ -109,7 +109,7 @@ globalThis.WebSdkWrapper = (function () {
           });
         },
         hasAdblock() {
-          return !!sdkContext.hasAdblock;
+          return Boolean(sdkContext.hasAdblock);
         },
       },
     },
@@ -180,7 +180,7 @@ globalThis.WebSdkWrapper = (function () {
           });
         },
         hasAdblock() {
-          return !!sdkContext.hasAdblock;
+          return Boolean(sdkContext.hasAdblock);
         },
       },
     },

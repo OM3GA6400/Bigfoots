@@ -6756,9 +6756,9 @@ function selectMod(which, fromPopup){
 		else upgradeCostText = "At Max!";
 	}
 	document.getElementById("modUpgradeCost").innerHTML = upgradeCostText;
-	upgradeBtn.innerHTML = "x1<br/>" + prettify(upgradeCost) + " " + resourceShort + "";
-	upgradeBtn10.innerHTML = "x10<br/>" + prettify(upgradeCost10) + " " + resourceShort + "";
-	upgradeBtn100.innerHTML = "x100<br/>" + prettify(upgradeCost100) + " " + resourceShort + "";
+	upgradeBtn.innerHTML = String("x1<br/>" + prettify(upgradeCost) + " " + resourceShort);
+	upgradeBtn10.innerHTML = String("x10<br/>" + prettify(upgradeCost10) + " " + resourceShort);
+	upgradeBtn100.innerHTML = String("x100<br/>" + prettify(upgradeCost100) + " " + resourceShort);
 	var modDescElem = document.getElementById("specialModDescription");
 	if (modConfig.specialDescription && (mod[0] != 'voidMaps' || heirloom.rarity >= 10)){
 		modDescElem.style.display = "block";
@@ -11290,7 +11290,7 @@ function calculateScryingReward(){
 	var scryableLevels = game.global.world - 180;
 	if (scryableLevels <= 0) return 0;
 	var modAmt = (game.global.canMagma) ? 1.1683885 : 1.11613; //4.0 compatibility
-	var num = (1 * Math.pow(modAmt, scryableLevels)) / 3;
+	var num = (Number(Math.pow(modAmt, scryableLevels))) / 3;
 	if (game.talents.scry.purchased && !game.global.mapsActive){
 		var worldCell = getCurrentWorldCell();
 		if (worldCell.mutation == "Corruption" || worldCell.mutation == "Healthy"){
@@ -13321,7 +13321,7 @@ var dailyModifiers = {
 				return text;
 			},
 			getResources: function(str){
-				str = str + "";
+				str = String(str);
 				var strength = (str.length >= 4) ? parseInt(str[3], 0) : 0;
 				strength = 25 + (strength * 5);
 				var res = [strength];

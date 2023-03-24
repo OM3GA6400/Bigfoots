@@ -803,7 +803,7 @@ var World = {
 
 		var list = [];
 		for(var j in chances) {
-			list.push(chances[j] + '' + j);
+			list.push(String(chances[j]) + j);
 		}
 		list.sort(function(a, b) {
 			var n1 = parseFloat(a.substring(0, a.length - 1));

@@ -184,7 +184,7 @@
             dir = 1;
           else
             dir = (car.offset > playerX) ? 1 : -1;
-          return dir * 1/i * (car.speed-speed)/maxSpeed; // the closer the cars (smaller i) and the greated the speed ratio, the larger the offset
+          return Number(dir)/i * (car.speed-speed)/maxSpeed; // the closer the cars (smaller i) and the greated the speed ratio, the larger the offset
         }
 
         for(j = 0 ; j < segment.cars.length ; j++) {
@@ -197,7 +197,7 @@
               dir = 1;
             else
               dir = (car.offset > otherCar.offset) ? 1 : -1;
-            return dir * 1/i * (car.speed-otherCar.speed)/maxSpeed;
+            return Number(dir)/i * (car.speed-otherCar.speed)/maxSpeed;
           }
         }
       }

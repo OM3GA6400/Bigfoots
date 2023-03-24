@@ -401,7 +401,7 @@ var TimeHandlr;
             }
             else {
                 // Truthy non-String names imply a stop is required
-                return !!name;
+                return Boolean(name);
             }
         };
         /* Utilities
