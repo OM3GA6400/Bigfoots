@@ -3727,7 +3727,7 @@ QUnit.done(function( details ) {
 		// use escape sequences in case file gets loaded with non-utf-8-charset
 		document.title = [
 			( details.failed ? "\u2716" : "\u2714" ),
-			document.title.replace( /^[\u2714\u2716] /i, "" )
+			document.title.replace( /^[\u2714\u2716] /iu, "" )
 		].join( " " );
 	}
 
