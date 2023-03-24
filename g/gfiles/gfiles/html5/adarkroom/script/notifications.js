@@ -30,7 +30,7 @@ var Notifications = {
 	notify: function(module, text, noQueue) {
 		if(typeof text == 'undefined') return;
 		if(text.slice(-1) != ".") text += ".";
-		if(module != null && Engine.activeModule != module) {
+		if(module !== null && Engine.activeModule != module) {
 			if(!noQueue) {
 				if(typeof this.notifyQueue[module] == 'undefined') {
 					this.notifyQueue[module] = [];

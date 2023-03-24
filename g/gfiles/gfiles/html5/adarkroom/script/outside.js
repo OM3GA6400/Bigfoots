@@ -290,9 +290,9 @@ var Outside = {
 						}
 					}
 				});
-				if(curPrev == null && gatherer.length === 0) {
+				if(curPrev === null && gatherer.length === 0) {
 					row.prependTo(workers);
-				} else if(curPrev == null) {
+				} else if(curPrev === null) {
 					row.insertAfter(gatherer);
 				} else {
 					row.insertAfter(workers.find('#'+ curPrev));
@@ -410,7 +410,7 @@ var Outside = {
 					}
 				}
 			});
-			if(curPrev == null) {
+			if(curPrev === null) {
 				row.prependTo(village);
 			} else {
 				row.insertAfter('#' + curPrev);

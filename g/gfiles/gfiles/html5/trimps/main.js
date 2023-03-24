@@ -754,7 +754,7 @@ function load(saveString, autoLoad, fromPf) {
 			}
 		}
 	}
-	if (oldStringVersion == null){
+	if (oldStringVersion === null){
 		//Last version was pre 4.10.0. Run compat code for 4.10.0
 		if (game.global.spiresCompleted >= 1){
 			playerSpire.init();
@@ -1235,7 +1235,7 @@ function reevaluateTimedAchieve(achieveName){
 }
 
 function startTrackAchieve(group, index){
-	if (!group || (game.global.trackedAchieve != null && game.global.trackedAchieve[0] == group && game.global.trackedAchieve[1] == index)){
+	if (!group || (game.global.trackedAchieve !== null && game.global.trackedAchieve[0] == group && game.global.trackedAchieve[1] == index)){
 		game.global.trackedAchieve = null;
 		trackAchievement();
 		displayAchievements();
@@ -1256,7 +1256,7 @@ function startTrackAchieve(group, index){
 function trackAchievement(){
 	var tracker = document.getElementById('achievementTracker');
 	if (!tracker) return;
-	if (game.global.trackedAchieve == null){
+	if (game.global.trackedAchieve === null){
 		if (tracker.style.display != 'none') tracker.style.display = 'none';
 		return;
 	}
@@ -1327,7 +1327,7 @@ function addMapModifier(location, modifier, clear){
 			continue;
 		}
 		var mapSpec = levelSpan.getElementsByClassName('mapSpec')[0];
-		if (mapSpec != null)
+		if (mapSpec !== null)
 			levelSpan.removeChild(mapSpec);
 	}
 }
@@ -3277,7 +3277,7 @@ function removePerk(what) {
 }
 
 function isNumberBad(number) {
-	return (isNaN(number) || typeof number === 'undefined' || number < 0 || !isFinite(number) || number == null);
+	return (isNaN(number) || typeof number === 'undefined' || number < 0 || !isFinite(number) || number === null);
 }
 
 function updatePerkLevel(what){
@@ -3821,7 +3821,7 @@ function addHelium(amt){
 		game.resources.helium.respecMax += amt;
 		game.global.tempHighHelium += amt;
 		var resName = (game.global.universe == 2) ? "Radon" : "Helium";
-		if (heElem != null) heElem.innerHTML = '<span id="portalHeliumOwned">' + prettify(game.resources.helium.respecMax - game.resources.helium.totalSpentTemp) + '</span> ' + resName;
+		if (heElem !== null) heElem.innerHTML = '<span id="portalHeliumOwned">' + prettify(game.resources.helium.respecMax - game.resources.helium.totalSpentTemp) + '</span> ' + resName;
 	}
 	if (game.global.universe == 2) checkAchieve("totalRadon");
 	else checkAchieve("totalHelium");
@@ -4070,7 +4070,7 @@ function getPlayerModifier(){
 
 function calculateTimeToMax(resource, perSec, toNumber, fromGather) {
 	if (perSec <= 0) return "";
-	var remaining = (toNumber != null) ? toNumber : calcHeirloomBonus("Shield", "storageSize", ((resource.max * (1 + game.portal.Packrat.modifier * getPerkLevel("Packrat"))))) - resource.owned;
+	var remaining = (toNumber !== null) ? toNumber : calcHeirloomBonus("Shield", "storageSize", ((resource.max * (1 + game.portal.Packrat.modifier * getPerkLevel("Packrat"))))) - resource.owned;
 	if (remaining <= 0) return "";
 	var toFill = Math.floor(remaining / perSec);
 	var years = Math.floor(toFill / 31536000);
@@ -4339,7 +4339,7 @@ function startQueue(what, count) {
 
 function craftBuildings(makeUp) {
     var buildingsBar = document.getElementById("animationDiv");
-	if (buildingsBar == null) return;
+	if (buildingsBar === null) return;
 	var timeRemaining = document.getElementById("queueTimeRemaining");
     var speedElem = document.getElementById("buildSpeed");
     if (game.global.crafting === "" && game.global.buildingsQueue.length > 0) {
@@ -5151,7 +5151,7 @@ function toggleGeneticistassist(updateOnly){
 	var steps = game.global.GeneticistassistSteps;
 	var currentStep = steps.indexOf(game.global.GeneticistassistSetting);
 	var indicatorElem = document.getElementById('GAIndicator');
-	if (indicatorElem == null) return;
+	if (indicatorElem === null) return;
 	if (currentStep == -1){
 		game.global.GeneticistassistSetting = steps[0];
 		updateOnly = true;
@@ -5186,7 +5186,7 @@ function customizeGATargets(){
 	var error = "";
 	var toKeep = [-1];
 	var disableCheck = document.getElementById('disableOnUnlockCheck');
-	if (disableCheck != null){
+	if (disableCheck !== null){
 		var checked = readNiceCheckbox(disableCheck);
 		game.options.menu.GeneticistassistTarget.disableOnUnlock = checked;
 		if (checked && game.jobs.Geneticist.locked) game.global.GeneticistassistSetting = -1;
@@ -5435,7 +5435,7 @@ function updateMapNumbers(readChange){
 	updateMapCost();
 	if (usingScreenReader && readChange){
 		var text = document.getElementById(readChange + 'AdvMapsText');
-		if (text != null){
+		if (text !== null){
 			document.getElementById('screenReaderTooltip').innerHTML = readChange + " set to " + text.innerHTML;
 		}
 	}
@@ -5798,7 +5798,7 @@ function updateMapCost(getValue, forceBaseCost){
 	var mapLevel =  parseInt(document.getElementById("mapLevelInput").value, 10);
 	var baseCost = 0;
 	if (mapLevel > game.global.world || mapLevel < 6 || isNaN(mapLevel)) return;
-	if (getValue && forceBaseCost != null){
+	if (getValue && forceBaseCost !== null){
 		baseCost = forceBaseCost;
 	}
 	else{
@@ -6232,7 +6232,7 @@ function sortHeirlooms(){
 function displayCarriedHeirlooms(){
 	var tempHtml = "";
 	for (var x = 0; x < game.global.heirloomsCarried.length; x++){
-		if (game.global.heirloomsCarried[x] == null) {
+		if (game.global.heirloomsCarried[x] === null) {
 			game.global.heirloomsCarried.splice(x, 1);
 			x--;
 			continue;
@@ -7312,11 +7312,11 @@ function handlePoisonDebuff(){
 	var elem = document.getElementById('poisonEmpowermentIcon');
 	if (getEmpowerment() != "Poison"){
 		game.empowerments.Poison.currentDebuffPower = 0;
-		if (elem == null) return;
+		if (elem === null) return;
 		elem.style.display = 'none';
 		return;
 	}
-	if (elem == null){
+	if (elem === null){
 		document.getElementById('badDebuffSpan').innerHTML += '<span class="badge badBadge" id="poisonEmpowermentIcon" onmouseover="tooltip(\'Poisoned\', null, event)" onmouseout="tooltip(\'hide\')"><span id="poisonEmpowermentText"></span><span class="icomoon icon-flask"></span></span>';
 		elem = document.getElementById('poisonEmpowermentIcon');
 	}
@@ -7328,11 +7328,11 @@ function handleIceDebuff() {
 	var elem = document.getElementById('iceEmpowermentIcon');
 	if (getEmpowerment() != "Ice"){
 		game.empowerments.Ice.currentDebuffPower = 0;
-		if (elem == null) return;
+		if (elem === null) return;
 		elem.style.display = 'none';
 		return;
 	}
-	if (elem == null){
+	if (elem === null){
 		document.getElementById('badDebuffSpan').innerHTML += '<span class="badge badBadge" id="iceEmpowermentIcon" onmouseover="tooltip(\'Chilled\', null, event)" onmouseout="tooltip(\'hide\')"><span id="iceEmpowermentText"></span><span class="glyphicon glyphicon-certificate"></span></span>';
 		elem = document.getElementById('iceEmpowermentIcon');
 	}
@@ -7346,11 +7346,11 @@ function handleWindDebuff() {
 	var elem = document.getElementById('windEmpowermentIcon');
 	if (getEmpowerment() != "Wind"){
 		game.empowerments.Wind.currentDebuffPower = 0;
-		if (elem == null) return;
+		if (elem === null) return;
 		elem.style.display = 'none';
 		return;
 	}
-	if (elem == null){
+	if (elem === null){
 		document.getElementById('badDebuffSpan').innerHTML += '<span class="badge badBadge" id="windEmpowermentIcon" onmouseover="tooltip(\'Breezy\', null, event)" onmouseout="tooltip(\'hide\')"><span id="windEmpowermentText"></span><span class="icomoon icon-air"></span></span>';
 		elem = document.getElementById('windEmpowermentIcon');
 	}
@@ -7367,11 +7367,11 @@ function handleDominationDebuff() {
 	else if (game.global.lastClearedCell == 98) dominating = true;
 	var elem = document.getElementById('dominationDebuffContainer');
 	if (!game.global.challengeActive || enemy.name == "Liquimp"){
-		if (elem == null) return;
+		if (elem === null) return;
 		elem.style.display = 'none';
 		return;
 	}
-	if (elem == null){
+	if (elem === null){
 		document.getElementById('badDebuffSpan').innerHTML += '<span class="badge badBadge" id="dominationDebuffContainer" onmouseover="tooltip(\'Domination' + ((dominating) ? 'Dominating' : 'Weak') + '\', null, event)" onmouseout="tooltip(\'hide\')"><span id="dominationDebuffIcon" class="icomoon icon-' + ((dominating) ? 'podcast' : 'feed') + '"></span></span>';
 		return;
 	}
@@ -7740,7 +7740,7 @@ var mutations = {
 					game.global.gridArray[y].mutation = "Living";
 					if (game.global.lastClearedCell + 1 == y){
 						var elem = document.getElementById('livingMutationContainer');
-						if (elem != null){
+						if (elem !== null){
 							document.getElementById('livingMutationContainer').className = "badNameMutation Living"
 							document.getElementById('livingMutationName').innerHTML = "Living ";
 						}
@@ -7755,7 +7755,7 @@ var mutations = {
 					game.global.gridArray[y].mutation = "";
 					if (game.global.lastClearedCell + 1 == y){
 						var elem = document.getElementById('livingMutationContainer');
-						if (elem != null){
+						if (elem !== null){
 							document.getElementById('livingMutationContainer').className = ""
 							document.getElementById('livingMutationName').innerHTML = "";
 						}
@@ -8560,7 +8560,7 @@ function updateGeneratorInfo(){
 	//get state
 	var state = ['Passive', 'Active', 'Hybrid'];
 	state = state[game.global.generatorMode];
-	if (elem == null){
+	if (elem === null){
 		document.getElementById('buildingsHere').innerHTML += getGeneratorHtml(true);
 	}
 	changeGeneratorState(null, true);
@@ -8777,10 +8777,10 @@ function getGeneratorUpgradeHtml(){
 }
 
 function updateGeneratorUpgradeHtml(){
-	if (document.getElementById('generatorUpgradeTooltip') == null) return;
+	if (document.getElementById('generatorUpgradeTooltip') === null) return;
 	for (var item in game.generatorUpgrades){
 		var elem = document.getElementById('generatorUpgrade' + item);
-		if (elem == null) continue;
+		if (elem === null) continue;
 		var upgrade = game.generatorUpgrades[item];
 		var cost = upgrade.cost();
 		var text = item + "<br/>" + upgrade.upgrades;
@@ -8792,7 +8792,7 @@ function updateGeneratorUpgradeHtml(){
 	}
 	for (var item in game.permanentGeneratorUpgrades){
 		var elem = document.getElementById('generatorUpgrade' + item);
-		if (elem == null) continue;
+		if (elem === null) continue;
 		var upgrade = game.permanentGeneratorUpgrades[item];
 		var cost = upgrade.cost;
 		var text = item + "<br/>";
@@ -8806,8 +8806,8 @@ function updateGeneratorUpgradeHtml(){
 		swapClass('thingColor', 'thingColor' + state, elem);
 	}
 	var magmiteElem = document.getElementById('magmiteOwned');
-	if (magmiteElem != null) magmiteElem.innerHTML = "Magmite: " + prettify(game.global.magmite) + "<br/>";
-	if (document.getElementById('magmiteCost') != null && lastViewedDGUpgrade)
+	if (magmiteElem !== null) magmiteElem.innerHTML = "Magmite: " + prettify(game.global.magmite) + "<br/>";
+	if (document.getElementById('magmiteCost') !== null && lastViewedDGUpgrade)
 		showGeneratorUpgradeInfo(lastViewedDGUpgrade[0], lastViewedDGUpgrade[1]);
 }
 
@@ -8826,7 +8826,7 @@ function canGeneratorTick(){
 var lastViewedDGUpgrade;
 function showGeneratorUpgradeInfo(item, permanent){
 	var elem = document.getElementById('generatorUpgradeDescription');
-	if (elem == null) return;
+	if (elem === null) return;
 	var description;
 	var cost;
 	if (permanent) {
@@ -9730,7 +9730,7 @@ function mapsClicked(confirmed) {
 			swapClass("percentColor", "percentColorRed", bar);
 			bar.style.width = "0%";
 			var healthElem = document.getElementById("goodGuyHealth");
-			if (healthElem != null) healthElem.innerHTML = 0;
+			if (healthElem !== null) healthElem.innerHTML = 0;
 			if (game.global.challengeActive == "Nom") {
 				var cell;
 				var cellNum;
@@ -10181,7 +10181,7 @@ function startFight() {
         cellNum = game.global.lastClearedCell + 1;
         cell = game.global.gridArray[cellNum];
         cellElem = document.getElementById("cell" + cellNum);
-		if (cellElem == null){ //Not sure what causes this to be needed, but on very rare occasions, this can prevent some save files from freezing on load
+		if (cellElem === null){ //Not sure what causes this to be needed, but on very rare occasions, this can prevent some save files from freezing on load
 			if (game.global.lastClearedCell != 99) {
 				 if (game.global.lastClearedCell == -1){
 					buildGrid();
@@ -10826,7 +10826,7 @@ function updateAllBattleNumbers (skipNum) {
         cell = game.global.gridArray[cellNum];
         cellElem = document.getElementById("cell" + cellNum);
     }
-	if (cellElem == null) return;
+	if (cellElem === null) return;
     swapClass("cellColor", "cellColorCurrent", cellElem);
     document.getElementById("goodGuyHealthMax").innerHTML = prettify(game.global.soldierHealthMax);
 	updateGoodBar();
@@ -11392,7 +11392,7 @@ function updateTalentNumbers(){
 	var countElem = document.getElementById('talentsEssenceTotal');
 	var affordableElem = document.getElementById('talentsAffordable');
 	//Check primary elements, update
-	if (mainEssenceElem == null || nextCostElem == null) {return;}
+	if (mainEssenceElem === null || nextCostElem === null) {return;}
 
 	var nextCost = getNextTalentCost();
 	mainEssenceElem.innerHTML = prettify(game.global.essence);
@@ -11412,7 +11412,7 @@ function updateTalentNumbers(){
 	talentsCostElem.style.display = "block";
 	nextCostElem.innerHTML = prettify(nextCost);
 	//Check setting elements, update
-	if (alertElem == null || countElem == null) return;
+	if (alertElem === null || countElem === null) return;
 	if ((game.options.menu.masteryTab.enabled == 1 || game.options.menu.masteryTab.enabled == 3) && nextCost <= game.global.essence){
 		alertElem.innerHTML = "!";
 		countElem.innerHTML = "";
@@ -11711,7 +11711,7 @@ function rewardLiquidZone(){
 		bones = "Found a " + bones + "!<br/>";
 		text += bones;
 	}
-	if (tokText != null){
+	if (tokText !== null){
 		text += tokText + "<br/>";
 	}
 	if (text){
@@ -13437,7 +13437,7 @@ function abandonDaily(){
 		if (typeof dailyModifiers[item].abandon !== 'undefined') dailyModifiers[item].abandon(game.global.dailyChallenge[item].strength, game.global.dailyChallenge[item].stacks);
 		if (typeof dailyModifiers[item].icon !== 'undefined'){
 			var stackElem = document.getElementById(item + 'DailyStacks');
-			if (stackElem != null) stackElem.style.display = 'none';
+			if (stackElem !== null) stackElem.style.display = 'none';
 		}
 	}
 	var reward = game.challenges.Daily.getCurrentReward();
@@ -13469,11 +13469,11 @@ function checkCompleteDailies(){
 function updateDailyStacks(what){
 	var elem = document.getElementById(what + "DailyStacks");
 	if (game.global.dailyChallenge[what].stacks == 0 || (dailyModifiers[what].worldStacksOnly && game.global.mapsActive)){
-		if (elem == null) return;
+		if (elem === null) return;
 		else elem.style.display = "none";
 		return;
 	}
-	if (elem == null){
+	if (elem === null){
 		var html = "<span id='" + what + "DailyStacks' class='badge antiBadge' onmouseover='tooltip(\"" + what + "\", \"dailyStack\", event)' onmouseout='tooltip(\"hide\")'><span id='" + what + "DailyStacksCount'>" + game.global.dailyChallenge[what].stacks + "</span>";
 		var icon = (dailyModifiers[what].icon.charAt(0) == "*") ? "icomoon icon-" + dailyModifiers[what].icon.substr(1) : "glyphicon glyphicon-" + dailyModifiers[what].icon;
 		html += "<span class='" + icon + "'></span></span>";
@@ -13487,7 +13487,7 @@ function updateDailyStacks(what){
 
 function updateDailyClock(justTime){
 	var elem = document.getElementById('dailyResetTimer');
-	if (elem == null && !justTime) return;
+	if (elem === null && !justTime) return;
 	var now = new Date();
 	var secondsRemaining = 59 - now.getUTCSeconds();
 	var minutesRemaining = 59 - now.getUTCMinutes();
@@ -13669,7 +13669,7 @@ function getDailyChallenge(add, objectOnly, textOnly){
 	returnText += " earned before finishing. <b>Can only be run once!</b> Reward does not count toward Bone Portals or affect best " + ((portalUni == 2) ? "Rn" : "He") + "/Hr stat.";
 	if (textOnly) return returnText;
 	nextDaily = returnText;
-	if (document.getElementById('specificChallengeDescription') != null) document.getElementById('specificChallengeDescription').innerHTML = returnText;
+	if (document.getElementById('specificChallengeDescription') !== null) document.getElementById('specificChallengeDescription').innerHTML = returnText;
 	updateDailyClock();
 /* 	console.log("");
 	console.log("Attempted challenge with weight of " + weightTarget + ", built challenge with weight of " + currentWeight);
@@ -14683,13 +14683,13 @@ function manageLeadStacks(remove){
 
 	var determinedBuff = document.getElementById("determinedBuff");
 	if ((game.global.world % 2) == 1){
-		if (determinedBuff == null) {
+		if (determinedBuff === null) {
 			document.getElementById("goodGuyName").innerHTML += '&nbsp<span class="badge antiBadge" id="determinedBuff" onmouseover="tooltip(\'Determined\', \'customText\', event, \'Your Trimps are determined to succeed. They gain 50% attack and earn double resources from all sources.\')" onmouseout="tooltip(\'hide\')"><span class="icomoon icon-sun2"></span></span>';
 			determinedBuff = document.getElementById("determinedBuff");
 		}
 		determinedBuff.style.display = "inline";
 	}
-	else if (determinedBuff != null) determinedBuff.style.display = "none";
+	else if (determinedBuff !== null) determinedBuff.style.display = "none";
 
 	if (challenge.stacks <= 0){
 		return;
@@ -14780,7 +14780,7 @@ function updateTitimp(){
 
 function updateNomStacks(number){
 	var elem = document.getElementById('nomStack');
-	if (elem == null){
+	if (elem === null){
 		document.getElementById('badGuyName').innerHTML += ' <span class="badge badBadge" onmouseover="tooltip(\'Nom\', \'customText\', event, \'This Bad Guy is nice and plump from eating Trimps. Increases attack damage by 25% per stack\');" onmouseout="tooltip(\'hide\')"><span id="nomStack">' + number + '</span><span class="glyphicon glyphicon-scale"></span></span>';
 	}
 	else elem.innerHTML = number;
@@ -16198,7 +16198,7 @@ function validateJobRatios(){
 	for (var x = 0; x < ratios.length; x++){
 		var check = document.getElementById('autoJobCheckbox' + ratios[x]);
 		var quant = document.getElementById('autoJobQuant' + ratios[x]);
-		if (check == null || quant == null) return false;
+		if (check === null || quant === null) return false;
 		if (!check.checked) continue;
 		quant = parseFloat(quant.value);
 		if (quant < 0){
@@ -17102,13 +17102,13 @@ var Fluffy = {
 	toggleCruffys: function(){
 		var tipTitle = document.getElementById('tipTitle');
 		this.cruffysToggled = !this.cruffysToggled;
-		if (tipTitle != null) tipTitle.innerHTML = (this.cruffysToggled) ? "<b>IT'S CRUFFYS</b>" : this.getName();
+		if (tipTitle !== null) tipTitle.innerHTML = (this.cruffysToggled) ? "<b>IT'S CRUFFYS</b>" : this.getName();
 		this.handleBox();
 		this.refreshTooltip();
 		var toggleBtn = document.getElementById('toggleCruffyTipBtn');
-		if (toggleBtn != null) toggleBtn.innerHTML = "Show " + ((this.cruffysToggled) ? "Scruffy" : "Cruffys") + " Info";
+		if (toggleBtn !== null) toggleBtn.innerHTML = "Show " + ((this.cruffysToggled) ? "Scruffy" : "Cruffys") + " Info";
 		var patBtn = document.getElementById('fluffyPatBtn');
-		if (patBtn != null) patBtn.style.display = (this.cruffysToggled) ? "none" : "inline-block";
+		if (patBtn !== null) patBtn.style.display = (this.cruffysToggled) ? "none" : "inline-block";
 	},
 	tooltip: function (big){
 		var showCruffys = (this.cruffysTipActive());
@@ -17494,18 +17494,18 @@ function switchForm(register){ //true for register, false for recovery
 	var emailNotice = document.getElementById("emailNotice");
 	var switchRecoveryBtn = document.getElementById("playFabSwitchRecoveryBtn");
 	var confirmPasswordBtn = document.getElementById("playFabConfirmPasswordHidden");
-	if (emailInput != null) emailInput.style.display = "block";
-	if (loginBtn != null) loginBtn.style.display = "none";
-	if (registerBtn != null && register) registerBtn.style.display = "inline-block";
-	else if (recoverBtn != null && !register) recoverBtn.style.display = "inline-block";
-	if (nameBox != null && !register) nameBox.style.display = "none";
-	if (emailNotice != null && !register) emailNotice.style.display = "none";
-	if (switchBtn != null) switchBtn.style.display = "none";
-	if (passBox != null && !register) passBox.style.display = "none";
-	if (rememberBox != null && !register) rememberBox.style.display = "none";
-	if (switchRecoveryBtn != null) switchRecoveryBtn.style.display = "none";
-	if (confirmPasswordBtn != null && register) confirmPasswordBtn.style.display = "block";
-	if (title != null) title.innerHTML = (register) ? "Register a PlayFab Account" : "Recover PlayFab Account Info - <i>Must have provided Email during registration</i>";
+	if (emailInput !== null) emailInput.style.display = "block";
+	if (loginBtn !== null) loginBtn.style.display = "none";
+	if (registerBtn !== null && register) registerBtn.style.display = "inline-block";
+	else if (recoverBtn !== null && !register) recoverBtn.style.display = "inline-block";
+	if (nameBox !== null && !register) nameBox.style.display = "none";
+	if (emailNotice !== null && !register) emailNotice.style.display = "none";
+	if (switchBtn !== null) switchBtn.style.display = "none";
+	if (passBox !== null && !register) passBox.style.display = "none";
+	if (rememberBox !== null && !register) rememberBox.style.display = "none";
+	if (switchRecoveryBtn !== null) switchRecoveryBtn.style.display = "none";
+	if (confirmPasswordBtn !== null && register) confirmPasswordBtn.style.display = "block";
+	if (title !== null) title.innerHTML = (register) ? "Register a PlayFab Account" : "Recover PlayFab Account Info - <i>Must have provided Email during registration</i>";
 }
 
 function playFabRecoverInfo(needsPassword){
@@ -17520,7 +17520,7 @@ function playFabRecoverInfo(needsPassword){
 			PlayFab.ClientApi.SendAccountRecoveryEmail(requestData, playFabRecoverCallback);
 		}
 		catch (e) {
-			if (error != null) error.innerHTML = e.errorMessage;
+			if (error !== null) error.innerHTML = e.errorMessage;
 		}
 		return;
 	}
@@ -17529,14 +17529,14 @@ function playFabRecoverInfo(needsPassword){
 	}
 	catch (e) {
 		console.log(e);
-		if (error != null) error.innerHTML = e.errorMessage;
+		if (error !== null) error.innerHTML = e.errorMessage;
 	}
 }
 
 function playFabRecoverCallback(data, error){
 	var errorElem = document.getElementById("playFabLoginError");
 	
-	if (errorElem == null) return;
+	if (errorElem === null) return;
 	if (error) {
 		errorElem.innerHTML = error.errorMessage;
 		return;
@@ -17551,9 +17551,9 @@ function playFabRecoverCallback(data, error){
 
 function switchFormToRecovery(){
 	var title = document.getElementById("playFabLoginTitle");
-	if (title != null)
+	if (title !== null)
 	var emailInput = document.getElementById("playFabEmailHidden");
-	if (emailInput != null) emailInput.style.display = block;
+	if (emailInput !== null) emailInput.style.display = block;
 
 }
 
@@ -17570,7 +17570,7 @@ function playFabRegisterPlayFabUser(){
 	var rememberElem = document.getElementById("rememberInfo");
 	var confirmPasswordElem = document.getElementById("confirmPassword");
 	if (rememberElem && rememberElem.checked == true) saveLogin = true;
-	if (nameElem == null || passElem == null || emailElem == null || rememberElem == null || confirmPasswordElem == null){
+	if (nameElem === null || passElem === null || emailElem === null || rememberElem === null || confirmPasswordElem === null){
 		//Elements required to register are missing, rebuild login screen
 		tooltip("PlayFab Login", null, "update");
 		return;
@@ -17614,7 +17614,7 @@ function playFabLoginWithPlayFab(username, pass){
 		var passElem = document.getElementById("loginPassword");
 		var rememberElem = document.getElementById("rememberInfo");
 		if (rememberElem && rememberElem.checked == true) saveLogin = true;
-		if (nameElem == null || passElem == null){
+		if (nameElem === null || passElem === null){
 			//Elements required to login are missing, rebuild login screen
 			tooltip("PlayFab Login", null, "update");
 			return;
@@ -17695,7 +17695,7 @@ function playFabLoginWithKongregate(attempt){
 function playFabLoginCallback(data, error){
 	if (error){
 		var errorElem = document.getElementById("playFabLoginError");
-		if (errorElem != null && error.errorMessage){
+		if (errorElem !== null && error.errorMessage){
 			errorElem.style.display = "block";
 			errorElem.innerHTML = error.errorMessage;
 		}

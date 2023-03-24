@@ -15,7 +15,7 @@ window.BrowserDetector = (function() {
     if (/(coc_coc_browser|edge(?=\/))\/?\s*(\d+\.\d+)/i.test(ua)) {
       tem = ua.match(/(coc_coc_browser|edge(?=\/))\/?\s*(\d+)\.\d+/i);
 
-      if (tem != null) {
+      if (tem !== null) {
         return {
           name: (tem[1] == 'Edge' ? tem[1] : 'CocCoc'),
           version: tem[2]
@@ -26,7 +26,7 @@ window.BrowserDetector = (function() {
     if (M[1] === 'Chrome') {
       tem = ua.match(/\bOPR\/(\d+\.\d+)/);
 
-      if (tem != null) {
+      if (tem !== null) {
         return {
           name: 'Opera',
           version: tem[1]
@@ -36,7 +36,7 @@ window.BrowserDetector = (function() {
 
     M = M[2] ? [M[1], M[2]] : [navigator.appName, navigator.appVersion, '-?'];
 
-    if ((tem = ua.match(/version\/(\d+\.\d+)/i)) != null) {
+    if ((tem = ua.match(/version\/(\d+\.\d+)/i)) !== null) {
       M.splice(1, 1, tem[1]);
     }
 
