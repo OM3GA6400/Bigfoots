@@ -1026,7 +1026,7 @@ Test.prototype = {
 	resolvePromise: function( promise, phase ) {
 		var then, message,
 			test = this;
-		if ( promise != null ) {
+		if ( promise !== null ) {
 			then = promise.then;
 			if ( QUnit.objectType( then ) === "function" ) {
 				QUnit.stop();
@@ -1358,7 +1358,7 @@ QUnit.assert = Assert.prototype = {
 			currentTest = ( this instanceof Assert && this.test ) || QUnit.config.current;
 
 		// 'expected' is optional unless doing string comparison
-		if ( message == null && typeof expected === "string" ) {
+		if ( message === null && typeof expected === "string" ) {
 			message = expected;
 			expected = null;
 		}

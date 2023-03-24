@@ -595,7 +595,7 @@ var World = {
 				}
 				break;
 		}
-		if(msg != null) {
+		if(msg !== null) {
 			Notifications.notify(World, msg);
 		}
 	},

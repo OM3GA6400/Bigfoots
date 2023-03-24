@@ -290,7 +290,7 @@ TWEEN.Tween = function (object) {
 
 		if (elapsed === 1) {
 			if (_onCompleteCallback !== null && !_reversed) {
-				if(_onCompleteCallbackScope!=null){
+				if(_onCompleteCallbackScope!==null){
 					_onCompleteCallback.call(_onCompleteCallbackScope);
 				}else{
 					_onCompleteCallback.call(_object, _object);	
@@ -299,7 +299,7 @@ TWEEN.Tween = function (object) {
 			}
 
 			if ((_onReverseCompleteCallback !== null) && _reversed) {
-				if(_onReverseCompleteCallbackScope!=null){
+				if(_onReverseCompleteCallbackScope!==null){
 					_onReverseCompleteCallback.call(_onReverseCompleteCallbackScope);
 				}else{
 					_onReverseCompleteCallback.call(_object, _object);

@@ -212,7 +212,7 @@ var Space = {
 			dy = dy / Math.sqrt(2);
 		}
 		
-		if(Space.lastMove != null) {
+		if(Space.lastMove !== null) {
 			var dt = Date.now() - Space.lastMove;
 			dx *= dt / 33;
 			dy *= dt / 33;

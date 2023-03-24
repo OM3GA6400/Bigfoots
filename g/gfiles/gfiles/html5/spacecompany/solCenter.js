@@ -172,7 +172,7 @@ $('input[type="checkbox"]').on('change', function() {
 });
 
 function gainAutoEmc(){
-	if(autoResource == null){
+	if(autoResource === null){
 		return;
 	}
 	emcAmount = "Max";

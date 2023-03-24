@@ -4454,7 +4454,7 @@ var toReturn = {
 					return;
 				}
 				var selectElem = document.getElementById("ArchaeologyAutomatorSelect");
-				var thresh = (selectElem == null) ? 50 : parseInt(selectElem.value, 10);
+				var thresh = (selectElem === null) ? 50 : parseInt(selectElem.value, 10);
 				game.global.archString = val;
 				game.global.archThresh = thresh;
 				cancelTooltip();
@@ -4514,7 +4514,7 @@ var toReturn = {
 			},
 			updateButton: function(what){
 				var ownedElem = document.getElementById(what + "RelicOwned");
-				if (ownedElem != null)
+				if (ownedElem !== null)
 					ownedElem.innerHTML = this.points[what];
 			},
 			getBaseStatMult: function(what){
@@ -6148,7 +6148,7 @@ var toReturn = {
 			owned: false,
 			onPurchase: function() {
 				var elem = document.getElementById('generatorWindow');
-				if (elem != null)
+				if (elem !== null)
 					elem.innerHTML = getGeneratorHtml();
 				updateGeneratorInfo();
 			}

@@ -491,7 +491,7 @@ Game.interstellarUI = (function(){
         }
         
 
-        if (this._starProducers == null) {
+        if (this._starProducers === null) {
             this._starProducers = {};
             for(var i = 0; i < resources.length; i++){
                 var updateList = document.getElementsByClassName("star_" + Game.utils.capitaliseFirst(resources[i]) + "_prod");

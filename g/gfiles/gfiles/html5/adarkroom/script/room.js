@@ -885,7 +885,7 @@ var Room = {
 						curPrev = child.attr('id');
 					}
 				});
-				if (curPrev == null) {
+				if (curPrev === null) {
 					row.prependTo(location);
 				} else {
 					row.insertAfter(location.find('#' + curPrev));
@@ -1135,7 +1135,7 @@ var Room = {
 		for (var k in Room.Craftables) {
 			craftable = Room.Craftables[k];
 			var max = $SM.num(k, craftable) + 1 > craftable.maximum;
-			if (craftable.button == null) {
+			if (craftable.button === null) {
 				if (Room.craftUnlocked(k)) {
 					var loc = Room.needsWorkshop(craftable.type) ? craftSection : buildSection;
 					craftable.button = new Button.Button({
@@ -1170,7 +1170,7 @@ var Room = {
 		for (var g in Room.TradeGoods) {
 			good = Room.TradeGoods[g];
 			var goodsMax = $SM.num(g, good) + 1 > good.maximum;
-			if (good.button == null) {
+			if (good.button === null) {
 				if (Room.buyUnlocked(g)) {
 					good.button = new Button.Button({
 						id: 'build_' + g,

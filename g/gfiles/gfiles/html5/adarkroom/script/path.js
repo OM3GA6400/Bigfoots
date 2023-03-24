@@ -198,7 +198,7 @@ var Path = {
 							}
 						}
 					});
-					if(curPrev == null) {
+					if(curPrev === null) {
 						row.insertAfter(wRow);
 					} else {
 						row.insertAfter(outfit.find('#' + curPrev));
