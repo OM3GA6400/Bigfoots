@@ -473,13 +473,7 @@ var EightBittr;
                     switch (i) {
                         // Children and options: just append all of them directly
                         case "children":
-                        case "children":
-                            if (typeof (setting) !== "undefined") {
-                                for (j = 0; j < setting.length; j += 1) {
-                                    recipient.appendChild(setting[j]);
-                                }
-                            }
-                            break;
+                        
                         // Style: proliferate (instead of making a new Object)
                         case "style":
                             this.proliferate(recipient[i], setting);
