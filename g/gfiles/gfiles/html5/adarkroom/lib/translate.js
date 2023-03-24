@@ -58,14 +58,14 @@
 	
 	function translateLookup(target)
 	{
-		if (translation == null || target == null)
+		if (translation === null || target === null)
 		{
 			return target;
 		}
 		
 		if (target in translation === false)
 		{
-			if (dynoTrans != null)
+			if (dynoTrans !== null)
 			{
 				return dynoTrans(target);
 			}
@@ -73,7 +73,7 @@
 		}
 		
 		var result = translation[target];
-		if (result == null)
+		if (result === null)
 		{
 			return target;
 		}

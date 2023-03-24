@@ -486,7 +486,7 @@ Breakout = {
 
     launch: function() {
       if (!this.moving || this.countdown) {
-        this.countdown = (typeof this.countdown == 'undefined') || (this.countdown == null) ? 3 : this.countdown - 1;
+        this.countdown = (typeof this.countdown == 'undefined') || (this.countdown === null) ? 3 : this.countdown - 1;
         if (this.countdown > 0) {
           this.label = this.launchLabel(this.countdown);
           this.delayTimer = setTimeout(this.launch.bind(this), 1000);

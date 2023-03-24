@@ -222,7 +222,7 @@ var Events = {
 	},
 
 	createEatMeatButton: function(cooldown) {
-		if (cooldown == null) {
+		if (cooldown === null) {
 			cooldown = Events._EAT_COOLDOWN;
 		}
 
@@ -242,7 +242,7 @@ var Events = {
 	},
 
 	createUseMedsButton: function(cooldown) {
-		if (cooldown == null) {
+		if (cooldown === null) {
 			cooldown = Events._MEDS_COOLDOWN;
 		}
 
@@ -884,7 +884,7 @@ var Events = {
 			$('<div>').text(scene.text[i]).appendTo(desc);
 		}
 
-		if(scene.textarea != null) {
+		if(scene.textarea !== null) {
 			var ta = $('<textarea>').val(scene.textarea).appendTo(desc);
 			if(scene.readonly) {
 				ta.attr('readonly', true);
@@ -1012,11 +1012,11 @@ var Events = {
 				var r = Math.random();
 				var lowestMatch = null;
 				for(var i in info.nextScene) {
-					if(r < i && (lowestMatch == null || i < lowestMatch)) {
+					if(r < i && (lowestMatch === null || i < lowestMatch)) {
 						lowestMatch = i;
 					}
 				}
-				if(lowestMatch != null) {
+				if(lowestMatch !== null) {
 					Events.loadScene(info.nextScene[lowestMatch]);
 					return;
 				}
@@ -1044,7 +1044,7 @@ var Events = {
 
 	// Makes an event happen!
 	triggerEvent: function() {
-		if(Events.activeEvent() == null) {
+		if(Events.activeEvent() === null) {
 			var possibleEvents = [];
 			for(var i in Events.EventPool) {
 				var event = Events.EventPool[i];
@@ -1112,7 +1112,7 @@ var Events = {
 			Button.saveCooldown = false;
 			Events.eventStack.unshift(event);
 			event.eventPanel = $('<div>').attr('id', 'event').addClass('eventPanel').css('opacity', '0');
-			if(options != null && options.width != null) {
+			if(options !== null && options.width !== null) {
 				Events.eventPanel().css('width', options.width);
 			}
 			$('<div>').addClass('eventTitle').text(Events.activeEvent().title).appendTo(Events.eventPanel());
@@ -1154,7 +1154,7 @@ var Events = {
 	},
 
 	handleStateUpdates: function(e){
-		if((e.category == 'stores' || e.category == 'income') && Events.activeEvent() != null){
+		if((e.category == 'stores' || e.category == 'income') && Events.activeEvent() !== null){
 			Events.updateButtons();
 		}
 	},

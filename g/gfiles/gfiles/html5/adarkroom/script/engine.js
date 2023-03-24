@@ -98,7 +98,7 @@
 
 			Engine.disableSelection();
 
-			if(this.options.state != null) {
+			if(this.options.state !== null) {
 				window.State = this.options.state;
 			} else {
 				Engine.loadGame();
@@ -268,7 +268,7 @@
 
 		saveGame: function() {
 			if(typeof Storage != 'undefined' && localStorage) {
-				if(Engine._saveTimer != null) {
+				if(Engine._saveTimer !== null) {
 					clearTimeout(Engine._saveTimer);
 				}
 				if(typeof Engine._lastNotify == 'undefined' || Date.now() - Engine._lastNotify > Engine.SAVE_DISPLAY){
@@ -525,7 +525,7 @@
 
 		isLightsOff: function() {
 			var darkCss = Engine.findStylesheet('darkenLights');
-			if ( darkCss != null && !darkCss.disabled ) {
+			if ( darkCss !== null && !darkCss.disabled ) {
 				return true;
 			}
 			return false;
@@ -533,7 +533,7 @@
 
 		turnLightsOff: function() {
 			var darkCss = Engine.findStylesheet('darkenLights');
-			if (darkCss == null) {
+			if (darkCss === null) {
 				$('head').append('<link rel="stylesheet" href="css/dark.css" type="text/css" title="darkenLights" />');
 				$('.lightsOff').text(_('lights on.'));
 				$SM.set('config.lightsOff', true, true);
@@ -813,7 +813,7 @@
 		},
 
 		toggleVolume: function(enabled /* optional */) {
-      if (enabled == null) {
+      if (enabled === null) {
         enabled = !$SM.get('config.soundOn');
       }
 			if (!enabled) {

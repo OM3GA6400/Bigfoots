@@ -99,7 +99,7 @@ function poki_loadbar(ctx, width, height, total, current, image) {
     ctx.fillRect(0, 0, width, height);
     // image:
     var totalHeight, barTop;
-    if (image != null) {
+    if (image !== null) {
         var rect = getw("image_rect");
         if (!rect) rect = [0, 0, image.width, image.height];
         totalHeight = rect[3] + barOffset + barHeight;

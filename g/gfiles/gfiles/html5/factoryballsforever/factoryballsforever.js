@@ -15926,7 +15926,7 @@ p.nominalBounds = new cjs.Rectangle(-87.3,-81.7,204.2,166.5);
 		}
 		
 		function ballPress(e) {
-			if (toolstack != null && toolstack.length > 0) {
+			if (toolstack !== null && toolstack.length > 0) {
 				prelogica(toolstack[toolstack.length-1]);
 			}
 		}
@@ -17903,7 +17903,7 @@ p.nominalBounds = new cjs.Rectangle(-87.3,-81.7,204.2,166.5);
 		
 		
 		function toolstackremove(tooltoremove) {
-			if (toolstack!=null&&toolstack.length>0) {
+			if (toolstack!==null&&toolstack.length>0) {
 				for (i = toolstack.length - 1; i >= 0; i--) {
 					if (toolstack[i] == tooltoremove) toolstack.splice(i, 1);
 				}

@@ -119,7 +119,7 @@ var AudioEngine = {
         var fadeTime = AudioEngine._audioContext.currentTime + AudioEngine.FADE_TIME * 2;
 
         // turn down current background music
-        if (AudioEngine._currentBackgroundMusic != null) {
+        if (AudioEngine._currentBackgroundMusic !== null) {
             var currentBackgroundGainValue = AudioEngine._currentBackgroundMusic.envelope.gain.value;
             AudioEngine._currentBackgroundMusic.envelope.gain.cancelScheduledValues(AudioEngine._audioContext.currentTime);
             AudioEngine._currentBackgroundMusic.envelope.gain.setValueAtTime(currentBackgroundGainValue, AudioEngine._audioContext.currentTime);
@@ -242,7 +242,7 @@ var AudioEngine = {
         }
     },
     setBackgroundMusicVolume: function (volume, s) {
-        if (AudioEngine._master == null) return;  // master may not be ready yet
+        if (AudioEngine._master === null) return;  // master may not be ready yet
         if (volume === undefined) {
             volume = 1.0;
         }
@@ -260,7 +260,7 @@ var AudioEngine = {
         );
     },
     setMasterVolume: function (volume, s) {
-        if (AudioEngine._master == null) return;  // master may not be ready yet
+        if (AudioEngine._master === null) return;  // master may not be ready yet
         if (volume === undefined) {
             volume = 1.0;
         }

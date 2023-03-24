@@ -368,7 +368,7 @@ var playerSpire = {
     },
     redrawUpgrades: function(){
         var elem = document.getElementById('playerSpireUpgradesArea');
-        if (elem == null){
+        if (elem === null){
             this.drawInfo();
             return;
         }
@@ -910,7 +910,7 @@ var playerSpire = {
             cellHtml += "style='background-image: linear-gradient(to right, " + gradient + ");";
         }
         else cellHtml += "style='background-color: " + color + ";";
-        if (this.settings.shockEffect && cell.occupiedBy.shockTurns != null && cell.occupiedBy.shockTurns >= 0) cellClass += " shocked"
+        if (this.settings.shockEffect && cell.occupiedBy.shockTurns !== null && cell.occupiedBy.shockTurns >= 0) cellClass += " shocked"
         var innerText = (cell.occupiedBy.dead) ? "<span class='icomoon icon-skeletor'></span>" : ((this.settings.percentHealth) ? prettify((cell.occupiedBy.health / cell.occupiedBy.maxHealth) * 100) + "%" : prettify(cell.occupiedBy.health));
         innerText = "<span class='playerSpireEnemyText'>" + innerText + "</span>";
         if (cell.occupiedBy.name && this.settings.enemyIcons){
@@ -1134,7 +1134,7 @@ var playerSpire = {
     },
     buildTrap: function(cell, forceTrap){
         var trap = this.selectedTrap;
-        if (forceTrap != null) trap = forceTrap;
+        if (forceTrap !== null) trap = forceTrap;
         if (trap == "shiftUp"){
             this.dontDraw = true;
             this.shiftUp(cell);
@@ -1288,7 +1288,7 @@ var playerSpire = {
     getTrapCost: function(trap, forRefund, levelOverride){
         var trapCfg = playerSpireTraps[trap];
         var level;
-        if (levelOverride != null)
+        if (levelOverride !== null)
             level = levelOverride;
         else
             level = (forRefund) ? trapCfg.owned - 1 : trapCfg.owned;
@@ -1721,17 +1721,17 @@ var playerSpireTraps = {
                 dmg = dmgs[this.level - 1];
             var effect = (enemy && enemy.shockTurns && enemy.shockTurns > 0) ? playerSpireTraps.Lightning.shockedDamage() : 0;
             if (effect > 0) dmg *= effect;
-            if (cell != null && playerSpireTraps.Frost.level >= 4 && playerSpire.layout.length > cell + 1 && playerSpire.layout[cell + 1].trap.name && playerSpire.layout[cell + 1].trap.name == "Frost"){
+            if (cell !== null && playerSpireTraps.Frost.level >= 4 && playerSpire.layout.length > cell + 1 && playerSpire.layout[cell + 1].trap.name && playerSpire.layout[cell + 1].trap.name == "Frost"){
                 dmg *= 4;
             }
-            if (this.level >= 3 && cell != null){
+            if (this.level >= 3 && cell !== null){
                 var count = 0;
                 if (cell > 0 && playerSpire.layout[cell - 1].trap.name == "Poison") count++;
                 if (cell + 1 < playerSpire.layout.length && playerSpire.layout[cell + 1].trap.name == "Poison") count++;
                 if (count == 1) dmg *= 3;
                 if (count == 2) dmg *= 9;
             }
-            if (this.level >= 5 && cell != null){
+            if (this.level >= 5 && cell !== null){
                 var enemy = playerSpire.layout[cell].occupiedBy;
                 if (enemy.name){
                     if ((enemy.health / enemy.maxHealth) <= 0.75){
@@ -1756,7 +1756,7 @@ var playerSpireTraps = {
         costIncrease: 3,
         icon: "bolt",
         getColBonus: function(cell){
-            if (cell == null) return 1;
+            if (cell === null) return 1;
             if (this.level < 4) return 1;
             var col = playerSpire.getColFromCell(cell);
             var traps = playerSpire.lightColumns[col];

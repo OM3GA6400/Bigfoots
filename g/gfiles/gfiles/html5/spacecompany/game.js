@@ -171,7 +171,7 @@ var Game = (function() {
 
             this.settings.load(data);
 
-            if(data != null && data.lastFixedUpdate && !isNaN(data.lastFixedUpdate)) {
+            if(data !== null && data.lastFixedUpdate && !isNaN(data.lastFixedUpdate)) {
                 this.handleOfflineGains((new Date().getTime() - data.lastFixedUpdate) / 1000);
             }
         }

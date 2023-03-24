@@ -85,7 +85,7 @@ console.log(`Number ${key} was pressed!`);
 const handleKeyPress4 = (e) => {
 const key = getCode(e);
 if (key == 4) {
-var url = prompt("about:blank tab cloaker! Enter URL Here (example: https://google.com)");if (url == null) {alert('No URL Entered!')} else {location.href="gfiles/gfiles/lanucher/index.html?url="+url;}
+var url = prompt("about:blank tab cloaker! Enter URL Here (example: https://google.com)");if (url === null) {alert('No URL Entered!')} else {location.href="gfiles/gfiles/lanucher/index.html?url="+url;}
 console.log(`Number ${key} was pressed!`);
 }
 };

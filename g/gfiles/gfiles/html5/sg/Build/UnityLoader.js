@@ -4361,7 +4361,7 @@ var UnityLoader = UnityLoader || {
                         }
                         function v(e, t) {
                             var r = new U(e);
-                            null == t && (t = g(e));
+                            null === t && (t = g(e));
                             var n = new Uint8Array(t),
                                 o = new x(n);
                             return A(r, o), o.pos < o.buffer.length && (o.buffer = o.buffer.subarray(0, o.pos)), o.buffer;

@@ -674,7 +674,7 @@ function tooltip(what, isItIn, event, textString, attachFunction, numCheck, rena
 		costText = "";
 	}
 	if (what == "Geneticistassist Settings"){
-		if (isItIn == null){
+		if (isItIn === null){
 			geneMenuOpen = true;
 			elem = document.getElementById('tooltipDiv2');
 			tip2 = true;
@@ -686,7 +686,7 @@ function tooltip(what, isItIn, event, textString, attachFunction, numCheck, rena
 		}
 	}
 	if (what == "Configure Maps"){
-		if (isItIn == null){
+		if (isItIn === null){
 			geneMenuOpen = true;
 			elem = document.getElementById('tooltipDiv2');
 			tip2 = true;
@@ -1405,7 +1405,7 @@ function tooltip(what, isItIn, event, textString, attachFunction, numCheck, rena
 		if (!renameBtn) renameBtn = "Confirm";
 		what = numCheck;
 		tooltipText = textString;
-		if (attachFunction == null) attachFunction = "";
+		if (attachFunction === null) attachFunction = "";
 		if (!noHide) attachFunction = attachFunction + "; cancelTooltip()";
 		attachFunction = (attachFunction) ? ' onclick="' + attachFunction + '"' : "";
 		if (what != 'Spire Assault') costText = ' <div class="maxCenter" id="confirmTipCost"><div id="confirmTooltipBtn" class="btn btn-info"' + attachFunction + '>' + renameBtn + '</div>';
@@ -1744,7 +1744,7 @@ function configMessages(){
 		for (var item in game.global.messages[name]){
 			if (item == "enabled") continue;
 			var checkbox = document.getElementById(name + item);
-			if (checkbox == null) continue;
+			if (checkbox === null) continue;
 			game.global.messages[name][item] = readNiceCheckbox(checkbox);
 		}
 	}
@@ -4497,7 +4497,7 @@ function adjustMessageIndexes(index){
 
 function postMessages(){
 	if (usingRealTimeOffline) return;
-    if (pendingLogs.RAF != null) cancelAnimationFrame(pendingLogs.RAF);
+    if (pendingLogs.RAF !== null) cancelAnimationFrame(pendingLogs.RAF);
 
     if(pendingLogs.all.length < 1) {
         return;
@@ -4557,7 +4557,7 @@ function filterMessage(what, updateOnly){ //send true for updateOnly
 	var toChange = document.getElementsByClassName(what + "Message");
 	var btnText = (displayed) ? what : what + " off";
 	var btnElem = document.getElementById(what + "Filter");
-	if (btnElem == null) return;
+	if (btnElem === null) return;
 	btnElem.innerHTML = btnText;
 	btnElem.className = "";
 	btnElem.className = getTabClass(displayed);
@@ -5435,7 +5435,7 @@ function clearNewSettings(){
 
 function toggleSettingAlert(){
 	var elem = document.getElementById('settingsAlert');
-	if (elem == null) {
+	if (elem === null) {
 		if (hasNewSetting) document.getElementById('settingsText').innerHTML += ' <span class="alert" id="settingsAlert">!</span>';
 		return;
 	}
@@ -6489,13 +6489,13 @@ function toggleSetting(setting, elem, fromPortal, updateOnly, backwards, fromHot
 function updateDecayStacks(addStack){
 	var elem = document.getElementById('decayStacks');
 	if (game.global.challengeActive != "Decay" && game.global.challengeActive != "Melt"){
-		if (elem == null) return;
+		if (elem === null) return;
 		elem.style.display = "none";
 		return;
 	}
 	var challenge = game.challenges[game.global.challengeActive];
 	if (addStack && challenge.stacks < challenge.maxStacks && game.upgrades.Battle.done > 0) challenge.stacks++;
-	if (elem == null){
+	if (elem === null){
 		var icon = (game.global.challengeActive == "Melt") ? "icomoon icon-fire" : "glyphicon glyphicon-cloud";
 		document.getElementById('debuffSpan').innerHTML += "<span id='decayStacks' onmouseout='tooltip(\"hide\")' class='badge antiBadge'><span id='decayStackCount'></span> <span class='" + icon + "'></span></span>";
 		elem = document.getElementById('decayStacks');
@@ -6508,7 +6508,7 @@ function updateDecayStacks(addStack){
 }
 
 function swapClass(prefix, newClass, elem) {
-if (elem == null) {
+if (elem === null) {
 	console.log("swapClass, No element found. Prefix: " + prefix + ", newClass: " + newClass);
 	return;
 	}
